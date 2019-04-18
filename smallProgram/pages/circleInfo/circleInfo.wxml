@@ -1,0 +1,168 @@
+<!--主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="圈子介绍" bg-color='{{bgColor}}'></navigation>
+<view class="content">
+
+    <view class="container">
+        <view class="page-body">
+            <!-- 顶部 -->
+            <view class="TopBox">
+                <block wx:if="{{infocircle.isvideo==0}}">
+                    <image class='imgs' src='{{infocircle.imgindex}}'></image>
+                </block>
+                <block wx:if="{{infocircle.isvideo==1}}">
+                    <block wx:if="{{isVideo==0}}">
+                    <image class='imgs' src='{{infocircle.imgindex}}'></image>
+                    <image class='plays' src='../../image/iocn-play-52.png' bind:tap="playsVideo">查看视频</image> 
+                    </block>    
+                    <block wx:if="{{isVideo==1}}">
+                    <view style='width:100%;'>
+                        <video enable-play-gesture='true' show-center-play-btn="{{false}}"  controls="true" objectFit="cover" autoplay='{{true}}' style="width: 100%;height=400px;margin:1px;" src="{{infocircle.videourl}}" binderror="videoErrorCallback"></video>
+                    </view>
+                    </block>
+                </block>
+                    <view class="CircleInfos">
+                        <text class="title">{{infocircle.title}}</text>
+                        <view class="CircleHead">
+                           <block wx:for="{{infocircle.join_avatar}}"  wx:for-item="vos" wx:key="{{index}}" >
+                            <image class='headImgs' src='{{vos}}'></image>
+                            </block>
+                
+                            <text class="CircleNum" decode="{{true}}">{{infocircle.join_num}}人已加入&nbsp;|&nbsp;{{infocircle.daka_num}}篇内容</text>
+                        </view>
+                    </view>
+            </view>
+
+            <view class="page-bodys">
+                <!-- 圈子简介 -->
+                <view class="introduce">
+                    <view class="title">圈主简介</view>
+                    <view class="introduceBox">
+                        <view class="intro_top">
+                            <image class='headImg' src='{{infocircle.leader_avatar}}'></image>
+                            <image class='sexs' src='/image/icon18sex{{infocircle.circle_leader_sex}}.png'></image>
+                            <text class="intro_name">{{infocircle.leader_name}}</text>
+                            <block wx:if="{{infocircle.isfollow == 0}}" >
+                                <button bindtap="guanzhuQuanzhu"  data-id="{{infocircle.id}}" data-fid="{{infocircle.circle_leader}}" class="btn">关注</button>  
+                            </block>
+                            <block wx:if="{{infocircle.isfollow == 1}}" >
+                                <text bindtap="quxiaoQuanzhu" data-fid="{{infocircle.circle_leader}}" class="btns">已关注</text>
+                            </block>
+                        </view>
+                        <view class="intro_bottom">
+                            <text class="intro_bottomText">{{infocircle.leader_pro}}</text>
+                        </view>
+                    </view>
+                </view>
+
+
+                <!-- 圈子介绍  -->
+                <view class="introduce introduces">
+                    <view class="title">圈子介绍 </view>
+                    <view class="introduceBox introduceBox2">
+                        <import src="../../components/wxmlify/wxmlify.wxml" />
+                        <template is="wxmlify" data="{{nodes}}"></template>
+                    </view>
+                </view>
+
+                <!-- 一日一练  -->
+                <view hidden='true' class="studyBox" wx:if="{{code==0}}">
+                    <view class="title">一日一练</view>
+                    <van-cell-group custom-class="CircleList">
+                        <block wx:for='{{infocircle.practise_limit}}' wx:key="{{index}}">
+                        <van-cell title="第{{infocircle.practise_limit[index].sort_name}}讲" 
+                        value="" 
+                        label="{{infocircle.practise_limit[index].practise_name}}" 
+                        custom-class="courseBox"
+                        title-class="courseNum"  
+                        label-class="courseName"
+			            url="/pages/circleInfoCardAllInfo/circleInfoCardAllInfo?id={{infocircle.practise_limit[index].id}}"
+                        is-link
+                        />
+                         </block>
+                    </van-cell-group>
+                </view>
+
+
+                <!-- 圈内打卡 -->
+                <view hidden='true' class="cireCard" wx:if="{{code==0}}">
+                    <view class="title">圈内打卡</view>
+                    <view  class="nodata" wx:if="{{infocircle.submit_limit==null}}">
+                          {{ noText}}
+                    </view> 
+                    <view class="lists">
+                        <block wx:for="{{infocircle.submit_limit}}" wx:for-item="vo" wx:key="{{index}}">
+                        <view class="CardDiaryInfos">
+                            <image bindtap="imgViewByidX" mode='aspectFill' data-id="{{vo.id}}" class='imgs' src='{{vo.imgindex}}'></image>
+                            <view class="likes"  wx:if="{{vo.iscollection == 1}}">
+                                <view class="iconfont icon_wodeshoucang" bind:tap="collectionButtonX" 
+                                data-circle="{{infocircle.id}}" data-id="{{vo.id}}" data-iscollection="1" data-xiabiao="{{index}}" data-index="{{vo.id}}" style="color:#D02F2F" ></view>
+                            </view> 
+                            <view class="likes"  wx:if="{{vo.iscollection == 0}}">
+                                <view class="iconfont icon_wodeshoucang" bind:tap="collectionButtonX" 
+                                data-circle="{{infocircle.id}}" data-id="{{vo.id}}" data-iscollection="0"  data-xiabiao="{{index}}" data-index="{{vo.id}}" ></view>
+                            </view> 
+                            <view class="CardDiaryUser goodListInfos">
+                                <view class="userInfos_l">
+                                    <navigator url="/pages/homePersonal/homePersonal?uid={{vo.uid}}">
+                                    <view class="userHeads">
+                                        <image src="{{vo.img_avatar}}" class="userHead" alt="头像"></image>
+                                        <image src="/image/icon18sex{{vo.sex}}.png" class="userSex" alt="性别"></image>
+                                    </view>
+                                    <text class="userName">{{vo.uname}} </text>
+                                    <text class="userTime" decode="{{true}}">{{vo.time_remark}}&nbsp;&nbsp;已打卡{{vo.tol_days}}天</text>
+                                    </navigator>
+                                </view>
+                                <view class="userHandle">
+                                    <!-- 赞 -->
+                                    <view  wx:if="{{vo.ispraise == 1}}"  data-id='{{vo.id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZanX" data-values="{{vo.zan_count}}" data-iszan="1"   data-circle="{{infocircle.id}}">
+                                        <view class="" style="color:red">
+                                            <text class="iconfont icon_zan"></text>
+                                            <text class="clickZan">{{vo.zan_count}}</text>
+                                        </view>
+                                    </view>
+                                <view  wx:if="{{vo.ispraise ==0}}" data-id='{{vo.id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZanX" data-circle="{{infocircle.id}}" data-values="{{vo.zan_count}}" 
+                                        data-iszan="0" >
+                                        <view class=""  >
+                                            <text class="iconfont icon_zan"></text>
+                                            <text class="clickZan">{{vo.zan_count}}</text>
+                                        </view>
+                                    </view>
+                                    <!-- 回复 -->
+                                <navigator url="/pages/circleSignInfo/circleSignInfo?id={{vo.id}}" >           <view class="reply">
+                                        <text class="iconfont icon_huifu"></text>
+                                        <text class="nums">{{vo.commentcount}}</text>
+                                    </view>
+                                </navigator>
+                                </view>  
+                            </view>
+                        </view>
+                        </block> 
+                    </view>  
+                </view>
+
+                <!-- 加入圈子 -->
+                <view hidden='true' class="gotoCire" bind:tap="gotoCireText" wx:if="{{code==0}}">
+                    <!-- <navigator class="" url="/pages/circle/circle" class="gotoCireUrl"> -->
+                        <!-- <text class="gotoCireText" bind:tap="gotoCireText"> -->
+                            立即加入，查看更多作品
+                        <!-- </text> -->
+                    <!-- </navigator> -->
+                </view>
+
+            </view>
+
+            <view class="gotoCireBtn" wx:if="{{code==0}}">
+                <van-button  size="large" round type="danger" custom-class="gotoCireBtns" bind:click="gotoCireBtns" data-id="{{infocircle.id}}">
+               <block wx:if="{{infocircle.isjoin == 1}}"> 去圈子内部</block>
+               <block wx:if="{{infocircle.isjoin == 0}}"> 立即加入</block>
+                </van-button>
+            </view>
+        </view>
+    </view>
+
+</view>
+
+
+
+
+

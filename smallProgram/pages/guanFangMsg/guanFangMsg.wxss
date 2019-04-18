@@ -1,0 +1,154 @@
+/* pages/guanFangMsg/guanFangMsg.wxss */
+
+/* page{
+  background:rgba(246,246,246,1);
+}
+.header{
+  background:rgba(255,255,255,1) !important;
+} */
+@import "../../components/wxParse/wxParse.wxss" ;
+
+ page{
+  background:rgba(246,246,246,1);
+}
+.box{
+  background:rgba(246,246,246,1);
+  height: auto;
+  overflow: scroll;
+}
+.container{
+  display: flex;
+  margin: 20rpx 80rpx 50rpx 30rpx;
+  position: relative;
+}
+.content{
+  margin-left: 30rpx;
+}
+.avatar{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+.avatar image{
+  width: 70rpx;
+  height: 70rpx;
+}
+.bubble{
+  background: rgba(255,255,255,1);
+  border-radius: 6rpx;
+  padding: 20rpx 30rpx;
+  margin-top: 10rpx;
+  /*  */
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  line-height: 40rpx;
+  position: relative;
+  max-width: 472rpx;
+}
+.arrow{
+   position: absolute;
+	 width: 0px;
+	 height: 0px;
+	 line-height: 0px;/*为了防止ie下出现题型*/
+	 border-bottom: 7px solid rgba(255,255,255,1);
+	 border-left: 7px solid rgba(246,246,246,1);
+	 border-right: 7px solid rgba(246,246,246,1);
+   transform: rotate(-90deg);
+   left: -10px;
+   top: 11px;
+}
+.time{
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  margin-top: 13rpx;
+}
+.clickToGo{
+   color:#4A90E2;
+   display: inline;
+}
+.imgMsg{
+  width: 429rpx;
+  height: 431rpx;
+}
+.bubble image{
+  width:429rpx;
+  height: 431rpx;
+}
+.load{
+  width: 120rpx;
+  height: 120rpx;
+  position: absolute;
+  top: 378rpx;
+  left: 315rpx;
+}
+.loadInfo{
+  font-size:36rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(102,102,102,1);
+  position: absolute;
+  left: 303rpx;
+  top: 498rpx;
+}
+.bgLoad{
+  background-color: white;
+  width: 100%;
+  height: 90%;
+  position: absolute;
+  overflow: hidden;
+}
+
+/* 新增加载效果 */
+.my-scroll {
+    height: 100%;
+    width: 100%;
+}
+.my-scroll-msgModule {
+    font-size: 14px;
+    color: #7e8a9b;
+    text-align: center;
+    overflow: hidden;
+}
+.my-scroll-refreshModule-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.my-scroll-msgModule-icon {
+    width: 20px;
+    height: 20px;
+}
+.my-scroll-loadmoreModule {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.my-scroll-msgModule-icon-loading {
+    animation: loading 1s linear infinite;
+}
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(270deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

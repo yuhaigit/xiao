@@ -1,0 +1,116 @@
+/* 顶部导航栏 */
+.content{
+    width: 100%;
+    height:100%;
+    background-color:#F6F6F6;
+}
+.CircleListBox{
+    width: 100%;
+    display: inline-block;
+}
+.CircleListBox .CircleList{
+    width: 100%;
+}
+.CircleListBox .CircleListImg{
+    position: relative;
+}
+.CircleListBox .CircleListImg .imgs{
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 50%;
+    margin-right: 10rpx;
+}
+.CircleListBox .CircleListImg .imgsSex{
+    width: 28rpx;
+    height: 28rpx;
+    border-radius: 50%;
+    position: relative;
+    left: -28rpx;
+}
+.CircleListBox .CircleListImg .userName{
+    position:absolute;
+    top:22rpx;
+    left: 120rpx;
+    width:200rpx;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;   
+}
+.CircleListBox .CircleListImg .userTime{
+    position: relative;
+    top: -5rpx;
+}
+.van-cell__right-icon-wrap{
+    position: relative;
+    top: 10rpx;
+}
+
+.noDataBox{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align:center;
+    padding:10% 0;
+}
+.noDataBox text{
+    display: inline-block;
+    color: #999999;
+}
+
+
+/* 新增加载效果 */
+.my-scroll {
+    height: 100%;
+    width: 100%;
+}
+.my-scroll-msgModule {
+    font-size: 14px;
+    color: #7e8a9b;
+    text-align: center;
+    overflow: hidden;
+}
+.my-scroll-refreshModule-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.my-scroll-msgModule-icon {
+    width: 20px;
+    height: 20px;
+}
+.my-scroll-loadmoreModule {
+    width:100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.my-scroll-msgModule-icon-loading {
+    animation: loading 1s linear infinite;
+}
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(270deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+

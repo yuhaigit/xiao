@@ -1,0 +1,49 @@
+<!--个人主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="打卡成功" bg-color='{{bgColor}}'>
+</navigation>
+<view class="content">
+    <van-dialog id="van-dialog" />
+    <view class="container" style="height:{{windowHeight - NavHeight}}px;"> 
+
+        <view class="saveBoxxx">
+
+            <view class="poster">
+
+                <view class="closeBox" style="top:{{IMGT}}rpx">
+                    <image src="../../image/close.png" data-xid="{{sharesubmitinfo.xid}}"  data-cid="{{sharesubmitinfo.cid}}"  bindtap="closeBox" class="close"></image>
+                </view>
+
+                <!-- <view class="poster__bg-wrp" style="width:{{windowWidth}}px;height:{{windowHeight}}px;"></view> -->
+                <view class="poster__create-wrp">
+                    <image src="{{cardCreateImgUrl}}" mode="" class="poster__create-img" style="top:{{IMGT}}rpx"></image>
+                </view>
+                <canvas class="poster__my-canvas" canvas-id="myCanvas" style="width:{{NEW_WIDTH}}px;height:{{NEW_HEIGHT}}px;" />  
+                <!-- <image src="../images/download.png" class="poster__btn-save" bindtap="saveImgBefore"  ></image> -->
+
+                <!-- 保存 -->
+                <view class="saveBox" style="bottom:{{IMGB}}rpx">
+                    <button class='sharingWorks' data-id="{{sharesubmitinfo.id}}" data-img="{{sharesubmitinfo.imageindex}}" data-title="{{sharesubmitinfo.title}}" type='button' open-type="share">分享给好友</button>
+                    <button class='saveLoca' type='button' bindtap='saveLoca'>
+                        <text>晒朋友圈</text>
+                        <text>(点击保存到相册)</text>
+                    </button>
+                </view>
+
+
+            </view>
+
+        </view>
+
+    </view>
+
+</view>
+
+
+
+
+
+
+
+
+
+

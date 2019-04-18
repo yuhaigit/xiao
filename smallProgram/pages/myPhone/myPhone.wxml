@@ -1,0 +1,67 @@
+<!--个人主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="手机号" bg-color='{{bgColor}}'>
+</navigation>
+<view class="content">
+
+    <view class="container">
+		
+		<view class="Topinfos">
+			<block wx:if="{{canshu == 0}}">
+				<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" disabled="{{disableds}}">点击设置快捷手机号</button>
+			</block>
+			<button wx:else open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" disabled="{{true}}" style="color:#D8D8D8">当前手机号码：<text style="color:#BCA47C">{{yuantel}}</text></button>
+		</view>
+		<van-cell-group>
+ 
+			<van-field
+				value="{{ tel }}"
+				type="number"
+				maxlength='11'
+				placeholder="请输入您的手机号码"
+				bind:change='onTelBlur'
+			/>
+			<van-field
+				value="{{ sms }}"
+				center
+				clearable
+				maxlength='6'
+				placeholder="请输入短信验证码"
+				border="{{ false }}"
+				bind:change="onsms"
+				type="number"
+				use-button-slot
+			>
+				<!-- 验证码 -->
+				<block wx:if="{{send}}">
+					<van-button slot="button" size="small"  round  type="primary" bind:click="obtain" custom-class="getyzm">
+						{{yzm}}
+					</van-button>
+				</block>
+				<block wx:if="{{alreadySend}}">
+					<van-button slot="button" size="small"  round  disabled  type="primary" bind:click="obtain"  custom-class="waityzm">
+						{{second}} s
+					</van-button>
+				</block>
+
+
+			</van-field>
+
+		</van-cell-group>
+
+		<view class="Btns">
+			<!--<block wx:if="{{!yanse}}">-->
+				<!--<van-button round  size="large" type="default" custom-class="saveBtns" disabled="{{true}}">保存</van-button>-->
+			<!--</block>-->
+			<!--<block wx:else>-->
+				<van-button round  size="large" type="default" custom-class="saveBtnsS" bindtap="saveTel">保存</van-button>
+			<!--</block>-->
+
+
+
+
+		</view>
+
+	
+	</view>
+
+</view>

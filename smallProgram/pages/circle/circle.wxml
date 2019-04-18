@@ -1,0 +1,57 @@
+<!--个人主页.wxml-->
+
+<navigation id='Navigation' show-icon='{{showIcon}}' title="圈子" bg-color='{{bgColor}}'></navigation>
+<view class="content">
+  <view class="swiper-tab">
+    <block wx:for="{{circleType}}" wx:key="{{index}}">
+      <view data-pid="{{item.dk_circle_category_id}}" class="swiper-tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="clickTab">{{item.title}}<view class="{{currentTab==index?'active_line':''}}"></view></view>
+    </block>
+    <!-- <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">硬笔</view>
+    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">毛笔</view>
+    <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">绘画</view>
+    <view class="swiper-tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="clickTab">5-15岁</view> -->
+  </view>
+  <!-- <view class="{{currentTab == 0 ? 'show':'hidden'}}"> -->
+  <view class="show" id='page'>
+    <block wx:for="{{lv2}}" wx:key="{{index}}">
+      <view class='circleType'>
+        <view class='lv2_title'>{{item.title}}</view>
+        <!-- <block wx:for="{{item.circle[0]}}" wx:key="{{dex}}" wx:for-item="itemDex"> -->
+        <block wx:for="{{item.circle[0]}}" wx:key="{{dex}}" wx:for-item="itemDex">
+          <block wx:if="{{itemDex.isjoin == 1}}">
+            <navigator url='/pages/circleInfoCard/circleInfoCard?id={{itemDex.id}}'>
+              <view class='lv2_item'>
+                <view class='cover'>
+                  <image src="{{itemDex.imgindex}}" class='picUrl'></image>
+                  <view wx:if="{{itemDex.is_end ==0}}" class="course">更新{{itemDex.practise}}讲</view>
+                  <view wx:if="{{itemDex.is_end ==1}}" class="course">全{{itemDex.practise}}讲</view>
+                </view>
+                <view class='item_title'>{{itemDex.title}}</view>
+                <view>
+                  <text class='join_num'>{{itemDex.join_num}}人已加入</text>
+                  <view class='isJoin'>已加入</view>
+                </view>
+              </view>
+            </navigator>
+          </block>
+          <block wx:if="{{itemDex.isjoin == 0}}">            
+              <view class='lv2_item'>
+              <navigator url='/pages/circleInfo/circleInfo?id={{itemDex.id}}'>
+                <view class='cover'>
+                  <image src="{{itemDex.imgindex}}" class='picUrl'></image>
+                  <view wx:if="{{itemDex.is_end ==0}}" class="course">更新{{itemDex.practise}}讲</view>
+                  <view wx:if="{{itemDex.is_end ==1}}" class="course">全{{itemDex.practise}}讲</view>
+                </view>
+              </navigator>
+                <view class='item_title'>{{itemDex.title}}</view>
+                <view>
+                  <text class='join_num'>{{itemDex.join_num}}人已加入</text>
+                  <view catchtap='join' class='joinBtn' data-cid="{{itemDex.id}}" >立即加入</view>
+                </view>
+              </view>            
+          </block>
+        </block>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,35 @@
+<!--个人主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="粉丝" bg-color='{{bgColor}}'></navigation>
+<view class="content">
+
+    <view class="CircleListBox" wx:if="{{list.length>0}}" >
+        <van-cell-group custom-class="CircleList">
+            <block wx:for="{{list}}" wx:key="{{index}}">
+                <van-cell center="true" url="">
+                    <view slot="title">
+                        <navigator hover-class='none' url="/pages/homePersonal/homePersonal?uid={{list[index].uid}}">
+                        <view class="van-cell-text CircleListImg">
+                            <image src="{{list[index].avator}}" class="imgs"></image>
+                            <image class='imgsSex' wx:if="{{list[index].sex == 2}}" src='../../image/icon18sex2.png'></image>
+                            <image class='imgsSex' wx:else src='../../image/icon18sex1.png'></image>
+                            <text class="userName">{{list[index].uname}}</text>
+                        </view>
+                        </navigator>
+                    </view>
+                </van-cell>
+            </block>
+        </van-cell-group>
+
+    <block wx:if="{{isShows}}">
+        <view class='my-scroll-msgModule my-scroll-loadmoreModule'>
+            <image wx:if="{{isloading}}" class='my-scroll-msgModule-icon my-scroll-msgModule-icon-loading' src='../../components/component-scroll/image/loading.png'></image>
+            <text class='my-scroll-msgModule-text'>{{isShowsText}}</text>
+        </view>
+    </block>
+
+    </view>
+    <view class="noDataBox" wx:else>
+        <text>{{test}}</text>
+    </view>
+
+</view>

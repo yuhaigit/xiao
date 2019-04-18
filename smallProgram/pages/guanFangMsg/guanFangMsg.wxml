@@ -1,0 +1,81 @@
+<!--pages/guanFangMsg/guanFangMsg.wxml-->
+<import src="../../components/wxParse/wxParse.wxml" />  
+<navigation class="header" id='Navigation' show-icon='{{showIcon}}' title="官方消息" bg-color='{{bgColor}}'></navigation>
+<view hidden='{{ !isShowLode }}' class='bgLoad'>
+  <image class='load' src='./image/timg.gif'></image>
+  <view class='loadInfo'>正在加载</view>
+</view>
+<view class="box" id='box' hidden='{{ isShowLode }}'>
+  <block wx:for="{{listArr}}" wx:key="{{index}}">
+    <block wx:if="{{ item[0].go_type ==null }}">
+      <view class='container'>
+          <image class='avatar' src='./image/logo.jpg'></image>
+          <view class='content'>
+            <!-- 纯文字，纯图片，文图共存 -->
+            <view class='bubble'>                        
+                <template is="wxParse" data="{{wxParseData:item}}"/>        
+              <view class='arrow'></view>
+            </view>
+            <view class='time'>{{item[0].created_at}}</view>
+          </view>
+        </view>
+    </block>
+    <block wx:elif="{{ item[0].go_type ==1 }}">  <!-- 站内跳 -->
+      <navigator url='{{ item[0].go_url }}'>
+        <view class='container'>
+          <image class='avatar' src='./image/logo.jpg'></image>
+          <view class='content'>
+            <!-- 纯文字，纯图片，文图共存 -->
+            <view class='bubble'>                        
+                <template is="wxParse" data="{{wxParseData:item}}"/>        
+              <view class='arrow'></view>
+            </view>
+            <view class='time'>{{item[0].created_at}}</view>
+          </view>
+        </view>
+      </navigator>
+    </block>
+    <block wx:elif="{{ item[0].go_type ==2 }}">  <!-- h5 -->
+      <navigator url='/pages/station/station?url={{ item[0].go_url }}'>
+        <view class='container'>
+          <image class='avatar' src='./image/logo.jpg'></image>
+          <view class='content'>
+            <!-- 纯文字，纯图片，文图共存 -->
+            <view class='bubble'>                    
+                <template is="wxParse" data="{{wxParseData:item}}"/>        
+              <view class='arrow'></view>
+            </view>
+            <view class='time'>{{item[0].created_at}}</view>
+          </view>
+        </view>
+      </navigator>
+    </block>
+    <block wx:else="{{ item[0].go_type ==2 }}">  <!-- 小程序 -->
+      <navigator target="miniProgram" open-type="navigate" app-id="" path=""  version="develop">
+        <view class='container'>
+          <image class='avatar' src='./image/logo.jpg'></image>
+          <view class='content'>
+            <!-- 纯文字，纯图片，文图共存 -->
+            <view class='bubble'>                      
+                <template is="wxParse" data="{{wxParseData:item}}"/>        
+              <view class='arrow'></view>
+            </view>
+            <view class='time'>{{item[0].created_at}}</view>
+          </view>
+        </view>
+      </navigator>
+    </block>
+    <!-- <view class='container'>
+      <view class='avatar'></view>
+      <view class='content'>
+        <view class='bubble'>
+            <image class='imgMsg' src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1866650547,2859020527&fm=58&bpow=800&bpoh=478'></image>
+            <view class='arrow'></view>
+        </view>
+        <view class='time'>03.9 16:50</view>
+      </view>
+    </view> -->
+  </block>
+</view>
+
+

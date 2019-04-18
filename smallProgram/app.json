@@ -1,0 +1,108 @@
+{
+    "pages": [
+        "pages/home/home",
+        "pages/loginUser/loginUser",
+        "pages/homePersonal/homePersonal",
+        "pages/homePersonalFans/homePersonalFans",
+        "pages/homePersonalFollow/homePersonalFollow",
+        "pages/circle/circle",
+        "pages/circleSign/circleSign",
+        "pages/circleSignInfo/circleSignInfo",
+        "pages/circleShare/circleShare",
+        "pages/circleInfo/circleInfo",
+        "pages/circleInfoCard/circleInfoCard",
+        "pages/circleInfoCardAll/circleInfoCardAll",
+        "pages/circleInfoCardAllInfo/circleInfoCardAllInfo",
+        "pages/myRanking/myRanking",
+        "pages/myRankingCard/myRankingCard",
+        "pages/myCardCalendar/myCardCalendar",
+        "pages/myPhone/myPhone",
+        "pages/myRankingShare/myRankingShare",
+        "pages/myHome/myHome",
+        "pages/myInformation/myInformation",
+        "pages/myCollection/myCollection",
+        "pages/myCircle/myCircle",
+        "pages/myGrade/myGrade",
+        "pages/myGradeResult/myGradeResult",
+        "pages/myGradeResultInfo/myGradeResultInfo",
+        "pages/myCardRecord/myCardRecord",
+        "pages/circleSignInfoReply/circleSignInfoReply",
+        "pages/myClock/myClock",
+        "pages/msgInform/msgInform",
+        "pages/guanFangMsg/guanFangMsg",
+        "pages/huiFu/huiFu",
+        "pages/friendChat/friendChat",
+        "pages/station/station",
+        "pages/myGradeList/myGradeList",
+        "pages/groupChat/groupChat"
+    ],
+    "usingComponents": {
+        "van-button": "/dist/button/index",
+        "van-icon": "/dist/icon/index",
+        "van-row": "/dist/row/index",
+        "van-col": "/dist/col/index",
+        "van-tab": "/dist/tab/index",
+        "van-tabs": "/dist/tabs/index",
+        "van-collapse": "/dist/collapse/index",
+        "van-collapse-item": "/dist/collapse-item/index",
+        "van-cell": "/dist/cell/index",
+        "van-cell-group": "/dist/cell-group/index",
+        "van-field": "/dist/field/index",
+        "van-switch": "/dist/switch/index",
+        "van-dialog": "/dist/dialog/index",
+        "van-popup": "/dist/popup/index",
+        "van-action-sheet": "/dist/action-sheet/index",
+        "van-picker": "/dist/picker/index"
+    },
+    "permission": {
+        "scope.userLocation": {
+          "desc": "你的位置信息将用于获取附近书友"
+        }
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTitleText": "六品打卡",
+        "navigationBarTextStyle": "black",
+        "navigationStyle": "custom"
+    },
+    "tabBar": {
+        "color": "#999999",
+        "borderStyle": "white",
+        "selectedColor": "#D02F2F",
+        "backgroundColor": "#f6f6f6",
+        "list": [
+            {
+                "pagePath": "pages/home/home",
+                "text": "主页",
+                "iconPath": "/image/iocn-home-slected2.png",
+                "selectedIconPath": "/image/iocn-home-slected.png"
+            },
+            {
+                "pagePath": "pages/myRankingCard/myRankingCard",
+                "text": "打卡",
+                "iconPath": "/image/iocn-dk-unslected2.png",
+                "selectedIconPath": "/image/iocn-dk-unslected.png"
+            },
+            {
+                "pagePath": "pages/circle/circle",
+                "text": "圈子",
+                "iconPath": "/image/iocn-qz-slect2.png",
+                "selectedIconPath": "/image/iocn-qz-slect.png"
+            },
+            {
+                "pagePath": "pages/msgInform/msgInform",
+                "text": "消息",
+                "iconPath": "/image/iocn-msg-slect.png",
+                "selectedIconPath": "/image/iocn-msg-slected.png"
+            },
+            {
+                "pagePath": "pages/myHome/myHome",
+                "text": "我的",
+                "iconPath": "/image/iocn-my-slect2.png",
+                "selectedIconPath": "/image/iocn-my-slect.png"
+            }
+        ]
+    },
+    "plugins": {}
+}

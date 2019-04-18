@@ -1,0 +1,92 @@
+<!--个人主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="打卡日记" bg-color='{{bgColor}}'>
+</navigation>
+<view class="content" >
+ 
+    <view class="container">
+
+        <view class="page-body">
+            <!-- 打卡日记 -->
+            <view class="CardDiary">
+                <!-- <text class="Circletext">她的打卡日记</text> -->
+                <view class="CardDiaryInfos">
+                    <image class='imgs' src='{{daka.img_url[0]}}' data-list="{{daka.img_url}}" bindtap="imgView"></image>
+
+                    <view class="likes" bindtap="likes" wx:if="{{daka.collection == 1}}" data-id="{{daka.id}}" style="color:#D02F2F">
+                        <text class="iconfont icon_wodeshoucang" style="color:#D02F2F"></text>
+                    </view>
+                    <view class="likes" bindtap="likes" wx:else data-id="{{daka.id}}">
+                        <text class="iconfont icon_wodeshoucang"></text>
+                    </view>
+
+                    <view class="CardDiaryUser goodListInfos">
+                        <view class="courseNames">
+                            <text class="courseTexts">{{daka.content}}</text>
+                        </view>
+                        <view class="userInfos_l">
+                            <navigator url="/pages/homePersonal/homePersonal?uid={{daka.uid}}">
+                            <view class="userHeads">
+                                <image src="{{daka.avator}}" class="userHead" alt="头像"></image>
+                                <image class='userSex' wx:if="{{list[index].sex == 2}}" src='../../image/icon18sex2.png'></image>
+                                <image class='userSex' wx:else src='../../image/icon18sex1.png'></image>
+                            </view>
+                            <text class="userName">{{daka.uname}}</text>
+                            <text class="userTime" decode="{{true}}">{{daka.atime}}&nbsp;&nbsp;已打卡{{daka.ydk}}天</text>
+                            </navigator>
+                        </view>
+                        <view class="zan" wx:if="{{daka['praise']['is_zan'] == 1}}" data-id='{{daka.id}}' bindtap="handleLike" style="color:red">
+                            <!-- <view class=""> -->
+                                <!-- <van-icon name="thumb-circle-o" size="36rpx"/> -->
+                                <text class="iconfont icon_zan "></text>{{daka['praise']['count']}}
+                            <!-- </view> -->
+                        </view>
+                        <view class="zan" wx:if="{{daka['praise']['is_zan'] == 2}}" data-id='{{daka.id}}' bindtap="handleLike">
+                            <!-- <view class=""> -->
+                                <!-- <van-icon name="thumb-circle-o" size="36rpx"/> -->
+                                <text class="iconfont icon_zan "></text>{{daka['praise']['count']}}
+                            <!-- </view> -->
+                        </view>
+                        <view class="userInfos_bottom" wx:if="{{daka.circle != 0}}">
+                            <navigator url="/pages/circleInfo/circleInfo?id={{daka.cid}}">
+                                <image src="{{daka['circle']['coverimg']}}" class="courseImg" alt="推荐图"></image>
+                                <text class="userName userNamess">{{daka['circle']['title']}}</text>
+                                <text class="userTime userTimes" >{{daka['circle']['zongshu']}}人已加入</text>
+                                <!-- <text class="imgTexts">></text> -->
+                                <van-icon name="arrow" custom-style="position:relative;top:-20rpx;right:0;float:right;color:#D8D8D8;"/>
+                            </navigator>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 底部菜单栏 -->
+            <view class="buttomBtn">
+                <view >
+                    <!--<navigator url="" bindtap="shouye" class="texts">观看更多作品</navigator>-->
+                    <text bindtap="shouye" class="texts">观看更多作品</text>
+                </view>
+                <view class="fgx">
+                    <text  class="texts" wx:if="{{daka.cid == 0}}" bindtap="shouye">跟小伙伴一起学习</text>
+                    <navigator wx:elif="{{daka.cid != 0 && daka.incircle == 1}}" url="/pages/circleInfoCard/circleInfoCard?id={{daka.cid}}">
+                        <text  class="texts">跟小伙伴一起学习</text>
+                    </navigator>
+                    <navigator wx:else url="/pages/circleInfo/circleInfo?id={{daka.cid}}">
+                        <text  class="texts">跟小伙伴一起学习</text>
+                    </navigator>
+                </view>
+            </view>
+
+        </view>
+    </view>
+
+</view>
+
+
+
+
+
+
+
+
+
+

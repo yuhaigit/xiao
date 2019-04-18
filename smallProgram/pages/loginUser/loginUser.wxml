@@ -1,0 +1,25 @@
+<!--主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="六品练字" bg-color='{{bgColor}}'></navigation>
+<view class="content">
+
+    <view class="headImg">
+      <view  class="userAvatarUrl">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+       
+        <!-- <image src="https://test.liupinshuyuan.com/data/upload/2018/0828/13/5b84deee91857.png" /> -->
+    </view>
+    <view class="tips">
+        <text class="tipsTitle">该小程序由六品练字开发，请提供以下授权， 即可继续操作</text>
+        <text class="tipsContent">* 获得你的公开信息（昵称，头像等）</text>
+    </view>
+
+    <view class="gotoCireBtn">
+        <van-button size="large" round type="danger" open-type="getUserInfo" bindgetuserinfo="appUserlogin" custom-class="gotoCireBtns"  >确认授权</van-button>
+    </view>
+</view>
+
+
+
+
+

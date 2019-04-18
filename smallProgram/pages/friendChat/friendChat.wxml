@@ -1,0 +1,34 @@
+<!--pages/friendChat/friendChat.wxml-->
+<navigation class="header" id='Navigation' show-icon='{{showIcon}}' title="用户名" bg-color='{{bgColor}}'></navigation>
+
+<!-- 对方消息 -->
+<view class='container'>
+  <view class='avatar'></view>
+  <view class='content'>
+     <!-- 纯文字，纯图片，文图共存 -->
+     <view class='bubble'>
+       您好
+       <view class='arrow'></view>
+     </view>
+     <view class='time'>03.9 15:23</view>
+  </view>
+</view>
+
+<!-- 自发消息 -->
+<view class='container'>
+  <view class='myAvatar'></view>
+  <view class='myContent'>
+     <!-- 纯文字，纯图片，文图共存 -->
+     <view class='myBubble'>
+       您好，系统全面升级了，增的所得edvsdvsdv税法士大夫加了抽奖活动
+       <view class='myArrow'></view>
+     </view>
+     <view class='myTime'>03.9 15:23</view>
+  </view>
+
+  <!-- 输入框 -->
+  <view class='inputBox'>
+    <text class='input'></text>
+    <button class='sendBtn'>发送</button>
+  </view>
+</view>

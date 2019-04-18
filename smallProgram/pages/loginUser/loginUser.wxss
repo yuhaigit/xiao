@@ -1,0 +1,68 @@
+page{
+    background-color:#F6F6F6;
+}
+.content{
+    width: 100%;
+    height:100%;
+    padding: 110rpx 72rpx;
+    box-sizing: border-box;
+}
+
+
+.content .headImg{
+    width: 100%;
+    text-align: center;
+}
+.userAvatarUrl{
+    width:160rpx;
+    height:160rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin:0 auto;
+}
+.content .headImg image{
+    width:160rpx;
+    height:160rpx;
+    border-radius: 50%;
+}
+.content .tips{
+    width: 100%;
+    margin-top: 100rpx;
+}
+.content .tips .tipsTitle{
+    font-size:30rpx;
+    color: #333333;
+    font-weight:400;
+}
+.content .tips .tipsContent{
+    font-size:24rpx;
+    color: #999999;
+    font-weight:400;
+    display: block;
+    margin-top: 25rpx;
+}
+
+
+.gotoCireBtn{
+    width: 100%;
+    height: 120rpx;
+    position: relative;
+    top:197rpx;
+    left: 0;
+}
+.gotoCireBtns{
+    background-color: #EA5C5C !important;
+    color: #fff!important;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 32rpx!important;
+    border-radius: 48rpx;
+    background: -webkit-linear-gradient(left, #EA5C5C , #D02F2F)!important;
+}
+button::after{
+    border: none !important;
+}
+  
+
+

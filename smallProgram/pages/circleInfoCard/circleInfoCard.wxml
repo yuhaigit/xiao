@@ -1,0 +1,390 @@
+<!--主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="" bg-color='{{bgColor}}'></navigation>
+<view class="content" catchtouchmove="{{noScroll}}">
+  <view class='intoGroup' catchtap='joinGroup' hidden="{{hiddens}}">
+    <image src='image/group.gif'></image>
+  </view>
+  <van-dialog id="van-dialog" />
+	<van-dialog
+		show="{{ contactsShow }}"
+		title= ''
+		message= '回复 1 悄悄告诉你助教微信'
+		show-cancel-button="{{false}}"
+		confirm-button-open-type="contact"
+		bind:close="contactClose"
+		confirm-button-text='立即回复'
+		session-from='{{cid}}'
+		close-on-click-overlay="{{true}}"
+	/>
+  <!-- 顶部 -->
+  <view class="TopBox">
+    <view class="CircleInfos">
+      <navigator url="/pages/circleInfo/circleInfo?code=1&id={{cid}}" hover-class="none">
+        <view class="CircleInfos_l">
+          <text class="title">{{infocirclecard.title}}</text>
+          <text class="CircleNum" decode="{{true}}">{{infocirclecard.join_num}}人已加入&nbsp;|&nbsp;{{infocirclecard.daka_num}}篇内容</text></view>
+        <van-icon name="arrow" color="#D8D8D8" custom-class="CircleInfos_r" /></navigator>
+    </view>
+    <view class="CircleInfos_2">
+      <view class="addBox">
+        <button bind:tap="contacts">
+          <image class='imgs' src='../../image/add.png'></image>
+          <text class="add" decode="{{true}}">问助教</text></button>
+        <button bind:tap="alarm">
+          <image class='imgs' src='../../image/clock.png'></image>
+          <text wx:if="{{infocirclecard.clock_switch == 1}}" class="add">{{infocirclecard.remind_time}}</text>
+          <text wx:else class="add">定闹钟</text></button>
+        <button bind:tap="inviteDraw">
+          <image class='imgs' src='../../image/invite.png'></image>
+          <text class="add">邀好友</text></button>
+      </view>
+    </view>
+  </view>
+  <view class="page-bodys">
+    <!-- 当前章节 -->
+    <block wx:if="{{true}}">
+      <view class="chapter">
+        <view class="title">
+          <text class="titles" decode="{{true}}">第{{infocirclecard.practise_first.sort_name}}讲&nbsp;{{infocirclecard.practise_first.practise_name}}</text>
+          <view class="titles_r" wx:if="{{infocirclecard.practise_num>1}}">
+            <navigator class="" url="/pages/circleInfoCardAll/circleInfoCardAll?id={{cid}}" hover-class="none">
+              <text class="titlesAll">切换练习（{{infocirclecard.practise_num}}）</text>
+              <van-icon name="arrow" color="#D8D8D8" custom-class="CircleInfos_r" custom-style="position:relative; top:5rpx;" /></navigator>
+          </view>
+        </view>
+        <view class="contents">
+        <image hidden='{{!hiddens}}' class='videoDefPic' src='{{videoDefaPic}}'></image>
+			<block wx:if="{{infocirclecard.practise_first.isvideo == 1}}">
+				<video
+					id='myVideo' 
+					hidden="{{Models || hiddens || videoEndText}}"
+					show-center-play-btn="{{false}}" 
+					controls="true" 
+					objectFit="cover" 
+					autoplay='{{autoplays}}' 
+					auto-pause-if-navigate 
+					auto-pause-if-open-native 
+					src="{{infocirclecard.practise_first.videourl}}" 
+					binderror="videoErrorCallback" 
+					class="videos" 
+					bindended='videoEnds' 
+					bindfullscreenchange='fullscreenchange'
+					bindtimeupdate="bindtimeupdates"
+					enable-play-gesture='true'
+				></video>       
+				<!-- <cover-view class="videoEnd videoEndCover" bindtap="playsVideo" wx:if="{{videoCoverEndText}}">
+				<cover-view class='cover_1'>视频已播放结束</cover-view>
+				<cover-view class='cover_2'>太棒了，接下来立即开始提笔练字吧</cover-view>
+				<cover-view class='cover_3' bind:tap="playsVideo">再看一遍</cover-view></cover-view> -->
+				<!-- <view class="coursePlay">
+				<block wx:if="{{infocirclecard.practise_first.isvideo==1}}"><image class='plays' src='../../image/iocn-play-52.png' bind:tap="playsVideo"></image> </block></view> -->
+				<view class="videoEnd" wx:if="{{videoEndText}}">
+					<view>视频已播放结束</view>
+					<view>
+						<text class="vOne">太棒了，接下来</text>
+						<text class="vTwo">立即开始提笔练字吧</text>
+					</view>
+					<view bind:tap="playsVideo">再看一遍</view>
+				</view>
+
+			</block> 
+      
+          	<block wx:else>
+          		<image class='courseImgs' src='{{infocirclecard.practise_first.imgindex}}'></image>
+			</block> 
+           	<view class="SignBox" wx:if="{{imgReload==0}}">
+            <block wx:if="{{infocirclecard.is_pf==1}}">
+            <view class="grade" bind:tap="gotoGradeResult{{infocirclecard.practise_first.lock}}" data-xid='{{infocirclecard.practise_first.id}}' data-pfresid='{{infocirclecard.practise_first.pfresid}}' >
+				<block wx:if="{{infocirclecard.practise_first.lock==0}}">
+					<image class='imgs' src='./image/chuoyichuo.png'></image>
+					<block wx:if="{{infocirclecard.practise_first.pf_result>0}}">
+						<text class="gradeOne">评分：</text>
+                  <text class="gradeTwo">{{infocirclecard.practise_first.pf_result}}</text></block>
+					<block wx:else>
+                  <text class="gotoScore">戳我，给作业评分</text></block>
+                 
+				</block>
+				<block wx:if="{{infocirclecard.practise_first.lock>0}}">
+                <text   class="nolook">评分功能尚未解锁</text>
+              </block>
+				</view>
+            </block>
+            <block wx:else>
+              <view class="grade">
+                <block wx:if="{{infocirclecard.practise_first.lock==0}}">
+                  <text class="nolook">六品练字 练字更高效</text></block>
+                <block wx:if="{{infocirclecard.practise_first.lock>0}}">
+                  <text class="nolook">六品练字 练字更高效</text></block>
+              </view>
+            </block>
+            <view class="gotoCard">
+              <block wx:if="{{infocirclecard.practise_first.lock>0}}">
+                <button class='gotoBtn'>尚未解锁</button></block>
+              <block wx:else></block>
+              <block wx:if="{{infocirclecard.practise_first.lock==0}}">
+                <block wx:if="{{infocirclecard.practise_first.dknum>0}}">
+                  <button class='gotoBtn actives' bind:tap="uploadFiles">再次打卡</button></block>
+                <block wx:else>
+                  <button class='gotoBtn activeSB' bind:tap="uploadFiles">练字打卡</button></block>
+              </block>
+            </view>
+          </view>
+         <view class="SignBox" wx:else>
+          <view class="gotoCard">
+                <button class='gotoBtn'>打卡上传中</button>
+        </view>
+      </view>
+        </view>
+      </view>
+    </block>
+    <van-dialog show="{{ nearbyShow }}" title='提示授权' message='请您前往设置授权，否则无法查看附近书友' confirm-button-text='前往设置' show-cancel-button='{{false}}' confirm-button-open-type="openSetting" close-on-click-overlay='{{true}}' />
+    <!-- 打卡/圈子 -->
+    <view class="Tabs">
+      <van-tabs active="{{active}}" bind:change="selectShow" line-width="0" custom-class="selectShowBox">
+        <!-- 打卡 -->
+        <van-tab title="打卡记录">
+          <view class="nodata" wx:if="{{infoCircleCardhomesubmitlist==null}}">{{notext}}</view>
+          <view class='listHeights'>
+            <!-- <component-scroll pulldownDistance="100" refreshPulldownText="你再往下拉试试" refreshUndoText="你松开试试" refreshLoadingText="我在努力刷新中~" loadmoreLoadingText="正在从库里捞数据" loadmoreAllloadedText="我是有底线的~" isNeedLoadmore bind:_loadmore="loadmore" bind:_refresh="refresh" allloaded="{{allloaded}}" isEmpty="{{!loading &&infoCircleCardhomesubmitlist.length<=0}}"> -->
+            <view class='list '>
+              <view class="cireCard" wx:for="{{infoCircleCardhomesubmitlist}}" wx:key="{{index}}" wx:for-item="vo">
+                <block wx:if="{{shows}}">
+                  <!-- 无推荐 -->
+                  <view class="CardDiaryInfos">
+                    <image bindtap="imgViewByidX" mode='aspectFill' data-id="{{vo.id}}" class='imgs' src='{{vo.imgindex}}'></image>
+                    <view class="likes" wx:if="{{vo.iscollection == 1}}">
+                      <text class="iconfont icon_wodeshoucang" bind:tap="collectionButtonX" data-id="{{vo.id}}" data-iscollection="1" data-xiabiao="{{index}}" data-index="{{vo.id}}" style="color:#D02F2F"></text>
+                    </view>
+                    <view class="likes" wx:if="{{vo.iscollection == 0}}">
+                      <text class="iconfont icon_wodeshoucang" bind:tap="collectionButtonX" data-id="{{vo.id}}" data-iscollection="0" data-xiabiao="{{index}}" data-index="{{vo.id}}"></text>
+                    </view>
+                    <!-- 右下角图片张数 -->
+                    <!-- <text class="PictureNums" style="">1/9</text> -->
+                    <block wx:if="{{vo.img_remark!=''}}">
+                      <text class="PictureNums">{{vo.img_remark}}</text></block>
+                    <view class="CardDiaryUser goodListInfos">
+                      <view class="userInfos_l">
+                        <navigator hover-class='none' url="/pages/homePersonal/homePersonal?uid={{vo.uid}}">
+                          <view class="userHeads">
+                            <image src="{{vo.img_avatar}}" class="userHead" alt="头像"></image>
+                            <image src="/image/icon18sex{{vo.sex}}.png" class="userSex" alt="性别"></image>
+                          </view>
+                          <text class="userName">{{vo.uname}}</text>
+                          <text class="userTimes" decode="{{true}}">{{vo.time_remark}}&nbsp;&nbsp;已打卡{{vo.tol_days}}天</text></navigator>
+                      </view>
+                      <view class="userHandle">
+                        <!-- 赞 -->
+                        <view wx:if="{{vo.ispraise == 1}}" data-id='{{vo.id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZanX" data-values="{{vo.zan_count}}" data-iszan="1">
+                          <view class="" style="color:red">
+                            <text class="iconfont icon_zan"></text>
+                            <text class="clickZan">{{vo.zan_count}}</text></view>
+                        </view>
+                        <view wx:if="{{vo.ispraise ==0}}" data-id='{{vo.id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZanX" data-values="{{vo.zan_count}}" data-iszan="0">
+                          <view class="">
+                            <text class="iconfont icon_zan"></text>
+                            <text class="clickZan">{{vo.zan_count}}</text></view>
+                        </view>
+                        <!-- 回复 -->
+                        <navigator hover-class='none' url="/pages/circleSignInfo/circleSignInfo?id={{vo.id}}">
+                          <view class="reply" bindtap="replys">
+                            <text class="iconfont icon_huifu"></text>
+                            <text class="nums">{{vo.commentcount}}</text></view>
+                        </navigator>
+                      </view>
+                    </view>
+                  </view>
+                </block>
+                <block wx:else>
+                  <!-- 有推荐有评分 -->
+                  <view class="CardDiaryInfos">
+                    <image bindtap="imgViewByidX" mode='aspectFill' data-id="{{vo.id}}" class='imgs' src='{{vo.imgindex}}'></image>
+                    <view class="likes" wx:if="{{vo.iscollection == 1}}">
+                      <text class="iconfont icon_wodeshoucang" bind:tap="collectionButtonX" data-id="{{vo.id}}" data-iscollection="1" data-xiabiao="{{index}}" data-index="{{vo.id}}" style="color:#D02F2F"></text>
+                    </view>
+                    <view class="likes" wx:if="{{vo.iscollection == 0}}">
+                      <text class="iconfont icon_wodeshoucang" bind:tap="collectionButtonX" data-id="{{vo.id}}" data-iscollection="0" data-xiabiao="{{index}}" data-index="{{vo.id}}"></text>
+                    </view>
+                    <view class="reBox">
+                      <text class="reText">这里显示打卡的文字，显示这里显示打卡这里显示打卡到这</text>
+                      <block wx:if="{{vo.img_remark!=''}}">
+                        <text class="PictureNum">{{vo.img_remark}}</text></block>
+                    </view>
+                    <view class="CardDiaryUser goodListInfos">
+                      <view class="userInfos_l">
+                        <navigator hover-class='none' url="/pages/homePersonal/homePersonal?uid={{vo.uid}}">
+                          <view class="userHeads">
+                            <image src="{{vo.img_avatar}}" class="userHead" alt="头像"></image>
+                            <image src="/image/icon18sex{{vo.sex}}.png" class="userSex" alt="性别"></image>
+                          </view>
+                          <text class="userName">{{vo.uname}}</text>
+                          <text class="userTimes" decode="{{true}}">{{vo.time_remark}}&nbsp;&nbsp;已打卡{{vo.tol_days}}天</text></navigator>
+                      </view>
+                      <view class="userHandle">
+                        <!-- 赞 -->
+                        <view wx:if="{{vo.ispraise == 1}}" data-id='{{vo.id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZanX" data-values="{{vo.zan_count}}" data-iszan="1">
+                          <view class="" style="color:red">
+                            <text class="iconfont icon_zan"></text>
+                            <text class="clickZan">{{vo.zan_count}}</text></view>
+                        </view>
+                        <view wx:if="{{vo.ispraise ==0}}" data-id='{{vo.id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZanX" data-values="{{vo.zan_count}}" data-iszan="0">
+                          <view class="">
+                            <text class="iconfont icon_zan"></text>
+                            <text class="clickZan">{{vo.zan_count}}</text></view>
+                        </view>
+                        <!-- 回复 -->
+                        <navigator hover-class='none' url="/pages/circleSignInfo/circleSignInfo?id={{vo.id}}">
+                          <view class="reply" bindtap="replys">
+                            <text class="iconfont icon_huifu"></text>
+                            <text class="nums">{{vo.commentcount}}</text></view>
+                        </navigator>
+                      </view>
+                      <!-- 推荐老师评分 -->
+                      <view class="userTeacher">
+                        <view class="userTeacherT">
+                          <image src="https://test.liupinshuyuan.com/data/upload/2018/0828/13/5b84deee91857.png" class="imgs"></image>
+                          <text class="teacher">曾老师</text>
+                          <text class="grade">82</text></view>
+                        <view class="userTeacherB">今天这两幅作品还是不错的啊，感觉到了瓶颈那应该 是要有突破了啊！只要坚持，就会有一个质的飞跃。</view></view>
+                    </view>
+                  </view>
+                </block>
+              </view>
+              <!-- <view class="gotoCireBtn">
+              <van-button size="large" round type="default" custom-class="gotoCireBtns" data-xid="{{infocirclecard.practise_first.id}}" bind:click="gotoCireBtnsCard">立即打卡</van-button></view> -->
+            </view>
+            <!-- </component-scroll> --></view>
+          <block wx:if="{{isShows}}">
+            <view class='my-scroll-msgModule my-scroll-loadmoreModule'>
+              <image wx:if="{{isloading}}" class='my-scroll-msgModule-icon my-scroll-msgModule-icon-loading' src='../../components/component-scroll/image/loading.png'></image>
+              <text class='my-scroll-msgModule-text'>{{isShowsText}}</text></view>
+          </block>
+        </van-tab>
+        <!-- 圈子 -->
+        <van-tab title="附近书友">
+          <view class="nearbyBox">
+            <block wx:if="{{nearby}}">
+              <view class="noNearby" style="background-image: url('{{map_url}}');">
+                <image class="maps" src="../../image/maps.png" />
+                <button class="nearbyBtn" bindtap="getLocation">授权寻找书友</button></view>
+            </block>
+            <block wx:else>
+              <!-- 地图 -->
+              <view class="mapsBox" hidden="{{hiddens}}">
+                <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location markers="{{markers}}"></map>
+                <!-- controls="{{controls}}" bindcontroltap="controltap" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" -->
+                <view class="mapsLists" wx:if="{{nearfriend.length!==0}}">
+                  <view class="map_title">
+                    <text class="lines"></text>
+                    <text>您已成功找到</text>
+                    <text class="nums"> {{nearfriend.count}} </text>
+                    <text>个书友啦</text></view>
+                  <view class="map_list">
+                    <block wx:for="{{nearfriend.data}}" wx:key="{{index}}" wx:for-item="vo">
+						<navigator hover-class="none" class='navi' url="/pages/homePersonal/homePersonal?uid={{vo.uid}}">
+						<view class="maps_list_info">
+							<image class="headImg" src="{{vo.avator}}" />
+							<image class="sexImg"  wx:if="{{vo.sex == 2}}" src="../../image/icon18sex2.png" />
+							<image class="sexImg"  wx:else src="../../image/icon18sex1.png" />
+							<text class="userName">{{vo.uname}}</text>
+							<text class="distance" decode="{{true}}">距您 {{vo.distance}}</text>
+						</view>
+ 						</navigator>
+                    </block>
+                  </view>
+                </view>
+              </view>
+            </block>
+          </view>
+          <!-- <view class='listHeights'>
+          <view class='listTwo'>
+          <view class="cireCard cireMember">
+          <van-cell custom-class="cireMemberFirstBox">
+          <view slot="title">
+          <view class="van-cell-text CircleListImg">
+          <image src="{{infocirclecard.leader_avatar}}" class="imgs"></image>
+          <image src="/image/icon18sex{{infocirclecard.circle_leader_sex}}.png" class="imgsSex"></image>
+          <text class="userName">{{infocirclecard.leader_name}}</text></view>
+          </view>
+          <block wx:if="{{infocirclecard.isfollow == 0}}" >
+          <button bindtap="guanzhuQuanzhu" data-fid="{{infocirclecard.circle_leader}}" class="btn">关注</button></block>
+          <block wx:if="{{infocirclecard.isfollow == 1}}" >
+          <text bindtap="quxiaoQuanzhu" data-fid="{{infocirclecard.circle_leader}}" class="btns">已关注</text></block>
+          </van-cell>
+          <view class="CircleListBox">                    
+          <van-cell-group custom-class="CircleList">
+          <block wx:for='{{infoCircleCardfollowlist}}' wx:key="{{index}}" wx:for-item="vo"  >
+          <van-cell center="true" url="/pages/homePersonal/homePersonal?uid={{vo.uid}}">
+          <view slot="title">
+          <view class="van-cell-text CircleListImg">
+          <image src="{{vo.img_avatar}}" class="imgs"></image>
+          <image src="/image/icon18sex{{vo.sex}}.png" class="imgsSex"></image>
+          <text class="userName">{{vo.uname}}</text></view>
+          </view>
+          <text class="userTime" decode="{{true}}">{{vo.join_time}}</text></van-cell>
+          </block>
+          </van-cell-group>
+          </view>
+          </view>
+          </view>
+          </view>
+          <block wx:if="{{isShows}}">
+          <view class='my-scroll-msgModule my-scroll-loadmoreModule'>
+          <image wx:if="{{isloading}}" class='my-scroll-msgModule-icon my-scroll-msgModule-icon-loading' src='../../components/component-scroll/image/loading.png'></image>
+          <text class='my-scroll-msgModule-text'>{{isShowsText}}</text></view>
+          </block> -->
+        </van-tab>
+        <!-- 占位 不可动 -->
+        <van-tab title="" disabled></van-tab>
+        <van-tab title="" disabled></van-tab>
+      </van-tabs>
+    </view>
+    <!-- <view class="gotoCireBtn">
+    <van-button size="large" round type="default" custom-class="gotoCireBtns" data-xid="{{infocirclecard.practise_first.id}}" bind:click="gotoCireBtnsCard">立即打卡</van-button></view> -->
+    <!-- 圈内打卡 -->
+    <!-- <view class="cireCard">
+    <view class="title">圈内打卡</view>
+    <view class="CardDiaryInfos">
+    <image class='imgs' src='https://test.liupinshuyuan.com/data/upload/2018/0829/09/5b85fbbbaeb73_720_300_720_300.png'></image>
+    <view class="likes"><van-icon name="like-o" bind:click="likes" /></view>
+    <view class="CardDiaryUser goodListInfos">
+    <view class="userInfos_l">
+    <navigator url="/pages/homePersonal/homePersonal">
+    <view class="userHeads">
+    <image src="https://test.liupinshuyuan.com/data/upload/2018/0829/09/5b85fbbbaeb73_720_300_720_300.png" class="userHead" alt="头像"></image>
+    <image src="https://test.liupinshuyuan.com/data/upload/2018/0829/09/5b85fbbbaeb73_720_300_720_300.png" class="userSex" alt="性别"></image></view>
+    <text class="userName">黛玉 </text>
+    <text class="userTime" decode="{{true}}">2分钟前2分&nbsp;&nbsp;已打卡99天</text></navigator>
+    </view>
+    <view class="zan" bindtap="handleLike">
+    <view class=""><van-icon name="thumb-circle-o" size="36rpx"/></view>128
+    </view>
+    </view>
+    </view>
+    </view> -->
+    <!-- 加入圈子 -->
+    <!-- <view class="gotoCire">
+    <navigator class="" url="/pages/circle/circle" class="gotoCireUrl">
+    <text class="gotoCireText">
+    立即加入，查看更多作品
+    </text>
+    </navigator>
+    <van-icon name="like-o" bind:click="likes"  custom-class="golikes"/></view> -->
+  </view>
+  <!-- 邀好友绘图 -->
+  <view class="saveBoxxx" wx:if="{{Models}}">
+    <van-dialog show="{{ ModelsShow }}" title='提示授权' message='请您前往设置授权，否则无法保存图片到本地' confirm-button-text='前往设置' show-cancel-button='{{false}}' confirm-button-open-type="openSetting" close-on-click-overlay='{{true}}' />
+    <view class="poster" style="height:{{tbodyHeight}}px;top:{{navHeight}}px;">
+      <view class="closeBox" style="top:{{IMGT}}rpx">
+        <image src="../../image/close.png" bindtap="closeBox" class="close"></image>
+      </view>
+      <view class="poster__create-wrp">
+        <image src="{{cardCreateImgUrl}}" mode="aspectFill" class="poster__create-img" style="top:{{IMGT}}rpx"></image>
+      </view>
+      <canvas class="poster__my-canvas" canvas-id="myCanvas" style="width:{{NEW_WIDTH}}px;height:{{NEW_HEIGHT}}px;" />
+      <!-- 保存 -->
+      <view class="saveBox" style="bottom:{{IMGB}}rpx">
+        <button class='saveLoca' type='button' bindtap='saveLoca'>保存到相册</button>
+        <button class='sharingWorks' data-id="{{sharesubmitinfo.id}}" data-img="{{sharesubmitinfo.imageindex}}" data-title="{{sharesubmitinfo.title}}" type='button' open-type="share">立即邀请</button></view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,710 @@
+@import "../home/weui.wxss";
+
+@import "../../utils/iconfont.wxss";
+
+.iconfont{
+    font-size: 36rpx;
+}
+.icon_wodeshoucang{
+    font-size: 48rpx;
+    color: #999999;
+}
+
+scroll-view{
+    width:100%;
+}
+
+page{
+    width:100%;
+    height:100%;
+    /* background-color:#f6f6f6; */
+}
+.content{
+    width: 100%;
+    height:100%;
+    position: relative;
+    /* top: 0px; */
+    left:0;
+    background-color:#f6f6f6;
+}
+
+.container{
+    width: 100%;
+    height:100%; 
+    background-color:#F6F6F6;
+
+    position: absolute;
+    /* top: -64px; */
+}
+
+.Topimg{
+    width:100%;
+    height:410rpx;
+    background: url('https://test.liupinshuyuan.com/data/upload/2018/1121/09/5bf4bb4918dfe_270_150_270_150.png') no-repeat center;
+}
+
+button::after{
+    border: none;
+}
+.userInfo{
+    width: 100%;
+    /* height:309rpx ; */
+    /* height:240rpx ; */
+    background-color: #FFFFFF;
+    position: relative;
+    top:-13rpx; 
+    display:inline-block;
+}
+.userInfo .userImgs{
+    width: 100%; 
+    position: absolute;
+    top: -50rpx;
+}
+.userInfo .userImgs .userL{
+    float:right;
+    padding-right:30rpx;
+    box-sizing:border-box;    
+}
+.userInfo .userImgs .userName{
+    float:left;
+    max-width:300rpx;
+    font-size:30rpx;
+    color: #333333;
+    position: relative;
+    top:60rpx;right:10rpx;
+    display:inline-block;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;  
+}
+.userInfo .userImgs .imgSex{
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 50%;
+}
+.userInfo .userImgs .imgsHead{
+    width: 112rpx;
+    height: 112rpx;
+    border-radius: 50%;
+}
+.userInfo .userFans .userFansNum{
+    font-size:24rpx;
+    color: #333333;
+    margin-right:20rpx;
+    font-weight:bold;
+    display:inline-block;
+}
+.userInfo .userFans .userFansNum::after{
+    content: '|';
+    font-size:24rpx;
+    color: #999999;
+    position: relative;
+    right: -20rpx;
+}
+.userFans .signature{
+    width: 100%;
+    font-size:24rpx;
+    color: #999999;
+    font-weight:400;
+    padding-left:24%;
+    padding-right:20rpx;
+    box-sizing:border-box; 
+    margin-top:20rpx;  
+    margin-bottom:20rpx; 
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.userFans navigator{
+    display: inline-block;
+}
+.userInfo .userFans .userFansFool{
+    font-size:24rpx;
+    color: #333333;
+    margin-left:38rpx;
+    font-weight:bold;
+    display:inline-block;
+}
+.userFans{
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top:30px;
+    padding-bottom:20rpx;
+}
+.userFansNum2 ,.userFansFool2{
+    color: #333333;
+    margin: 0 15rpx;
+}
+.userInfo .follows{
+    width:140rpx;
+    height:60rpx;
+    line-height:60rpx;
+    text-align:center;
+    background-color: #FFFFFF;
+    border: 2rpx solid #EA5C5C;
+    border-radius:30rpx;
+    font-size:28rpx;
+    color:#D02F2F;
+    /* margin-top:35rpx; */
+    padding:0;
+    margin-bottom:30rpx;
+}
+.userInfo .followsTo{
+    width:140rpx;
+    height:60rpx;
+    line-height:60rpx;
+    text-align: center;
+    background-color:linear-gradient(141deg,rgba(234,92,92,1) 0%,rgba(208,47,47,1) 100%);
+    border-radius:30rpx;
+    font-size:28rpx;
+    color: #FFFFFF;
+    /* margin-top:35rpx; */
+    padding:unset;
+    margin-bottom:30rpx;
+}
+
+
+
+
+
+/* 顶部文字 */
+.Topinfos{
+    width: 100%;
+    height: 120rpx;
+    line-height: 120rpx;
+    background-color: #FFFFFF;
+    padding:0 30rpx;
+    box-sizing: border-box;
+}
+.Topinfos text{
+    font-size:36rpx;
+    font-weight:bold;
+}
+.Topinfos .ranking{
+    display: inline;
+    font-size:26rpx;
+    color: #D02F2F;
+    text-decoration: underline;
+    margin-left: 60rpx;
+}
+.Topinfos .calendars{
+    display: inline-block;
+    float:right;
+    color: #D8D8D8;
+}
+.Topinfos .calendarss{
+    font-size: 26rpx;
+    margin-left: 6rpx;
+}
+
+/* 滑动查看更多 */
+.page-body{
+    width: 100%;
+    height:auto; 
+    padding: 10rpx 0;
+    box-sizing: border-box;
+    /* overflow-y: scroll; */
+}
+.Visit{
+    width: 100%;
+    height:96rpx ;
+    background-color: #FFFFFF;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    display:flex;
+    align-items:center;
+    justify-content:space-between; 
+    margin:0 0 24rpx 0;    
+}
+.Visit .imgsHead{
+    width:60rpx;
+    height:60rpx;
+    border-radius: 50%;
+    float: left;
+    margin-right: 10rpx;
+}
+.Visit .VisitNum{
+    line-height: 96rpx;
+    font-size:30rpx;
+    color: #999999;
+    font-weight:400;
+}
+.Visit .VisitNum navigator{
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+}
+.Visit .VisitNum .arrowIcon{
+    position:relative;
+    top:5rpx;
+    margin-left:10rpx;
+}
+
+.Circle{
+    width: 100%;
+    height: 288rpx;
+    padding-left: 30rpx;
+    padding-top:12rpx;
+    box-sizing: border-box;
+    background-color:#fff;
+}
+.Circletext{
+    font-size:30rpx;
+    color: #333333;
+    font-weight:bold;
+}
+.RecentStudy .swiperLIst{
+    width:100%;
+    height: 156rpx;
+    position:relative;
+    margin-top:20rpx;
+}
+.RecentStudy .swiperLIst .noDataBox{
+    line-height: 156rpx;
+    padding:0;
+}
+.RecentStudy swiper{
+    height: 100%;
+}
+.RecentStudy navigator{
+    display: inline-block;
+}
+.swiperItem{
+    border-radius: 12rpx;
+    overflow: hidden;
+}
+.imgsBox{
+    position: absolute;
+    top: 0;left:0;
+    height: 100%;
+    border-radius: 12rpx;
+    overflow: hidden;
+}
+ .imgs{
+    width: 264rpx;
+    height:100%;
+    float: left;
+    display: inline-block;
+    position: relative;
+    border-radius:12rpx;
+ }
+ .imgsText{
+    display: inline-block;
+    position: absolute;
+    left:0rpx;     
+    z-index: 9;
+    height:100%;width: 100%;
+    padding: 35rpx 10rpx 0 10rpx;
+    box-sizing: border-box;
+    background:rgba(0,0,0,0.3);
+ }
+ .imgText{
+    width: 80%;
+    display: inline-block;
+    font-size: 24rpx;
+    color: #FFFFFF;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    float: left;
+ }
+ .imgTexts{
+    float:right;
+    color: #FFFFFF;
+ }
+ .studyBox{
+    display: inline-block;
+    float: left;
+    width:100%;
+    height: 38rpx;
+    color: #999999;
+    background-color: #fff;
+    line-height: 30rpx;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0 15rpx;
+    box-sizing: border-box;
+}
+ .studyBox text{
+     font-size: 22rpx;
+     color: #999999;
+ }
+.Mores{
+   width: 100%;
+   text-align: center;
+   font-size:22rpx;
+   color: #999999;
+}
+.gotoCourse{
+    width:100%;
+    height: 250rpx;
+    line-height: 250rpx;
+    display: inline-block;
+    color: #999999;
+    font-size:28rpx;
+    text-align: center;
+}
+.listHeights{
+    width: 100%;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    /* height: 800rpx; */
+}
+.listHeights view{
+    /* display: block; */
+}
+.my-scroll {
+    width:100% ;
+}
+
+
+/* 大家都在 */
+.CourseRecommend{
+    width: 100%;
+    padding:0rpx 30rpx;
+    box-sizing: border-box;
+}
+.CourseRecommend .weTips{
+    font-size:30rpx;
+    color: #333333;
+    font-weight:bold;
+}
+.CourseList{
+    width:100%;
+    overflow: hidden;
+    box-shadow:0px 4px 8px 0px rgba(216,216,216,0.34);
+    border-radius:12rpx;
+}
+.coureTitle{
+    display: inline-block;
+    width: 100%;
+    border-top: 0;
+    background-color: #fff;
+    margin-top:-14rpx;
+    padding:10rpx 12rpx;
+    padding-bottom: 0;
+    box-sizing: border-box;
+
+}
+.courseTitle_1{
+    font-size:28rpx;
+    color: #333333;
+    width: 100%;
+    float: left;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.CourseImgs{
+    width: 100%;
+    height: 198rpx;
+}
+.courseTitle_2{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    font-size:22rpx;
+    color: #999999;
+}
+.selectShowBox .van-tab__title{
+    font-size:30rpx;
+}
+.selectShowBox .van-tab--active{
+    color: #D02F2F;
+    font-weight:bold;
+}
+
+/* 打卡日记 */
+.CardDiary{
+    width: 100%; 
+}
+.CardDiary .CardDiaryTop{
+    width:100%;
+    padding:0 30rpx;
+    box-sizing:border-box;
+    height:96rpx;
+    line-height:96rpx;
+    background-color:#fff;
+    margin:13px 0;
+}
+
+.CardDiary .CardDiaryInfos{
+    width: 100%;
+    height: 532rpx;
+    border-radius:12rpx;
+    border:1px solid rgba(216,216,216,1);
+    position: relative;
+    overflow: hidden;
+    margin-bottom:25rpx;
+}
+.CardDiary .imgs{
+    width: 100%;
+    height: 100%; 
+}
+.CardDiary .likes{
+    color: #333333;
+    position: absolute;
+    /* top:5rpx; */
+    right:10rpx;
+}
+.CardDiary .PictureNum{
+    width:63rpx;
+    height:28rpx;
+    display: inline-block;
+    color: #EFEFEE;
+    font-size:22rpx;
+    font-weight:500;
+    text-align: center;
+    line-height: 28rpx;
+    background:rgba(0,0,0,0.6);
+    border-radius:14rpx;
+    /* position: absolute;
+    bottom:200rpx;
+    right:10rpx;    */
+    
+    position:relative;
+    bottom:70rpx;
+    left:210rpx;
+}
+
+
+.goodListInfos .userInfos_l{
+    display: inline-block;
+    width: 60%;
+    float: left;
+    padding-right: 0;
+    box-sizing: border-box;
+}
+.goodListInfos .userHeads{
+    float: left;
+    margin-right: 15rpx;
+}
+.goodListInfos .userHead{
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
+    float: left;
+}
+.goodListInfos .userSex{
+    width: 18rpx;
+    height: 18rpx;
+    border-radius: 50%;
+    float: left;
+    position: relative;
+    top:52rpx;
+    left:-10rpx;
+}
+.goodListInfos .userName{
+    width:70%;
+    font-size:30rpx;
+    color: #333333;
+    float: left;
+    font-weight:500;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.goodListInfos .userTime{
+    /* width:60%; */
+    font-size:22rpx;
+    color: #999999;
+    float: left;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.userInfos_l .userTimeOne{
+    margin-top:8rpx;
+    font-size:28rpx;
+    font-weight:500;
+}
+
+
+.goodListInfos .userHandle{
+    float: right;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    height:100%;
+    /* margin-top:10rpx; */
+}
+.goodListInfos .zan{
+    /* max-width:20%; */
+    color: #999999;
+    font-size:22rpx;
+    display: inline-block;
+    float:right;
+    overflow:hidden;
+    position:relative;
+    /* top:20rpx; */
+}
+.goodListInfos .reply{
+    color: #999999;
+    font-size:22rpx;
+}
+.goodListInfos .zan ,.goodListInfos .reply{
+    padding: 0 15rpx;
+    box-sizing: border-box;
+}
+.goodListInfos .zan .nums,.goodListInfos .reply .nums{
+    padding: 0 5rpx;
+    box-sizing: border-box;
+}
+.goodListInfos .userInfos_ls{
+    width: 100%;
+    padding: 0 15rpx;
+    box-sizing: border-box;
+}
+.goodListInfos .userNames{
+    width: 100%;
+    font-size:28rpx;
+    color: #333333;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.goodListInfos .userNums{
+    font-size:22rpx;
+    color: #999999;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.CardDiary .CardDiaryUser{
+    width: 100%;
+    /* height: 188rpx; */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #FFFFFF;
+    padding: 12rpx 24rpx;
+    box-sizing: border-box;
+}
+.CardDiaryUser .userInfos_bottom{
+    width:100%;
+    background-color: #FAFAFA;
+    float:right;
+    margin-top: 10rpx;
+    position: relative;
+    border-radius:6rpx;
+    overflow: hidden;
+}
+.CardDiaryUser .userInfos_bottom navigator{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    vertical-align:top;
+}
+.CardDiaryUser .courseImg{
+    width: 136rpx;
+    height:96rpx;
+    float: left;
+    overflow: hidden;
+    margin-right: 10rpx;
+}
+.CardDiaryUser .userNamess{
+    color: #333333;
+    position:relative;
+    top:7rpx;
+}
+.CardDiaryUser .userTimes{
+    color: #999999;
+    position:relative;
+    top:10rpx;
+}
+.CardDiaryUser .imgTexts{
+    position: absolute;
+    top:10rpx;
+    right:20rpx;  
+}
+.noDataBox{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align:center;
+    padding:10% 0;
+}
+.noDataBox text{
+    display: inline-block;
+    color: #999999;
+    font-size:32rpx;
+}
+
+
+/* 新增加载效果 */
+.my-scroll {
+    height: 100%;
+    width: 100%;
+}
+.my-scroll-msgModule {
+    font-size: 14px;
+    color: #7e8a9b;
+    text-align: center;
+    overflow: hidden;
+}
+.my-scroll-refreshModule-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.my-scroll-msgModule-icon {
+    width: 20px;
+    height: 20px;
+}
+.my-scroll-loadmoreModule {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.my-scroll-msgModule-icon-loading {
+    animation: loading 1s linear infinite;
+}
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(270deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

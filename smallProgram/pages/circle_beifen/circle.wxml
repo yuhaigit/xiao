@@ -1,0 +1,99 @@
+<!--个人主页.wxml-->
+
+<navigation id='Navigation' show-icon='{{showIcon}}' title="圈子" bg-color='{{bgColor}}'></navigation>
+<view class="content">
+
+    <view class="container">
+        <view class="CircleListBox">
+
+            <!-- <component-scroll pulldownDistance="100" refreshPulldownText="你再往下拉试试" refreshUndoText="你松开试试" refreshLoadingText="我在努力刷新中~" loadmoreLoadingText="正在拼命的捞数据" loadmoreAllloadedText="我是有底线的" isNeedLoadmore bind:_loadmore="loadmore" bind:_refresh="refresh"
+                allloaded="{{allloaded}}" isEmpty="{{!loading &&listscircle.length<=0}}"> -->
+
+                <van-cell-group custom-class="CircleList">
+                  <block wx:for='{{listscircle}}' wx:key="{{index}}" >
+                  <block wx:if="{{listscircle[index].isjoin==1}}" >
+                   <navigator url="/pages/circleInfoCard/circleInfoCard?id={{listscircle[index].id}}">
+                  <van-cell  is-link  center="true"   >
+
+                        <view slot="title"  >
+                            <view class="van-cell-text CircleListImg">
+                                <image src="{{listscircle[index].imgindex}}" class="imgs" alt="推荐图"></image>
+                                <text class="userName">{{listscircle[index].title}}</text>
+                                <text class="userTime" decode="{{true}}">{{listscircle[index].join_num}}人加入&nbsp;|&nbsp;{{listscircle[index].daka_num}}篇内容</text>
+                            </view>
+                        </view>
+                        </van-cell>
+                        </navigator>
+                        </block>
+
+                  <block wx:else >
+                  <navigator url="/pages/circleInfo/circleInfo?id={{listscircle[index].id}}">
+                  <van-cell  is-link  center="true"   >
+            
+                        <view slot="title"  >
+                            <view class="van-cell-text CircleListImg">
+                                <image src="{{listscircle[index].imgindex}}" class="imgs" alt="推荐图"></image>
+                                <text class="userName">{{listscircle[index].title}}</text>
+                                <text class="userTime" decode="{{true}}">{{listscircle[index].join_num}}人加入&nbsp;|&nbsp;{{listscircle[index].daka_num}}篇内容</text>
+                            </view>
+                        </view>
+                        </van-cell>
+                         </navigator>
+                        </block>
+
+
+                        </block>
+                         <!-- <block wx:else>
+                            <navigator url="/pages/circleInfo/circleInfo?id={{listscircle[index].id}}">
+                          <view slot="title"  >
+                            <view class="van-cell-text CircleListImg">
+                                <image src="{{listscircle[index].imgindex}}" class="imgs" alt="推荐图"></image>
+                                <text class="userName">{{listscircle[index].title}}</text>
+                                <text class="userTime" decode="{{true}}">{{listscircle[index].join_num}}人加入&nbsp;|&nbsp;{{listscircle[index].daka_num}}篇内容</text>
+                            </view>
+                        </view>
+                         </navigator>
+                         </block> -->
+              
+        
+                <!-- <van-cell  is-link  center="true" url="/pages/circleInfo/circleInfo">
+                    <view slot="title">
+                        <view class="van-cell-text CircleListImg">
+                            <image src="https://test.liupinshuyuan.com/data/upload/2018/0829/09/5b85fbbbaeb73_720_300_720_300.png" class="imgs" alt="推荐图"></image>
+                            <text class="userName">设计师的书法圈</text>
+                            <text class="userTime" decode="{{true}}">9999人加入&nbsp;|&nbsp;346篇内容</text>
+                        </view>
+                    </view>
+                </van-cell> -->
+
+
+                <!-- <van-cell  is-link  center="true" url="/pages/home/home">
+                    <view slot="title">
+                        <view class="van-cell-text CircleListImg">
+                            <image src="https://test.liupinshuyuan.com/data/upload/2018/0829/09/5b85fbbbaeb73_720_300_720_300.png" class="imgs" alt="推荐图"></image>
+                            <text class="userName">设计师的书法圈</text>
+                            <text class="userTime" decode="{{true}}">9999人加入&nbsp;|&nbsp;346篇内容</text>
+                        </view>
+                    </view>
+                </van-cell>
+
+                <van-cell  is-link  center="true" url="/pages/circleInfo/circleInfo">
+                    <view slot="title">
+                        <view class="van-cell-text CircleListImg">
+                            <image src="https://test.liupinshuyuan.com/data/upload/2018/0829/09/5b85fbbbaeb73_720_300_720_300.png" class="imgs" alt="推荐图"></image>
+                            <text class="userName">设计师的书法圈</text>
+                            <text class="userTime" decode="{{true}}">9999人加入&nbsp;|&nbsp;346篇内容</text>
+                        </view>
+                    </view>
+                </van-cell> -->
+                </van-cell-group>
+
+            <!-- </component-scroll> -->
+
+
+            
+        </view>
+
+    </view>
+
+</view>

@@ -1,0 +1,72 @@
+<!--pages/msgInform/msgInform.wxml-->
+<import src="../../components/wxParse/wxParse.wxml" /> 
+<navigation id='Navigation' show-icon='{{showIcon}}' title="消息通知" bg-color='{{bgColor}}'></navigation>
+<view class='content'>
+<block>
+  <block wx:if = "{{ dataInfo.data.last_sys != null }}">
+    <navigator url="/pages/guanFangMsg/guanFangMsg?type=sys">
+      <view class='lists'>
+        <image class='lists-left' src='./image/logo.jpg'></image>
+        <view class='lists-right'>
+          <view class='lists-right-top'>
+            <view class='msgs' id='guanfang'>官方消息</view>
+            <view class='time'>{{dataInfo.data.last_sys.created_at}}</view>
+          </view>
+          <view class='lists-right-bottom'>
+            <view class='tips'>{{ dataInfo.data.last_sys.content }}</view>
+            <!-- <view wx:if="{{ !isImg }}" class='tips'>【图片】点击查看</view>
+            <view wx:else class='tips'>
+              <template is="wxParse" data="{{wxParseData:topic.nodes}}"/> 
+            </view> -->
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </block>
+    <!-- 回复通知 -->
+  <block wx:if = '{{ dataInfo.data.last_reply != null }}'>
+    <navigator url='/pages/huiFu/huiFu?type=reply'>
+      <view class='lists'>
+        <image class='lists-left' src='./image/logo.jpg'></image>
+        <view class='lists-right'>
+          <view class='lists-right-top'>
+            <view class='msgs' id='huifu'>回复通知</view>
+            <view class='time'>{{ dataInfo.data.last_reply.created_at }}</view>
+          </view>
+          <view class='lists-right-bottom'>
+            <!-- <view class='tips'>【图片】点击查看</view> -->
+            <view class='tips'>{{ dataInfo.data.last_reply.content }}</view>
+            <view wx:if="{{dataInfo.data.reply_no_read!=0}}" class='num'>{{ dataInfo.data.reply_no_read>100? "...":dataInfo.data.reply_no_read }}</view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+      <!-- 好友 -->
+    <!-- <navigator url='/pages/guanFangMsg/guanFangMsg'>
+      <view class='lists'>
+        <image class='lists-left'></image>
+        <view class='lists-right'>
+          <view class='lists-right-top'>
+            <view class='msgs' id='huifu'>还是覅</view>
+            <view class='time'>17:45</view>
+          </view>
+          <view class='lists-right-bottom'>
+            <view class='tips'>发的果然是然后</view>
+            <view class='num'>23</view>
+          </view>
+        </view>
+      </view>
+    </navigator> -->
+  </block>
+  <view wx:if="{{dataInfo.data.last_reply == null && dataInfo.data.last_sys == null}}">
+    <image src='./image/noMsg.png' class='noMsg'></image>
+    <view class='noMsgInfo'>暂无通知消息</view>
+  </view>
+</block>
+<block wx:if="{{isShows}}">
+  <view class='my-scroll-msgModule my-scroll-loadmoreModule'>
+      <image wx:if="{{isloading}}" class='my-scroll-msgModule-icon my-scroll-msgModule-icon-loading' src='../../components/component-scroll/image/loading.png'></image>
+      <text class='my-scroll-msgModule-text'>{{isShowsText}}</text>
+  </view>
+</block>
+</view>

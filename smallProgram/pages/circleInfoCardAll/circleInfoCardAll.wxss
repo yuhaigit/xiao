@@ -1,0 +1,235 @@
+@import "../../utils/iconfont.wxss";
+
+.iconfont{
+    font-size: 30rpx;
+    /* margin-right:10rpx; */
+}
+.icon_wodeshoucang{
+    color: #999999;
+}
+.content{
+    width: 100%;
+    height:100%;
+    background-color:#F6F6F6;
+}
+
+.CircleListBox{
+    width: 100%;
+}
+.CircleListBox .CircleList{
+    width: 100%;
+}
+.CircleListBox .CircleListImg{
+    position: relative;
+}
+.CircleListBox .CircleListImg .imgs{
+    width: 164rpx;
+    height: 96rpx;
+    margin-right: 10rpx;
+}
+.CircleListBox .CircleListImg .userName{
+    position: absolute;
+    top: 0;
+}
+.CircleListBox .CircleListImg .userTime{
+    position: relative;
+    top: -5rpx;
+}
+.van-cell__right-icon-wrap{
+    position: relative;
+    top: 10rpx;
+}
+
+
+
+.page-bodys{
+    width: 100%;
+    background-color: #F6F6F6;
+}
+
+.chapter{
+    width: 100%;
+    height: 590rpx;
+    background-color: #ffffff;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+.chapter view{
+    display: inline-block;
+}
+.chapter .title{
+    width: 100%;
+    height: 96rpx;
+    line-height: 96rpx;
+}
+.chapter .title .titles{
+    font-size:30rpx;
+    color: #999999;
+    float: left;
+}
+.chapter .title .titles_r{
+    float: right;
+}   
+
+.chapter .title .titlesAll{
+    color: #D8D8D8;
+    font-size: 24rpx;
+    position:relative;
+    top:-5rpx;  
+}
+.chapter .content{
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+.chapter .content .courseImgs{
+    width: 100%;
+    height: 400rpx;
+}
+.chapter .content .courseNames{
+    width: 100%;height: 60rpx;
+    line-height:60rpx;
+    position:  absolute;
+    left: 0;
+    bottom: 58rpx;
+    font-size:30rpx;
+    color: #ffffff;
+    background:rgba(0,0,0,0.6);
+    text-align: center;
+}
+.chapter .content .courseNames .courseTexts{
+    width: 100%;height: 60rpx;
+    font-size:30rpx;
+    color: #ffffff;
+    text-align: left;
+    padding: 0 23rpx;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.chapter .content navigator{
+    font-size:30rpx;
+    color: #333333;
+}
+
+/* 全部练习 */
+.allStudy{
+    width: 100%;
+    padding: 27rpx 30rpx;
+    box-sizing: border-box;
+}
+.allStudy .titles{
+    width: 100%;
+    height:50rpx;
+    font-size:30rpx;
+    color: #999999;
+    float: left;
+}
+.allStudy .allList {
+    width: 100%;
+}
+.allStudy .allList .lists{
+    width:100%;
+    height:144rpx;
+    display:inline-block;
+    padding: 20rpx 24rpx;
+    box-sizing:border-box;
+    background-color: #ffffff;
+    border-radius: 12rpx;
+    overflow: hidden;
+}
+.allStudy .allList .litsActives{
+    background-color: #FFEBEB;
+}
+#litsActives{
+    background-color: #FFEBEB;
+}
+.allStudy .allList .lists .all_l{
+    float: left;
+    width: 50%;
+    display: inline-block;
+    height: 100%;
+}
+.allStudy .allList .lists .all_num{
+    font-size:26rpx;
+    color: #999999;
+    display:inline-block;
+    width:100%;
+}
+.allStudy .allList .lists .all_num .grade{
+    font-size:26rpx;
+    color: #D02F2F;
+    font-weight:400;
+}
+.allStudy .allList .lists .all_name{
+    font-size:32rpx;
+    color: #333333;
+    margin-top: 5rpx;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.allStudy .allList .lists .all_r{
+    float: right;
+    width: 50%;
+    height: 100%;
+}
+.allStudy .allList .lists .all_r image{
+    width:181rpx;
+    height:106rpx;
+    float: right;
+}
+
+
+.allStudy .allList .lists .all_r .mark{
+    font-size:30rpx;
+    font-weight:400;
+    color:#D02F2F;
+    float:left;  
+    margin-top:13rpx;  
+}
+.allStudy .allList .lists .all_r .goView{
+    height:60rpx;
+    width:128rpx;
+    text-align:center;
+    font-size:26rpx;
+    font-weight:400;
+    color:rgba(188,164,124,1);
+    line-height:60rpx;
+    border-radius:30rpx;
+    border:1rpx solid #DAC8AA;
+    display:inline-block;
+    float:right;    
+}
+.allStudy .allList .lists .all_r .goToMark{
+    height:60rpx;
+    width:128rpx;
+    text-align:center;
+    font-size:26rpx;
+    font-weight:400;
+    color:#FFFFFF;
+    line-height:60rpx;
+    border-radius:30rpx;
+    border:1rpx solid #DAC8AA;
+    display:inline-block;
+    float:right;  
+    background: -webkit-linear-gradient(left,#DAC8AA, #BCA47C); 
+}
+
+
+.dialog-index--van-dialog__confirm {
+    /* font-size:36rpx!important;
+    color: #D02F2F!important;
+    font-weight:500; */
+}
+
+
+
+

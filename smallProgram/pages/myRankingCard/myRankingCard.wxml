@@ -1,0 +1,107 @@
+<!--主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="打卡" bg-color='{{bgColor}}'></navigation>
+<van-dialog
+  use-slot
+  show="{{ isLogindialog }}"
+  confirm-button-open-type="getUserInfo"
+  bind:getuserinfo="getUserInfo2"
+ >
+ </van-dialog>
+<view class="content">
+
+    <!-- 底部菜单 -->
+    <van-action-sheet
+        show="{{ show }}"
+        actions="{{ actions }}"
+        bind:close="onClose"
+        bind:select="onSelect"
+    />
+
+    <view class="container">
+
+        <!-- 内容提交区域 -->
+        <view class="textInput">
+            <view class="textTop">
+                <text class="">打卡要求：必须上传不少于1张图片</text>
+            </view>
+            <!-- 输入框 -->
+            <view class="textBox">
+                <van-cell-group>
+                    <van-field
+                        input-class="textHeight"
+                        value="{{ contentA }}"
+                        type="textarea"
+                        placeholder="说说今天的练习的收获吧…"
+                        bind:change='bindTextAreaBlur'
+                        autosize
+                        border="{{ false }}"
+                    />
+                </van-cell-group>
+            </view>
+            <!-- 上传图片 -->
+            <view class="uploadPic">
+                <!-- <view class="optClass">
+                    <view class='optName'>附件</view> 
+                    <view class='optContent' >可上传图片或视频</view>
+                </view> -->
+                <view class="optClass" style='flex-wrap:wrap;'>
+                    <view class='uploadimgbox' wx:for="{{newdatass}}" wx:key="item" wx:for-item="vo">
+                        <image class='uploadimg' src='{{vo}}' data-presrc="{{vo}}" bindtap='previewImg' mode='aspectFill'></image>
+                        <!-- <cover-view class='progress' wx:if="{{upFilesProgress}}">
+                            {{item.progress}}%
+                        </cover-view>
+                        <cover-view class='delbtn' data-index="{{index}}" data-type="image" bindtap='delFile'>X</cover-view> -->
+                        <view class='delbtn' data-index="{{index}}" data-type="image" bindtap='delFile'>
+                            <text class="iconfont icon_tubiaozhizuomoban_like-unselect"></text>
+                        </view>
+                    </view>
+                    <!-- <view class='uploadimgbox' wx:for="{{upVideoArr}}" wx:key="item">
+                        <video class='uploadimg' src="{{item.tempFilePath}}"  controls ></video>
+                        <cover-view class='progress' wx:if="{{upFilesProgress}}">
+                            {{item.progress}}%
+                        </cover-view>
+                        <cover-view class='delbtn' data-index="{{index}}" data-type="video" bindtap='delFile'>X</cover-view>
+                    </view> -->
+                    
+                    <view class='uploadimgbox' wx:if="{{upFilesBtn}}">
+                        <image class='uploadbtn' bindtap='uploadFiles' src='./image/addimgsbtn.png'></image>
+                    </view>
+                </view>
+
+                <!-- 底部按钮 -->
+                <view class="recoBtn">
+                    <van-switch checked="{{ checked }}" 
+                    bind:change="selectBtn" 
+                    size="36rpx" 
+                    active-color="#D02F2F" 
+                    custom-class="applyBtn"
+                    />
+                    <text class="apply">申请精选</text>
+
+                    <block wx:if="{{onSHow=='所有人可见'}}">
+                        <text class="applyShow" decode="{{true}}" bind:tap="onSelected">&nbsp;所有人可见</text>
+                    </block>
+                    <block wx:else>
+                        <text class="applyShow" decode="{{true}}" bind:tap="onSelected">&nbsp;仅自己可见</text>
+                    </block>
+
+                </view>
+                <view class='subBtnBox'>
+                    <block wx:if="{{disableds==0}}">
+                        <button class='unsubBtn' type='button'>提交</button>
+                    </block>
+                    <block wx:else>
+                        <button class='subBtn' type='button' bindtap='submitdaka'>提交</button>
+                    </block>
+                </view>
+            </view>
+
+
+        </view>
+
+
+    </view>
+
+</view>
+
+

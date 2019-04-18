@@ -1,0 +1,228 @@
+@import "../../utils/iconfont.wxss";
+
+.content{
+    width: 100%;
+}
+
+.container{
+    width: 100%;
+    height:100%;
+    background-color:#F6F6F6;
+}
+
+
+
+.CircleListBox{
+    width: 100%;
+}
+.CircleListBox .CircleList{
+    width: 100%;
+}
+.CircleListBox .CircleListImg{
+    position: relative;
+}
+.CircleListBox .CircleListImg .imgs{
+    width: 164rpx;
+    height: 96rpx;
+    margin-right: 10rpx;
+}
+.CircleListBox .CircleListImg .userName{
+    position: absolute;
+    top: 0;
+}
+.CircleListBox .CircleListImg .userTime{
+    position: relative;
+    top: -5rpx;
+}
+.van-cell__right-icon-wrap{
+    position: relative;
+    top: 20rpx;
+}
+
+
+/* 页面内容 */
+.page-bodys{
+    width: 100%;
+    background-color: #F6F6F6;
+}
+.pageConent{
+    width: 100%;
+}
+.pageConent .courseImgs{
+    width: 100%;
+    height: 400rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 输入框 */
+.textInput{
+    width: 100%;
+    background-color: #ffffff;
+    display:inline-block;
+}
+.textInput .textTop{
+    width: 100%;
+    height: 60rpx;
+    line-height:60rpx;
+    background-color: #F6F6F6;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+.textInput .textTop text{
+    font-size: 22rpx;
+    color: #D02F2F;
+}
+.textInput .textBox{
+    width: 100%;
+    /* height: 150rpx; */
+}
+.van-field__input{
+    max-height:150rpx;
+    height: 150rpx;
+}
+.textHeight{
+    min-height: 150rpx !important;
+}
+
+.uploadPic{
+    width: 100%;
+}
+
+/* 上传图片 */
+.uploadPic{
+    width: 100%;
+    padding:10rpx 30rpx;
+    box-sizing: border-box;
+}
+.optClass{
+    background-color: #fff;
+    font-size: 32rpx;
+    color: #333;
+    display: flex;
+    align-items: center;
+    flex-wrap:wrap;
+}
+.optClass .optName{
+    width: 200rpx;
+}
+.optClass .optName text,.optClass .mesTit text{
+    color: #ce0a0a;
+}
+.optClass .optContent{
+    flex: 1;
+    text-align: right;
+    color: #666;
+    font-size: 32rpx;
+    font-size:24rpx;
+    color:#999;
+}
+
+.optClass .uploadimgbox{
+    flex: 0 0 25%;
+    position: relative;
+    box-sizing: border-box;
+    /* padding: 10rpx; */
+    margin-bottom: 10rpx;
+}
+.optClass .uploadimgbox .progress{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    font-size: 30rpx;
+    text-align: center;
+    line-height: 208rpx;
+    z-index: 99;
+}
+.optClass .uploadimgbox .delbtn{
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    top:0;
+    right:13rpx;
+    /* background-color: rgba(0, 0, 0, .5); */
+    color: #fff;
+    font-size: 30rpx;
+    text-align: center;
+    line-height: 50rpx;
+    z-index: 98;
+}
+.optClass .uploadimgbox .delbtn .icon_tubiaozhizuomoban_like-unselect{
+    font-size: 40rpx;
+    color: #BCB3A6;
+}
+.optClass .uploadimg{
+    display: block;
+    width:162rpx;
+    height: 162rpx;
+    border-radius:12rpx;
+}
+.optClass .uploadbtn{
+    display: block;
+    width:162rpx;
+    height: 162rpx;
+}
+.subBtnBox .subBtn{
+    display: block;
+    margin: 80rpx auto;
+    background-color: #EA5C5C;
+    color: #fff;
+    font-size: 32rpx;
+    border-radius:50rpx;
+}
+.subBtnBox .subBtn.button-hover{
+    background-color: #bb0909;
+}
+.subBtnBox .unsubBtn{
+    display: block;
+    margin: 80rpx auto;
+    background-color: #D8D8D8;
+    color: #999999;
+    font-size: 32rpx;
+    border-radius:50rpx;
+}
+button::after{
+    border:none !important;
+}
+
+/* 申请推荐 */
+.recoBtn{
+    width:100%;
+    display:inline-block;
+    margin-top:20rpx;
+}
+.recoBtn .applyBtn{
+    float: left;
+}
+.recoBtn .apply{
+    width:20%;
+    font-size:26rpx;
+    color: #999999;
+    float:left;
+    padding-left: 20rpx;
+}
+.recoBtn .applyShow{
+    width:30%;
+    font-size:26rpx;
+    color: #999999;
+    float:right;
+    text-align:right;
+}
+

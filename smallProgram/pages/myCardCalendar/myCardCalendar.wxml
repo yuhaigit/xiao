@@ -1,0 +1,184 @@
+<!--个人主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="打卡日历" bg-color='{{bgColor}}'>
+</navigation>
+<view class="content">
+
+    <view class="container">
+        <!-- 顶部信息 -->
+        <view class="TopuserBox">
+              <view class="topUser">
+                    <!--<image class='imgs' src='{{avator}}'></image>-->
+                    <block wx:if="{{utype=='1' && uedit=='0'}}">
+                        <image class='imgs' src=''></image>
+                    </block>
+                    <block wx:else>
+                        <navigator hover-class="none" url="/pages/homePersonal/homePersonal?uid={{mid}}">
+                        <image class='imgs' src='{{avator}}'></image>
+                        </navigator>
+                    </block>
+                    
+                    <image class='sexs' wx:if="{{sex == 2}}" src='../../image/icon18sex2.png'></image>
+                    <image class='sexs' wx:else src='../../image/icon18sex1.png'></image>
+
+                    <view class="UserInfos">
+                        <block wx:if="{{utype=='1' && uedit=='0'}}">
+                            <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击获取信息</button>
+                        </block>
+                        <navigator wx:else hover-class="none" url="/pages/homePersonal/homePersonal?uid={{mid}}">
+                        <text class="userUame" >{{uname}}</text>
+                        </navigator>
+                        <!-- <image class='sexs' wx:if="{{sex == 2}}" src='../../image/icon18sex2.png'></image> -->
+                        <!-- <image class='sexs' wx:else src='../../image/icon18sex1.png'></image> -->
+                        <text class="userTime" decode="{{true}}">加入日期：{{ctime}}</text>
+                    </view>
+              </view>
+              <view class="topMenu">
+                    <view class="menu">
+                        <text class="">{{tol_days}}</text>
+                        <text class="">已坚持打卡（天）</text>
+                    </view>
+                    <view class="menu">
+                        <text class="">{{cod_days}}</text>
+                        <text class="">连续打卡（天）</text>
+                    </view>
+                    <view class="menu">
+                        <text class="">{{zongshu}}</text>
+                        <text class="">打卡日志（篇）</text>
+                    </view>
+              </view>
+        </view>
+
+        <!-- 日历 -->
+        <import src="../../template/calendar/index.wxml"/>
+        <view class="calendar">
+            <van-collapse value="{{ activeNames }}" bind:change="changes">
+                <van-collapse-item title="我的打卡日历" name="1" custom-class="calendarBox">
+
+                    <block wx:if="{{isSHOW}}">
+                        <view class="calendar-wrap" >
+                            <template is="calendar" data="{{...calendar}}" />
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <text class="unShow" decode="{{true}}">&nbsp;</text>
+                    </block>
+
+                </van-collapse-item>
+            </van-collapse>
+        </view>
+
+        <!-- 打卡信息 -->
+        <view class="CardInfos">
+            <text class="Circletext" decode="{{true}}">{{nowDate}}&nbsp;打卡信息</text>
+            <view class="CardDiary">
+                
+               <!--<component-scroll wx:if="{{daka.length>0}}" pulldownDistance="100" refreshPulldownText="你再往下拉试试" refreshUndoText="你松开试试" refreshLoadingText="我在努力刷新中~" loadmoreLoadingText="正在拼命的捞数据" loadmoreAllloadedText="我是有底线的" isNeedLoadmore bind:_loadmore="loadmore" bind:_refresh="refresh"-->
+                    <!--allloaded="{{allloaded}}" isEmpty="{{!loading &&list.length<=0}}">-->
+
+                <block wx:if="{{daka.length>0}}">
+                <view class="CardDiaryInfos"  wx:for="{{daka}}" wx:key="{{index}}">
+                    <view class="CardDiaryUserTop">
+                        <image class='imgs' mode="aspectFill" src='{{daka[index].img_url[0]}}' data-list="{{daka[index].img_url}}" bindtap="imgView"></image>
+                        <button class="shares" open-type='share' data-id="{{daka[index].id}}" data-img="{{daka[index].img_url[0]}}" data-title="{{daka[index].dakaname}}">分享</button>
+                        <view wx:if="{{daka[index].content !== ''}}" class="courseNames">
+                            <text class="courseTexts">{{daka[index].content}}</text>
+                        </view>
+                    </view>
+                    <view class="CardDiaryUser goodListInfos">
+                        <view class="userInfos_l">
+                            <text class="userTimes">{{daka[index].atime}}</text>
+                            <view class="userHandle">
+                                <!-- 点赞 -->
+                                <view wx:if="{{daka[index].praise['is_zan'] == 1}}" data-id='{{daka[index].id}}' class="setZan" bindtap="handleLike">
+                                    <view class=""  style="color:red">
+                                        <text class="iconfont icon_zan"></text>
+                                        <text class="clickZan">{{daka[index].praise['count']}}</text>
+                                    </view>
+                                </view>
+                                <view wx:if="{{daka[index].praise['is_zan'] == 2}}" data-id='{{daka[index].id}}' class="setZan" bindtap="handleLike">
+                                    <view class="">
+                                        <text class="iconfont icon_zan"></text>
+                                        <text class="clickZan">{{daka[index].praise['count']}}</text>
+                                    </view>
+                                </view>
+                                <!-- 回复 -->
+                                <view  class="reply" bindtap="replys">
+                                   <navigator url="/pages/circleSignInfo/circleSignInfo?id={{daka[index].id}}" > <view class="">
+                                        <text class="iconfont icon_huifu"></text>
+                                        <text class="nums">{{daka[index].commentcount}}</text>
+                                    </view></navigator>
+                                    </view>
+                                <!-- 优秀 -->
+                                <view class="setGoodBox" bindtap="setGood" wx:if="{{daka[index].excellent == 1}}" data-id="{{daka[index].id}}" style="color:red">
+                                    <text class="iconfont icon_youxiu" style="color:red"></text>
+                                    <text class="setGood" style="color:red">优秀</text>
+                                </view>
+                                <view class="setGoodBox" data-id="{{daka[index].id}}" bindtap="setGood" wx:else>
+                                    <text class="iconfont icon_youxiu"></text>
+                                    <text class="setGood">优秀</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="userInfos_bottom" wx:if="{{daka[index].circle != 0}}">
+                            <navigator url="/pages/circleInfoCard/circleInfoCard?id={{daka[index].cid}}&xid={{daka[index].xid}}">
+                                <image src="{{daka[index].circle['coverimg']}}" class="courseImg" alt="推荐图"></image>
+                                <text class="userName userNamess">{{daka[index].circle['title']}}</text>
+                                <!-- <text class="userTime userTimes" >{{daka[index].circle['zongshu']}}人已加入</text> -->
+                                <text class="userTime userTimes" >第{{daka[index].circle['sort_name']}}讲：{{daka[index].circle['practise_name']}}</text>
+                                <!-- <text class="imgTexts">></text> -->
+                                <van-icon name="arrow" custom-style="position:relative;top:-9px;right:0;float:right;color:#D8D8D8;"/>
+                            </navigator>
+                        </view>
+                         <!--<view class="zan" wx:elif="{{daka[index].praise['count'] != 0}}">-->
+                            <!--<view class="zanNum">-->
+                                <!--<text class="iconfont icon_zan" style="color:#D02F2F"></text>-->
+                                <!--<text >{{daka[index].praise['count']}}</text>-->
+                            <!--</view>-->
+                            <!--<view class="zanImgs">-->
+                                <!--<block wx:for="{{daka[index].praise['user']}}" wx:key="{{pra}}" wx:for-item="item">-->
+                                <!--<navigator class=""  url="/pages/homePersonal/homePersonal?uid={{item.uid}}" >-->
+                                    <!--<image src="{{item.touxiang}}" class="imgs"></image>-->
+                                <!--</navigator>-->
+                                <!--</block>-->
+
+                            <!--</view>-->
+                        <!--</view>-->
+                        <block wx:else></block>
+
+                        <!-- <view class="zan" bindtap="handleLike">
+                            <view class="zanNum">
+                                <van-icon name="thumb-circle-o" size="36rpx" color="#D02F2F"/>
+                                <text >128</text>
+                            </view>
+                            <view class="zanImgs">
+                                <image src="https://test.liupinshuyuan.com/data/upload/2018/0829/09/5b85fbbbaeb73_720_300_720_300.png" class="imgs"></image>
+                            </view>
+                        </view> -->
+
+                    </view>
+                </view>
+                </block>
+
+ <!--</component-scroll>-->
+
+            <view class="noDataBox" wx:else>
+                <text>{{test}}</text>
+            </view>
+            </view>
+
+        </view>
+
+
+    </view>
+
+</view>
+
+
+
+
+
+
+
+
+
+

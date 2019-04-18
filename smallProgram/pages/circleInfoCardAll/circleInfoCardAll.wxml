@@ -1,0 +1,101 @@
+<!--主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="选择练习" bg-color='{{bgColor}}'></navigation>
+<view class="content">
+    <van-dialog id="van-dialog"/>
+    <!-- 顶部 -->
+    <view class="page-bodys">
+
+        <!-- 当前章节 -->
+        <!-- <view class="chapter"  hidden='true'>
+            <view class="title">
+                <text class="titles">当前第{{practisesNext.sort_name}}讲</text>
+                <view class="titles_r">
+                    <navigator class="" url="" hover-class="none">
+                        <text class="titlesAll"></text>
+                        <van-icon name="arrow" color="#D8D8D8" custom-class="CircleInfos_r" custom-style="position:relative; top:5rpx;"/>
+                    </navigator>
+                </view>
+            </view>
+            <view class="content">
+                <image class='courseImgs' src='{{practisesNext.imgindex}}'></image>
+                <view class="courseNames">
+                    <text class="courseTexts">{{practisesNext.practise_name}}</text>
+                </view>
+                <view class="goTo">
+                    <navigator url="/pages/circleInfoCardAllInfo/circleInfoCardAllInfo?id={{practisesNext.id}}">查看详情</navigator>
+                </view>
+            </view>
+        </view> -->
+
+
+        <!-- 全部练习 -->
+        <scroll-view 
+            scroll-y 
+            enable-back-to-top="true" 
+            bindscroll="memoryScrollTop"  
+            scroll-into-view='{{toView}}' 
+            scroll-top="{{scrollTop}}"
+            style='height:{{tbodyHeight}}px;'
+            scroll-with-animation='{{true}}'
+        >
+
+            <view class="allStudy">
+                <text class="titles">全部练习</text>
+                <view class="allList">
+
+                    <block wx:for="{{practiseslistgo}}"  wx:key="{{index}}" wx:for-item="vo">
+                        <!--类名 litsActives 为选中效果背景 -->
+                        <view class="lists" id='{{practisesNext.id==vo.id?"litsActives":"noActive"}}'  bind:tap="nolock{{vo.lock}}" data-xid="{{vo.id}}"  data-cid="{{vo.cid}}">
+                            <view class="all_l">
+                                <view class="all_num">
+                                    <block wx:if="{{vo.lock==1}}" >
+                                        <text class="iconfont icon_42 "></text>
+                                    </block>
+                                    第{{vo.sort_name}}讲
+                                    <block wx:if="{{vo.is_pf==1&&vo.pf_result!=0}}">
+                                    <text class="">评分：</text>
+                                    <text class="grade">{{vo.pf_result}}</text>
+                                    </block>
+                                </view>
+                                <text class="all_name"  data-xid="{{vo.id}}"  data-cid="{{vo.cid}}"  bindtap="goToCircle" >{{vo.practise_name}}</text>
+                            </view>
+                            <view class="all_r">
+                                <!-- <view wx:if="{{vo.is_pf==1}}">
+                                    <view wx:if="{{vo.pf_result!=0}}">
+                                        <text class="mark">{{ vo.pf_result }}</text>
+                                    </view>
+                                    <block wx:if="{{vo.lock==1}}" >
+                                        <navigator class="goToMark" url="">开始评分</navigator>
+                                    </block>
+                                    <block wx:if="{{vo.lock==0}}" >
+                                        <navigator class="goToMark" url="/pages/myGrade/myGrade?id={{vo.id}}">开始评分</navigator>
+                                    </block>
+                                    <view wx:if="{{vo.pf_result!=0}}">
+                                        <navigator class="goView" url="/pages/myGradeResult/myGradeResult?uid={{vo.pf_mid}}&lid={{vo.id}}">查看</navigator>
+                                    </view>
+                                </view> -->
+                                <view>
+                                   
+                                        <image   data-xid="{{vo.id}}" class='courseImgs'  data-cid="{{vo.cid}}" src='{{vo.imgindex}}'></image>
+                             
+                                </view>
+                                    <!-- <text class="mark">{{vo.pf_result }}</text> -->
+                                    <!-- <text class="mark">0.0</text>
+                                    <navigator class="goToMark" url="/pages/myGrade/myGrade?id={{vo.id}}">开始评分</navigator>
+                                    <navigator class="goView" url="/pages/myGradeResultInfo/myGradeResultInfo?id={{vo.pf_resid}}">查看</navigator> -->
+                                    <!-- <image class='courseImgs' src='{{vo.imgindex}}'></image> -->
+                            </view>
+                        </view>
+                
+                    </block>
+
+                </view>
+            </view>
+
+        </scroll-view>
+
+    </view>
+
+</view>
+
+

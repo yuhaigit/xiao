@@ -1,0 +1,275 @@
+/* 顶部导航栏 */
+.content{
+    width: 100%;
+}
+/* page{
+    background-color:#f6f6f6;
+} */
+.container{
+    width: 100%;
+    height:100%;
+    /* background-color:#F6F6F6; */
+}
+
+/* 弹窗 */
+.van-dialog__message text{
+    font-size:36rpx;
+    color: #999999;
+    font-weight:500;
+}
+.van-dialog__cancel {
+    color:#999999!important;   
+}
+.van-dialog__confirm {
+    color:#333333!important;
+}
+
+
+.UpText{
+    width:100%;
+    display:inline-block;
+    margin:0 auto;
+    padding:0 20%;
+    box-sizing:border-box;
+    height:400rpx;
+}
+.UpText .title{
+    font-size:36rpx;
+    font-weight:bold;
+    text-align: center;
+    color: #999999;
+    padding-bottom:50rpx;
+    padding-top:40rpx;    
+}
+.UpText text{
+    width: 100%;
+    font-size:30rpx;
+    color: #333333;
+    font-weight:400;
+    display:block;
+    margin-bottom: 15rpx;
+}
+
+
+.page-bodys{
+    width: 100%;height:441px;
+    background-color: #fff;
+}
+
+
+/* 标准练习 */
+.chapter{
+    width: 100%;
+    height: 500rpx;
+    background-color: #ffffff;
+    padding:20rpx 30rpx;
+    box-sizing: border-box;
+}
+.chapter .title{
+    width: 100%;
+    height:56rpx;
+    line-height:56rpx;    
+}
+.chapter .title .titles{
+    font-size:36rpx;
+    color: #333333;
+    float: left;
+}
+.chapter .title .titles_r{
+    float: right;
+}   
+.chapter .title .titlesAll{
+    color:#D02F2F;
+    font-size:28rpx;
+    position:relative;
+    top:-5rpx;
+    font-weight:500;    
+}
+.chapter .title .CircleInfos_r{
+    font-size: 28rpx;
+    position:relative; 
+}
+.chapter .content{
+    width: 100%;
+    height: 404rpx;
+    text-align: center;
+    position: relative;
+    border-radius:12rpx;
+    overflow: hidden;
+}
+.chapter .content .courseImgs{
+    width: 100%;
+    height: 100%;
+}
+.chapter .content .courseNames{
+    width: 100%;height: 60rpx;
+    line-height:60rpx;
+    position:  absolute;
+    left: 0;
+    bottom: 58rpx;
+    font-size:30rpx;
+    color: #ffffff;
+    background:rgba(0,0,0,0.6);
+    text-align: center;
+}
+.chapter .content .courseNames .courseTexts{
+    width: 100%;height: 60rpx;
+    font-size:30rpx;
+    color: #ffffff;
+    text-align: left;
+    padding: 0 23rpx;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.chapter .content navigator{
+    font-size:30rpx;
+    color: #333333;
+}
+
+
+/* 评分结果 */
+.chapters{
+    width: 100%;
+    background-color: #ffffff;
+    padding:20rpx 30rpx;
+    box-sizing: border-box;
+}
+.chapters .title{
+    width: 100%;
+    height:56rpx;
+    line-height:56rpx;    
+}
+.chapters .title .titles{
+    font-size:36rpx;
+    color:#333333;
+    float:left;
+    text-align:center;
+    font-weight:400;    
+}
+.chapters .title .titles_r{
+    float:right;
+}
+.chapters .title .tips{
+    font-size:28rpx;
+    color: #999999;
+    font-weight:500;
+}
+
+.chapters .content{
+    width: 100%;
+    text-align: center;
+    position: relative;
+    border-radius:12rpx;
+    overflow: hidden;
+    top:5rpx;
+}
+.chapters .content .result{
+    width: 100%;
+    text-align: center;
+    font-size:60rpx;
+    color: #D02F2F;
+    font-weight:bold;
+    display:inline-block;
+    padding:0rpx 0 20rpx 0;
+    box-sizing:border-box;
+}
+.chapters .content .resultInfo{
+    width: 100%;
+    text-align: center;
+    font-size:26rpx;
+    color: #D8D8D8;
+    font-weight:400;
+    display:inline-block;
+}
+.chapters .content .resultImg{
+    width: 100%;
+    height: 400rpx;
+    /* margin-top: 20rpx; */
+    position: relative;
+}
+.chapters .content .imgs{
+    width: 100%;
+    height: 100%;
+}
+.chapters .content .goViewBox{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;left: 0;
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.chapters .content .goViewBox .list{
+    flex: 0 0 25%;
+}
+
+.chapters .content .goView{
+    width:60rpx;
+    height:60rpx;
+    background:rgba(208,47,47,0.8);
+    font-size:24rpx;
+    color: #fff;
+    font-weight:400;
+    border-radius: 50%;
+    line-height: 60rpx;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+
+.chapters .content .gotoGrade{
+    text-align: center;
+    font-size:30rpx;
+    color: #BCA47C;
+    font-weight:400;
+    margin-top: 50rpx;
+    display:inline-block;
+}
+.upBtns{
+    width: 100%;
+    display: flex;
+    padding:0 30rpx;
+    box-sizing: border-box;
+    margin-top:20rpx;
+} 
+.upBtns .gradesBox{
+    width:50%;
+    text-align:left;
+    overflow: hidden;
+}
+.upBtns .t{
+    font-size:28rpx;
+    color: #D0021B;
+    font-weight:500;
+    position:relative;
+    top:-9rpx;    
+    margin-right:15rpx;
+}
+.upBtns .grades{
+    width: 50%;
+    font-size:60rpx;
+    color: #D0021B;
+    font-weight:bold;
+}
+.upBtns .againUploadFinishBtn{
+    width: 50%;
+    border-radius: 48rpx;
+    color: #BCA47C;
+    border:2rpx solid rgba(188,164,124,1);
+    background-color: #ffffff;
+    font-size:32rpx;
+    font-weight:400;
+}
+
+
+
+
+
+

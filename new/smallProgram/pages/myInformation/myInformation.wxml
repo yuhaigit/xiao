@@ -1,0 +1,52 @@
+<!--个人主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="编辑资料" bg-color='{{bgColor}}'>
+</navigation>
+<view class="content">
+
+    <!-- 底部菜单 -->
+    <van-action-sheet
+        show="{{ show }}"
+        actions="{{ actions }}"
+        bind:close="onClose"
+        bind:select="onSelect"
+    />
+    
+    <view class="container">
+        <!-- 我的资料 -->
+        <view class="infomationBox">
+
+            <van-cell-group>
+                <van-cell title="头像" custom-class ="head">
+                <van-icon
+                    slot="right-icon"
+                    name="{{avator}}"
+                    class="van-cell__right-icon"
+                />
+                </van-cell>
+                <van-cell title="昵称" value="{{uname}}" custom-class ="userName"></van-cell>
+                <van-cell title="性别" value="{{sex}}" bind:click="onSelected" ></van-cell>
+
+            </van-cell-group>
+            <!-- 手机号 -->
+            <view class="Tel">
+                <van-cell title="手机号" value="{{phone}}" is-link  url="/pages/myPhone/myPhone?phone={{phone}}&canshu={{canshu}}&uid={{uid}}"  custom-class ="tel"></van-cell>
+            </view>
+
+
+        </view>
+
+
+
+    </view>
+
+</view>
+
+
+
+
+
+
+
+
+
+

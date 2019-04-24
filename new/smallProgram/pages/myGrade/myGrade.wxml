@@ -1,0 +1,148 @@
+<!--主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="智能评分" bg-color='{{bgColor}}'></navigation>
+<view class="content">
+
+    <van-dialog id="van-dialog" />
+
+    <van-dialog
+        title='图片不符合要求'
+        message="{{imgrquestinfo}}"
+        async-close
+        show="{{ show }}"
+        show-cancel-button="{{false}}"
+        confirm-button-text="重新上传"
+        bind:close="dialogUp"
+    >
+    <!-- <view class="UpText">
+        <text class="title">图片不符合要求</text>
+        <text class="">{{imgrquestinfo}}</text> 
+    </view> -->
+    </van-dialog>
+
+
+    <view class="container">
+        <view class="page-body">
+
+            <!-- 顶部 -->
+            <view class="page-bodys">
+
+                <!-- 标准练习 -->
+                <view class="chapter">
+                    <view class="title">
+                        <text class="titles">标准练习</text>
+                        <view class="titles_r">
+                            <navigator class="" url="/pages/myGradeList/myGradeList?cid={{scoreinfo.cid}}&select_id={{scoreinfo.xid}}" hover-class="none">
+                                <text class="titlesAll">切换练习({{scoreinfo.practise_num}})</text>
+                                <van-icon name="arrow" color="#D02F2F" custom-class="CircleInfos_r" />
+                            </navigator>
+                        </view>
+                    </view>
+                    <view class="content">
+                        <image class='courseImgs' src='{{scoreinfo.practise_img}}'></image>
+                    </view>
+                </view>
+
+
+                <!-- 我的练习 -->
+                <view class="chapter chapters">
+                    <view class="title">
+                        <text class="titles">我的练习</text>
+                        <view class="titles_r" bind:tap="tipss">
+                            <text class="tips">不会评分？</text>
+                        </view>
+                    </view>
+                    <view class="content">
+                        <view class='item-ot'>
+                            <view class="item">
+                                <!-- 添加按钮 -->
+                                <view class="addIcon" bindtap="getImage" wx:if="{{imgBoolean}}">
+                                    <image class='upImgs' src='../../image/icon-xj2.png'></image>
+                                    <text class="upImgText">点击拍照</text>
+                                </view>
+                                <!-- 上传的图 -->
+                                <view class='itemImg' >
+                                    <image src="{{imageSrc}}" data-src="{{imageSrc}}" bindtap="previewImage"   />
+                                    <!-- 删除按钮 -->
+                                    <!--<view class="delete" bindtap="deleteImg" data-index="{{index}}">-->
+                                        <!--<van-icon name="clear" size="36rpx" custom-class="iconss" />-->
+                                    <!--</view>-->
+                                </view>
+                                <!-- <view class='boxStyle'></view> -->
+                            </view>
+                        </view>
+
+                        <!-- 提交图片 -->
+                        <view class='uploadFinish'>
+                            <!-- <view class='itemTxt'>图片要求：拍摄字与标准字角度方向一致；纸面平整；</view> -->
+                            <view class="upBtns">
+                                <!-- <block wx:if="{{imageSrc == ''}}"> -->
+                                <block wx:if="{{imageSrc == ''}}">
+                                    <button class="delBtn delBtns">删除</button>
+                                    <button class="uploadFinishBtn uploadFinishBtns">提交</button>
+                                </block > 
+
+                                <block wx:else>
+                                    <button class="delBtn" bindtap="deleteImg" data-index="{{index}}">删除</button>
+                                    <button class="uploadFinishBtn" bind:tap="submits">提交</button>
+                                </block>
+
+                                <!-- <block wx:else>
+                                    <view class="gradesBox">
+                                        <text class="t">评分</text>
+                                        <text class='grades'>99.99</text>
+                                    </view>
+                                    <button class="againUploadFinishBtn" bind:tap="submits">再评一次</button>
+                                </block> -->
+
+                            </view>
+                        </view> 
+
+                    </view>
+
+        <!-- 图片截图弹窗展示 -->
+        <view class="wx-content-info" wx:if="{{UpImg}}">
+            <view class='cropper-content'>
+                <view wx:if="{{isShowImg}}" class="wx-corpper" style="width:{{cropperInitW}}rpx;height:{{cropperInitH}}rpx;background:#000">
+                    <view class="wx-corpper-content" style="width:{{cropperW}}rpx;height:{{cropperH}}rpx;left:{{cropperL}}rpx;top:{{cropperT}}rpx">
+                        <image src="{{imageSrc}}" style="width:{{cropperW}}rpx;height:{{cropperH}}rpx"></image>
+                        <view class="wx-corpper-crop-box" bindtouchstart="contentStartMove" bindtouchmove="contentMoveing" bindtouchend="contentTouchEnd" style="left:{{cutL}}rpx;top:{{cutT}}rpx;right:{{cutR}}rpx;bottom:{{cutB}}rpx">
+                            <view class="wx-cropper-view-box">
+                                <view class="wx-cropper-dashed-h"></view>
+                                <view class="wx-cropper-dashed-v"></view>
+                                <view class="wx-cropper-line-t" data-drag="top" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+                                <view class="wx-cropper-line-r" data-drag="right" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+                                <view class="wx-cropper-line-b" data-drag="bottom" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+                                <view class="wx-cropper-line-l" data-drag="left" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+                                <view class="wx-cropper-point point-t" data-drag="top" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+                                <view class="wx-cropper-point point-tr" data-drag="topTight"></view>
+                                <view class="wx-cropper-point point-r" data-drag="right" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+                                <view class="wx-cropper-point point-rb" data-drag="rightBottom" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+                                <view class="wx-cropper-point point-b" data-drag="bottom" catchtouchstart="dragStart" catchtouchmove="dragMove" catchtouchend="dragEnd"></view>
+                                <view class="wx-cropper-point point-bl" data-drag="bottomLeft"></view>
+                                <view class="wx-cropper-point point-l" data-drag="left" catchtouchstart="dragStart" catchtouchmove="dragMove"></view>
+                                <view class="wx-cropper-point point-lt" data-drag="leftTop"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class='cropper-config'>
+                <view class="CancelImg"  bindtap="CancelImg" >取消</view>
+                <view class="getImageInfo"  bindtap="getImageInfo" >完成</view>
+            </view>
+            <canvas canvas-id="myCanvas" style="position:absolute;border: 1px solid red; width:{{qualityWidth}}px;height:{{qualityWidth/innerAspectRadio}}px;top:-9999px;left:-9999px;"></canvas>
+        </view>
+
+
+                </view>
+
+
+            </view>
+
+
+        </view>
+    </view>
+
+</view>
+
+

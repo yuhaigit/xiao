@@ -1,0 +1,140 @@
+<!--主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="评分结果" bg-color='{{bgColor}}'></navigation>
+<view class="content">
+
+    <!-- <van-dialog id="van-dialog" />
+
+    <van-dialog
+    use-slot
+    async-close
+    show="{{ show }}"
+    show-cancel-button="{{false}}"
+    confirm-button-text="重新上传"
+    bind:close="dialogUp"
+    >
+    <view class="UpText">
+        <text class="title">图片不符合要求</text>
+        <text class="">可能的原因：</text>
+        <text class="">1.纸面破损、皱褶</text>
+        <text class="">2.距离过高、角度倾斜</text>
+        <text class="">3.拍摄有阴影</text>
+    </view>
+    </van-dialog> -->
+
+
+    <view class="container">
+        <view class="page-body">
+
+            <!-- 顶部 -->
+            <view class="page-bodys">
+
+                <!-- 标准练习 -->
+                <view class="chapter">
+                    <view class="title">
+                        <text class="titles">标准练习</text>
+                        <view class="titles_r">
+                            <navigator class="" url="/pages/myGradeList/myGradeList?cid={{pfresult.cid}}&select_id={{pfresult.pf_lid}}" hover-class="none">
+                                <text class="titlesAll">切换练习({{pfresult.practise_num}})</text>
+                                <van-icon name="arrow" color="#D02F2F" custom-class="CircleInfos_r" />
+                            </navigator>
+                        </view>
+                    </view>
+                    <view class="content">
+                        <image class='courseImgs' src='{{pfresult.practise_img}}'></image>
+                    </view>
+                </view>
+
+
+                <!-- 评分结果 -->
+                <view class="chapters">
+                    <view class="title">
+                        <text class="titles">我的练习</text>
+                        <view class="titles_r" bind:tap="tipss">
+                            <text class="tips">不会评分？</text>
+                        </view>
+                    </view>
+
+                    <view class="content">
+                        <!-- <text class="result">{{ pfresult.res_avg }}</text>
+                        <text class="resultInfo">本次练习智能评分结果</text> -->
+                        <view class="resultImg">
+                            <image class='imgs' src='{{ pfresult.userstandimg }}'></image>
+                            <view class="goViewBox">
+
+                                <view class="list">
+                                <block wx:if="{{pfresult.res_1>50}}">
+                                    <navigator class="goView" url="/pages/myGradeResultInfo/myGradeResultInfo?uid={{ pfresult.pf_uid }}&lid={{ pfresult.pf_lid }}&resid=1">查看</navigator>
+                                    </block>
+                                </view>
+                               <view class="list">
+                               <block wx:if="{{pfresult.res_2>50}}">
+                                    <navigator class="goView" url="/pages/myGradeResultInfo/myGradeResultInfo?uid={{ pfresult.pf_uid }}&lid={{ pfresult.pf_lid }}&resid=2">查看</navigator></block>
+                                </view>
+                               <view class="list">
+                               <block wx:if="{{pfresult.res_3>50}}">
+                                    <navigator class="goView" url="/pages/myGradeResultInfo/myGradeResultInfo?uid={{ pfresult.pf_uid }}&lid={{ pfresult.pf_lid }}&resid=3">查看</navigator></block>
+                                </view>
+                               <view class="list">
+                               <block wx:if="{{pfresult.res_4>50}}">
+                                    <navigator class="goView" url="/pages/myGradeResultInfo/myGradeResultInfo?uid={{ pfresult.pf_uid }}&lid={{ pfresult.pf_lid }}&resid=4">查看</navigator></block>
+                                </view>
+                                <view class="list">
+                                <block wx:if="{{pfresult.res_5>50}}">
+                                    <navigator class="goView" url="/pages/myGradeResultInfo/myGradeResultInfo?uid={{ pfresult.pf_uid }}&lid={{ pfresult.pf_lid }}&resid=5">查看</navigator></block>
+                                </view>
+                               <view class="list">
+                               <block wx:if="{{pfresult.res_6>50}}">
+                                    <navigator class="goView" url="/pages/myGradeResultInfo/myGradeResultInfo?uid={{ pfresult.pf_uid }}&lid={{ pfresult.pf_lid }}&resid=6">查看</navigator></block>
+                                </view>
+                                <view class="list">
+                                <block wx:if="{{pfresult.res_7>50}}">
+                                    <navigator class="goView" url="/pages/myGradeResultInfo/myGradeResultInfo?uid={{ pfresult.pf_uid }}&lid={{ pfresult.pf_lid }}&resid=7">查看</navigator></block>
+                                </view>
+                               <view class="list">
+                               <block wx:if="{{pfresult.res_8>50}}">
+                                    <navigator class="goView" url="/pages/myGradeResultInfo/myGradeResultInfo?uid={{ pfresult.pf_uid }}&lid={{ pfresult.pf_lid }}&resid=8">查看</navigator></block>
+                                </view>
+                               <view class="list">
+                               <block wx:if="{{pfresult.res_9>50}}">
+                                    <navigator class="goView" url="/pages/myGradeResultInfo/myGradeResultInfo?uid={{ pfresult.pf_uid }}&lid={{ pfresult.pf_lid }}&resid=9">查看</navigator></block>
+                                </view>
+                               <view class="list">
+                               <block wx:if="{{pfresult.res_10>50}}">
+                                    <navigator class="goView" url="/pages/myGradeResultInfo/myGradeResultInfo?uid={{ pfresult.pf_uid }}&lid={{ pfresult.pf_lid }}&resid=10">查看</navigator></block>
+                                </view>
+                               <view class="list">
+                               <block wx:if="{{pfresult.res_11>50}}">
+                                    <navigator class="goView" url="/pages/myGradeResultInfo/myGradeResultInfo?uid={{ pfresult.pf_uid }}&lid={{ pfresult.pf_lid }}&resid=11">查看</navigator></block>
+                                </view>
+                               <view class="list">
+                               <block wx:if="{{pfresult.res_12>50}}">
+                                    <navigator class="goView" url="/pages/myGradeResultInfo/myGradeResultInfo?uid={{ pfresult.pf_uid }}&lid={{ pfresult.pf_lid }}&resid=12">查看</navigator></block>
+                                </view>
+                            </view>
+                        </view>
+                        <!-- <navigator class="gotoGrade" url="/pages/myGrade/myGrade?id={{ pfresult.pf_lid }}" >
+                            再评一次
+                        </navigator> -->
+                    </view>
+                </view>
+
+
+                <!-- 按钮 -->
+                <view class="upBtns">
+                    <!-- <navigator class="goView" url="/pages/circleInfoCardAll/circleInfoCardAll?id=19"><van-button round  size="large" type="default" custom-class="uploadFinishBtn" bindtap="submit">继续其他练习评分</van-button></navigator> -->
+                    <view class="gradesBox">
+                        <text class="t">评分</text>
+                        <text class='grades'>{{ pfresult.res_avg }}</text>
+                    </view>
+                    <button class="againUploadFinishBtn" bind:tap="gotoGrade">再评一次</button>
+                </view>
+
+            </view>
+
+
+        </view>
+    </view>
+
+</view>
+
+

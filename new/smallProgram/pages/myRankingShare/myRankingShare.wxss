@@ -1,0 +1,295 @@
+.content{
+    width: 100%;
+    background:#F6F6F6;
+    display:inline-block;
+    vertical-align:top;
+}
+.container{
+    width: 100%;
+    padding: 24rpx 50rpx;
+    box-sizing: border-box;
+    overflow:hidden;
+}
+
+.closeBox{
+    position: absolute;
+    /* top:18rpx; */
+    right: 0 ;      
+    z-index:999999999999;
+}
+.closeBox .close{
+    width: 62rpx;
+    height: 62rpx;
+}
+
+
+
+
+
+/* .container .shareTop{
+    width: 100%;
+    border-radius: 12rpx;
+    overflow: hidden;
+    display:inline-block;
+    padding:12rpx 12rpx;
+    box-sizing:border-box;
+}
+.container .shareTop view{
+    display:inline-block;
+}
+.container .shareTop .Tops{
+    width: 100%;
+    height: 120rpx;
+    position: relative;
+}
+.container .shareTop .Tops .times{
+    width: 100%;
+    display: inline-block;
+    float: left;
+    height:100%;
+    padding:0 10rpx;
+    box-sizing:border-box;
+}
+.container .shareTop .Tops .times .days{
+    font-size:60rpx;
+    color: #ffffff;
+    font-weight:bold;
+}
+.container .shareTop .Tops .times .years{
+    font-size:28rpx;
+    font-weight:500;
+    display:block;
+    color:#fff;
+}
+.container .shareTop .Topimgs{
+    width: 90%;
+    height: 600rpx;
+    margin: 0 auto;
+    display:flex;
+}
+.container .shareTop .Topimgs .imgs{
+    width: 100%;  
+    height: 100%;  
+    border-radius: 12rpx;
+}
+
+
+.container .shareTop .Topcontent{
+    width: 100%;
+    height:120rpx ;
+    background-color: #fff;
+    border-radius: 12rpx;
+    overflow: hidden;
+    padding: 24rpx;
+    box-sizing: border-box;
+    line-height:60rpx;
+    margin-top:30rpx;
+}
+.container .shareTop .Topcontent .imgs{
+    width:72rpx;
+    height:72rpx;
+    border-radius: 50%;
+    float: left;
+    margin-right: 10rpx;
+}
+.container .shareTop .Topcontent .name{
+    font-size:24rpx;
+    font-weight:500;
+    color: #333333;
+}
+.container .shareTop .Topcontent .Timestext{
+    float: right;
+    font-size:24rpx;
+    font-weight:500;
+    color: #333333;
+    margin-top:5rpx;
+}
+.container .shareTop .Topcontent .Timestext .alldays{
+    font-size:30rpx;
+}
+
+.container .shareTop .Topcontents{
+    width: 100%;
+    height:120rpx ;
+    background-color: #fff;
+    border-radius: 12rpx;
+    overflow: hidden;
+    padding:10rpx 24rpx;
+    box-sizing: border-box;
+    margin-top:10rpx;
+}
+.container .Topcontents .content_l{
+    height: 100%;
+    padding-top:17rpx;
+    box-sizing:border-box;   
+    width:80%;
+    float: left;
+}
+.container .shareTop .Topcontents .content_l .imgs{
+    width:72rpx;
+    height:72rpx;
+    float: left;
+    margin-right: 10rpx;
+}
+.container .shareTop .Topcontents .Timestext{
+    float: right;
+    font-size:24rpx;
+    font-weight:500;
+    color: #333333;
+    margin-top:5rpx;
+    float:left;
+}
+.container .shareTop .Topcontents .content_l .Timestext .namess{
+    font-size:24rpx;
+    font-weight:500;
+    color: #333333;
+}
+.container .shareTop .Topcontents .content_l .Timestext .dec{
+    font-size:18rpx;
+    font-weight:500;
+    color: #999999;
+    display:block;
+    margin-top:10rpx;
+}
+.container .Topcontents .content_r{
+    width: 20%;
+    float: right;
+    height: 100%;
+    padding-top:9rpx;
+    box-sizing:border-box;    
+}
+.container .shareTop .Topcontents .content_r .imgs{
+    width:88rpx;
+    height:88rpx;
+    float: right;
+}
+ */
+
+
+
+
+
+
+
+
+
+
+
+.saveBoxxx{
+    width: 100%;
+    height: 100%;
+    display:inline-block;
+}
+page {
+    width: 100%;
+    height: 100%;
+}
+  .poster {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* overflow: hidden; */
+  }
+  
+  .poster__create-img {
+    /* width: 690rpx;
+    height: 1038rpx; */
+
+    /* width: 100%;
+    height: 90%; */
+
+    width: 100%;
+    height: 1038rpx;
+    position: absolute;
+    left:0;
+    right:0;
+    margin:auto;
+    box-shadow:0px 2px 30px 0px rgba(204,204,204,1);
+  }
+  
+  .poster__my-canvas {
+    position: absolute;
+    top: -9999px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* 图片自适应 单独处理 */
+  .poster__bg-wrp {
+    width: 100%;
+    height: 100%;
+    /* background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(6px);
+    position: absolute;
+    top: -10px;
+    left: -10px; */
+  }
+  
+  .poster__btn-save {
+    width: 120rpx;
+    height: 120rpx;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 35rpx;
+  }
+  
+
+
+
+
+
+/* 按钮 */
+.saveBox{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    /* bottom:35rpx; */
+    position:fixed;
+    left:0; 
+    padding:0 25rpx;
+    box-sizing:border-box;
+}
+.saveBox button{
+    width:300rpx;
+    height:96rpx;
+    border-radius:48rpx;
+    border:1rpx solid rgba(255,255,255,1);
+    font-size:32rpx;
+    color: #ffffff;
+}
+.saveBox button::after {
+    border: none;
+}
+.saveBox .saveLoca{
+    text-align: center;
+    background:#4FA938;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    line-height:1.4;
+}
+.saveBox .saveLoca text:first-child{
+    font-size:32rpx;
+    color: #ffffff;
+    position:relative;
+    top:-3rpx;    
+}
+.saveBox .saveLoca text:last-child{
+    font-size:24rpx;
+    color: #ffffff;
+}
+.saveBox .sharingWorks {
+    background:rgba(246,246,246,0.8);
+    border: 2rpx solid #BCA47C;
+    color: #BCA47C;
+    line-height:90rpx;
+}
+
+
+
+
+

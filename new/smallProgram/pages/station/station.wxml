@@ -1,0 +1,2 @@
+<!--pages/station/station.wxml-->
+<web-view src="{{ go_url }}"></web-view>

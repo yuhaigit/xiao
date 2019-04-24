@@ -1,0 +1,249 @@
+<!--主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="提交打卡" bg-color='{{bgColor}}'></navigation>
+<view class="content">
+
+    <!-- 底部菜单 -->
+    <van-action-sheet
+        show="{{ show }}"
+        actions="{{ actions }}"
+        bind:close="onClose"
+        bind:select="onSelect"
+    />
+
+    <view class="container">
+
+        <view class="topConent">
+            <text decode='{{true}}'>第{{infocircleSigndaka.sort_name}}讲 {{infocircleSigndaka.practise_name}}</text>
+        </view>
+
+        <!-- 内容提交区域 -->
+        <view class="textInput">
+            <!-- 输入框 -->
+            <view class="textBox" wx:if="{{isSHOW}}"> 
+                <van-cell-group>
+                    <van-field
+                        input-class="textHeight"
+                        value="{{ contentA }}"
+                        type="textarea"
+                        name="content"
+                        placeholder="（选填）说说今天的练习收获吧…"
+                        bind:change='bindTextAreaBlur'
+                        autosize
+                        border="{{ false }}"
+                    />
+                </van-cell-group>
+            </view>
+            <!-- 上传图片 -->
+            <view class="uploadPic">
+                <!-- <view class="optClass">
+                    <view class='optName'>附件</view> 
+                    <view class='optContent' >可上传图片或视频</view>
+                </view> -->
+
+                <view class="optClass" style='flex-wrap:wrap;'>
+                    <!-- 图片 -->
+                    <view class='uploadimgbox' wx:for="{{newdatass}}" wx:key="item"  wx:for-item="vo">
+                        <image class='uploadimg' src='{{vo}}' data-presrc="{{vo}}" bindtap='previewImg' mode='aspectFill'></image>
+                    
+                        <!-- <view class='delbtn' data-index="{{index}}" data-type="image" bindtap='delFileX'>X</view> -->
+                        <view class='delbtn' data-index="{{index}}" data-type="image" bindtap='delFileX'>
+                            <text class="iconfont icon_tubiaozhizuomoban_like-unselect"></text>
+                        </view>
+                    </view>
+                    <!-- 视频 -->
+                    <!-- <view class='uploadimgbox' wx:for="{{upVideoArr}}" wx:key="item">
+                        <video class='uploadimg' src="{{item.tempFilePath}}"  controls ></video>
+                        <cover-view class='progress' wx:if="{{upFilesProgress}}">
+                            {{item.progress}}%
+                        </cover-view>
+                        <cover-view class='delbtn' data-index="{{index}}" data-type="video" bindtap='delFile'>X</cover-view>
+                    </view> -->
+                    
+                    <view class='uploadimgbox' wx:if="{{upFilesBtn}}">
+                        <image class='uploadbtn' bindtap='uploadFiles' src='./image/addimgsbtn.png'></image>
+                    </view>
+                </view>
+
+                <!-- 底部按钮 -->
+                <view class="recoBtn">
+                    <van-switch checked="{{ checked }}" 
+                    bind:change="selectBtn" 
+                    size="36rpx" 
+                    active-color="#D02F2F" 
+                    custom-class="applyBtn"
+                    />
+                    
+                    <text class="apply">投稿精选</text>
+                    <block wx:if="{{onSHow=='所有人可见'}}">
+                        <text class="applyShow" decode="{{true}}" bind:tap="onSelected">
+                            <text class="iconfont icon_tubiaozhizuomoban_like-selected"></text> 所有人可见</text>
+                    </block>
+                    <block wx:else>
+                        <text class="applyShow Only" decode="{{true}}" bind:tap="onSelected"><text class="iconfont icon_tubiaozhizuomoban_like-selected Only"></text> 仅自己可见</text>
+                    </block>
+
+                </view>
+                <view class='subBtnBox'>
+                    <block wx:if="{{disableds==0}}">
+                        <button class='unsubBtn' type='button'>提交</button>
+                    </block>
+                    <block wx:else>
+                        <button class='subBtn' type='button' data-xid="{{infocircleSigndaka.id}}" bindtap='submitdaka'>提交</button>
+                    </block>
+                </view>
+
+            </view>
+        </view>
+
+        <!-- 富文本解析区 -->
+        <view class="showMsg">
+            <view class="listBox">
+                <text>本节练习要点</text>
+            </view>
+            <!-- 富文本内容 -->
+            <view class="allStudy">
+                <view class="allList">
+                    <view class="listsInfos">
+                        <import src="../../components/wxmlify/wxmlify.wxml" />
+                        <template is="wxmlify" data="{{nodes}}"></template>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 打卡记录 -->
+        <view class="recordBox" wx:if="{{infoCircleCardhomesubmitlist!=''}}">
+            <text class="title">打卡记录</text>
+            <view class="nodata" wx:if="{{infoCircleCardhomesubmitlist==null}}">{{notext}}</view> 
+            <view class='listHeights' >
+                <view class="cireCard" wx:for="{{infoCircleCardhomesubmitlist}}" wx:key="{{index}}" wx:for-item="vo">
+
+                    <block wx:if="{{shows}}">
+                    <!-- 无推荐 -->
+                    <view class="CardDiaryInfos">
+                        <image bindtap="imgViewByidX" mode='aspectFill' data-id="{{vo.id}}" class='imgs' src='{{vo.imgindex}}'></image>
+                        <view class="likes"  wx:if="{{vo.iscollection == 1}}">
+                            <text class="iconfont icon_wodeshoucang" bind:tap="collectionButtonX"  data-id="{{vo.id}}" data-iscollection="1" data-xiabiao="{{index}}" data-index="{{vo.id}}" style="color:#D02F2F" ></text>
+                        </view> 
+                        <view class="likes"  wx:if="{{vo.iscollection == 0}}">
+                            <text class="iconfont icon_wodeshoucang"  bind:tap="collectionButtonX"  data-id="{{vo.id}}" data-iscollection="0"  data-xiabiao="{{index}}" data-index="{{vo.id}}"></text>
+                        </view> 
+                        <!-- 右下角图片张数 -->
+                        <!-- <text class="PictureNums" style="">1/9</text> -->
+                        <block wx:if="{{vo.img_remark!=''}}"><text class="PictureNums">{{vo.img_remark}}</text></block>
+                        <view class="CardDiaryUser goodListInfos">
+                            <view class="userInfos_l">
+                                <navigator hover-class='none' url="/pages/homePersonal/homePersonal?uid={{vo.uid}}">
+                                <view class="userHeads">
+                                    <image src="{{vo.img_avatar}}" class="userHead" alt="头像"></image>
+                                    <image src="/image/icon18sex{{vo.sex}}.png" class="userSex" alt="性别"></image>
+                                </view>
+                                <text class="userName">{{vo.uname}} </text>
+                                <text class="userTimes" decode="{{true}}">{{vo.time_remark}}&nbsp;&nbsp;已打卡{{vo.tol_days}}天</text>
+                                </navigator>
+                            </view>
+                            <view class="userHandle">
+                                <!-- 赞 -->
+                                <view  wx:if="{{vo.ispraise == 1}}"  data-id='{{vo.id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZanX" data-values="{{vo.zan_count}}" data-iszan="1">
+                                    <view class=""  style="color:red">
+                                        <text class="iconfont icon_zan"></text>
+                                        <text class="clickZan">{{vo.zan_count}}</text>
+                                    </view>
+                                </view>
+                                <view  wx:if="{{vo.ispraise ==0}}" data-id='{{vo.id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZanX" data-values="{{vo.zan_count}}" 
+                                data-iszan="0" >
+                                    <view class=""  >
+                                        <text class="iconfont icon_zan"></text>
+                                        <text class="clickZan">{{vo.zan_count}}</text>
+                                    </view>
+                                </view>
+                                <!-- 回复 -->
+                                <navigator hover-class='none' url="/pages/circleSignInfo/circleSignInfo?id={{vo.id}}" >   <view  class="reply" bindtap="replys">
+                                    <text class="iconfont icon_huifu"></text>
+                                            <text class="nums">{{vo.commentcount}}</text>
+                                </view></navigator>
+                            </view>
+                        </view>
+                    </view>
+                    </block>
+
+                    <block wx:else >
+                    <!-- 有推荐有评分 -->
+                    <view class="CardDiaryInfos">
+                        <image bindtap="imgViewByidX" mode='aspectFill' data-id="{{vo.id}}" class='imgs' src='{{vo.imgindex}}'></image>
+                        <view class="likes"  wx:if="{{vo.iscollection == 1}}">
+                            <text class="iconfont icon_wodeshoucang" bind:tap="collectionButtonX"  data-id="{{vo.id}}" data-iscollection="1" data-xiabiao="{{index}}" data-index="{{vo.id}}" style="color:#D02F2F" ></text>
+                        </view> 
+                        <view class="likes"  wx:if="{{vo.iscollection == 0}}">
+                            <text class="iconfont icon_wodeshoucang"  bind:tap="collectionButtonX"  data-id="{{vo.id}}" data-iscollection="0"  data-xiabiao="{{index}}" data-index="{{vo.id}}"></text>
+                        </view> 
+                        <view class="reBox">
+                            <text class="reText">这里显示打卡的文字，显示这里显示打卡这里显示打卡到这</text>
+                            <block wx:if="{{vo.img_remark!=''}}"><text class="PictureNum">{{vo.img_remark}}</text></block>
+                        </view>
+                        <view class="CardDiaryUser goodListInfos">
+                            <view class="userInfos_l">
+                                <navigator hover-class='none' url="/pages/homePersonal/homePersonal?uid={{vo.uid}}">
+                                <view class="userHeads">
+                                    <image src="{{vo.img_avatar}}" class="userHead" alt="头像"></image>
+                                    <image src="/image/icon18sex{{vo.sex}}.png" class="userSex" alt="性别"></image>
+                                </view>
+                                <text class="userName">{{vo.uname}} </text>
+                                <text class="userTimes" decode="{{true}}">{{vo.time_remark}}&nbsp;&nbsp;已打卡{{vo.tol_days}}天</text>
+                                </navigator>
+                            </view>
+                            <view class="userHandle">
+                                <!-- 赞 -->
+                                <view  wx:if="{{vo.ispraise == 1}}"  data-id='{{vo.id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZanX" data-values="{{vo.zan_count}}" data-iszan="1">
+                                    <view class=""  style="color:red">
+                                        <text class="iconfont icon_zan"></text>
+                                        <text class="clickZan">{{vo.zan_count}}</text>
+                                    </view>
+                                </view>
+                                <view  wx:if="{{vo.ispraise ==0}}" data-id='{{vo.id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZanX" data-values="{{vo.zan_count}}" 
+                                data-iszan="0" >
+                                    <view class=""  >
+                                        <text class="iconfont icon_zan"></text>
+                                        <text class="clickZan">{{vo.zan_count}}</text>
+                                    </view>
+                                </view>
+                                <!-- 回复 -->
+                                <navigator hover-class='none' url="/pages/circleSignInfo/circleSignInfo?id={{vo.id}}">
+                                    <view class="reply" bindtap="replys">
+                                        <text class="iconfont icon_huifu"></text>
+                                        <text class="nums">{{vo.commentcount}}</text>
+                                    </view>
+                                </navigator>
+                            </view>
+                            <!-- 推荐老师评分 -->
+                            <view class="userTeacher">
+                                <view class="userTeacherT">
+                                    <image src="https://test.liupinshuyuan.com/data/upload/2018/0828/13/5b84deee91857.png" class="imgs"></image>
+                                    <text class="teacher">曾老师</text>
+                                    <text class="grade">82</text>
+                                </view>
+                                <view class="userTeacherB">
+                                    今天这两幅作品还是不错的啊，感觉到了瓶颈那应该 是要有突破了啊！只要坚持，就会有一个质的飞跃。
+                                </view>
+                            </view>
+                        </view>
+
+                    </view>
+                    </block>
+
+                </view>
+            </view>
+            <block wx:if="{{isShows}}">
+                <view class='my-scroll-msgModule my-scroll-loadmoreModule'>
+                    <image wx:if="{{isloading}}" class='my-scroll-msgModule-icon my-scroll-msgModule-icon-loading' src='../../components/component-scroll/image/loading.png'></image>
+                    <text class='my-scroll-msgModule-text'>{{isShowsText}}</text>
+                </view>
+            </block>
+        </view>
+
+
+    </view>
+
+</view>
+
+

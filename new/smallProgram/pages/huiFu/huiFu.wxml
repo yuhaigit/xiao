@@ -1,0 +1,53 @@
+<!--pages/huiFu/huiFu.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="回复通知" bg-color='{{bgColor}}'></navigation>
+
+<!-- 对打卡进行了评论 -->
+<view id='page'>
+<block wx:for="{{listArr}}" wx:key="{{key}}">
+  <view class='container'>
+    <image class='avatar' src='./image/logo.jpg'></image>
+    <view class='content'>
+      <navigator url='{{item.url}}'>
+        <view class='bubble'>
+          又有新的回复啦：
+          <block wx:if="{{ item.type==1 }}">
+            <view wx:if="{{ item.qname=='' }}">
+              <text class='formName'>{{item.from_name}}</text>
+              对您的打卡进行了评论<text class='clickToGo'>点击查看</text>
+            </view>
+            <view wx:elif="{{ item.qname!='' }}">
+              <text class='formName'>{{item.from_name}}</text>
+              在<text class='whereName'>{{item.qname}}</text>圈子对您的打卡进行了评论<text class='clickToGo'>点击查看</text>
+            </view>
+            
+            <view class='arrow'></view>
+          </block>
+          <block wx:elif="item.type==2">
+            <view wx:if="{{ item.qname=='' }}">
+              <text class='formName'>{{item.from_name}}</text>
+              对您的评论进行了回复<text class='clickToGo'>点击查看</text>
+            </view>
+            <view wx:elif="{{ item.qname!='' }}">
+              <text class='formName'>{{item.from_name}}</text>
+              在<text class='whereName'>{{item.qname}}</text>圈子对您的评论进行了回复<text class='clickToGo'>点击查看</text>
+            </view>            
+            <view class='arrow'></view>
+          </block>
+        </view>
+      </navigator>
+      <view class='time'>{{item.created_at}}</view>
+    </view>
+  </view>
+</block>
+</view>
+<!-- 对评论进行了回复 -->
+<!-- <view class='container'>
+    <view class='avatar'></view>
+    <view class='content'>
+      <view class='bubble'>
+          <image class='imgMsg' src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1866650547,2859020527&fm=58&bpow=800&bpoh=478'></image>
+          <view class='arrow'></view>
+      </view>
+      <view class='time'>03.9 16:50</view>
+    </view>
+</view> -->

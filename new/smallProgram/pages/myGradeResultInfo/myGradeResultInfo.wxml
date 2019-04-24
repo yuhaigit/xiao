@@ -1,0 +1,46 @@
+<!--主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="评分详情" bg-color='{{bgColor}}'></navigation>
+<view class="content">
+
+    <view class="container">
+        <view class="page-body">
+
+
+            <!-- 评分详情 -->
+            <view class="resultInfo">
+                <view class="result_l" style="background-image: url({{pfdecalinfo.standimg}}) ">
+                    <image class='picture' src='{{pfdecalinfo.standimg}}' animation="{{animationData}}" ></image>
+                    <text class="">标准字</text>
+                </view>
+
+                <view class="result_r" style="background-image: url({{pfdecalinfo.userstandimg}}) ">
+                    <image class='picture' src='{{pfdecalinfo.userstandimg}}' animation="{{animationData2}}"></image>
+                    <text class="">手写字</text>
+                </view>
+            </view>
+
+            <view class="content">
+                <text class="comparisonMapText">单字得分：{{pfdecalinfo.pfresult}}</text>
+                <view class="comparisonMap">
+                    <!-- <image class='imgs' src='https://test.liupinshuyuan.com/data/upload/2018/0829/09/5b85fbbbaeb73_720_300_720_300.png'></image> -->
+                    <view class="imgs"  id="Ends" ></view>
+                </view>
+
+
+            </view>
+
+
+            <!-- 按钮 -->
+            <view class="upBtns">
+                <van-button round  size="large" type="default" custom-class="uploadFinishBtn" bindtap="goback">返回</van-button>
+            </view>
+
+     
+
+
+        </view>
+    </view>
+
+</view>
+
+

@@ -1,0 +1,371 @@
+@import "../../utils/iconfont.wxss";
+
+.content{
+    width: 100%;
+    height:100%; 
+    background-color:#F6F6F6;
+}
+.container{
+    width: 100%;
+}
+.CardInfos{
+    width: 100%;
+    padding-top:20rpx;
+    display: inline-block;
+}
+/* .icon_zan{
+    font-weight: bold;
+} */
+
+
+.iconfont{
+    font-size: 36rpx;
+}
+.icon_wodeshoucang{
+    color: #999999;
+}
+
+/* 打卡信息 */
+.CardDiary{
+    width: 100%; 
+    /* height:800rpx; */
+
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    display:inline-block;
+}
+.CardDiary .CardDiaryInfos{
+    width: 100%;
+    border-radius:12rpx;
+    background-color: #fff;
+    border:1px solid rgba(216,216,216,1);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20rpx;
+}
+.CardDiaryInfos .CardDiaryUserTop {
+    width: 100%;
+    height:342rpx;
+    position: relative;
+}
+.CardDiaryInfos .CardDiaryUserTop .imgs{
+    width: 100%;
+    height:342rpx;
+}
+.CardDiary .CardDiaryInfos .shares{
+    width:48rpx;
+    height:48rpx;
+    background:rgba(51,51,51,0.6);
+    position: absolute;
+    top:10rpx;
+    right:10rpx;    
+    font-size:18rpx;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 48rpx;
+    border-radius: 50%;
+    padding:0;
+}
+.CardDiaryInfos .courseNames{
+    width:100%;
+    height:60rpx;
+    line-height:60rpx;
+    position:absolute;
+    left:0;
+    bottom:0;
+    font-size:30rpx;
+    color:#ffffff;
+    background:rgba(0,0,0,0.6);
+    text-align:center;    
+}
+.CardDiaryInfos .courseNames .courseTexts{
+    width: 100%;height: 60rpx;
+    font-size:30rpx;
+    color: #ffffff;
+    text-align: left;
+    padding: 0 23rpx;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+
+.goodListInfos .userInfos_l{
+    line-height:50rpx;
+    height:50rpx;
+    display: inline-block;
+    width: 100%;
+    float: left;
+    padding-right: 0;
+    box-sizing: border-box;
+}
+.goodListInfos .userInfos_l .userTimes{
+    float: left;
+    font-size:28rpx;
+    color: #999999;
+    font-weight:400;
+}
+.goodListInfos .userHandle{
+    float: right;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    height:100%;
+}
+.goodListInfos .userInfos_l .userHandle{
+    float: right;
+}
+.setZan ,.reply{
+    padding: 0 15rpx;
+    box-sizing: border-box;
+}
+.setZan .clickZan,.reply .nums{
+    padding: 0 5rpx;
+    box-sizing: border-box;
+}
+.goodListInfos .userInfos_l .setZan{
+    float: left;
+    font-size:28rpx;
+    color: #999999;
+    font-weight:400;
+}
+.goodListInfos .userInfos_l .reply{
+    float: left;
+    font-size:28rpx;
+    color: #999999;
+    font-weight:400;
+}
+
+.goodListInfos .userInfos_l .setGoodBox{
+    float: right;
+    margin-left: 15rpx;
+}
+.goodListInfos .userInfos_l .setGoodBox .icons{
+    position: relative;
+    top:5rpx;
+}
+.goodListInfos .userInfos_l .setGood{
+    font-size:28rpx;
+    color: #999999;
+    font-weight:400;
+    position: relative;
+    top: -5rpx;
+}
+
+
+
+.goodListInfos .userHeads{
+    float: left;
+    margin-right: 15rpx;
+}
+.goodListInfos .userHead{
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
+    float: left;
+}
+.goodListInfos .userSex{
+    width: 18rpx;
+    height: 18rpx;
+    border-radius: 50%;
+    float: left;
+    position: relative;
+    top:52rpx;
+    left:-10rpx;
+}
+.goodListInfos .userName{
+    width:70%;
+    font-size:24rpx;
+    color: #333333;
+    float: left;
+    font-weight:bold;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.goodListInfos .userTime{
+    /* width:60%; */
+    font-size:22rpx;
+    color: #999999;
+    float: left;
+    margin-top:12rpx;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+/* 点赞人数 */
+.goodListInfos .zan{
+    width: 100%;
+    height:142rpx ;
+    background-color:#F6F6F6;
+    border-radius:12rpx;
+    margin-top:20rpx;
+    color: #D8D8D8;
+    font-size:22rpx;
+    display: inline-block;
+    padding: 10rpx 0;
+    box-sizing: border-box;
+} 
+.goodListInfos .zan .zanNum{
+    width: 90rpx;
+    height: 100%;
+    float: left;
+    text-align:center;
+    display: inline-block;
+    padding-top:13rpx;
+    box-sizing:border-box;
+}
+.goodListInfos .zan .zanNum text{
+    color: #D02F2F;
+    font-size: 28rpx;
+    display:block;
+}
+.goodListInfos .zan .zanNum .icon_zan{
+    font-size: 36rpx;
+}
+.goodListInfos .zan .zanImgs{
+    width:85%;
+    display:inline-block;
+    float:left;   
+    height: 100%;
+    overflow: hidden; 
+    padding:0 20rpx;
+    box-sizing:border-box;    
+}
+.goodListInfos .zan .zanImgs navigator{
+    display:inline-block;
+    border-radius:50%;
+    float:left;    
+    margin-right:15rpx;
+    margin-top:5px;
+}
+.goodListInfos .zan .zanImgs .imgs{
+    width:48rpx;
+    height:48rpx;
+    border-radius: 50%;
+    float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.goodListInfos .userInfos_ls{
+    width: 100%;
+    padding: 0 15rpx;
+    box-sizing: border-box;
+}
+.goodListInfos .userNames{
+    width: 100%;
+    font-size:28rpx;
+    color: #333333;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.goodListInfos .userNums{
+    font-size:22rpx;
+    color: #999999;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.CardDiary .CardDiaryUser{
+    width: 100%;
+    display:inline-block;
+    /* min-height:168rpx; */
+    background-color: #FFFFFF;
+    padding: 12rpx 24rpx;
+    box-sizing: border-box;
+}
+.CardDiaryUser .userInfos_bottom{
+    width:100%;
+    background-color: #FAFAFA;
+    float:right;
+    margin-top: 10rpx;
+    position: relative;
+    border-radius:6rpx;
+    overflow: hidden;
+}
+.CardDiaryUser .userInfos_bottom navigator{
+    width:100%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+.CardDiaryUser .courseImg{
+    width: 136rpx;
+    height: 96rpx;
+    float: left;
+    overflow: hidden;
+    margin-right: 12rpx;
+}
+.CardDiaryUser .userNamess{
+    color: #333333;
+    padding-top:12rpx;
+}
+.CardDiaryUser .userTimes{
+    color: #999999;
+}
+.CardDiaryUser .imgTexts{
+    position: absolute;
+    top:10rpx;
+    right:20rpx;  
+}
+
+.noDataBox{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align:center;
+    padding:10% 0;
+}
+.noDataBox text{
+    display: inline-block;
+    color: #999999;
+}
+
+.icon_youxiu{
+  color: #999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

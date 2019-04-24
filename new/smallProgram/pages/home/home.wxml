@@ -1,0 +1,396 @@
+<!--主页.wxml-->
+<wxs module="CardJoin" src="../../utils/appfunction.wxs"></wxs>
+<navigation id='Navigation' show-icon='{{showIcon}}' title="六品练字" bg-color='{{bgColor}}'></navigation>
+<view class="content">
+    <!-- 顶部提示 -->
+    <view class="Topinfos">
+        <!-- /pages/myRanking/myRanking 看排名-->
+        <view class="myRanking">
+            <text class="day">已坚持{{tol_days}}天</text>
+            <!-- <navigator url="/pages/myRanking/myRanking" class="ranking" hover-class="none">看排名</navigator> -->
+        </view>
+        
+        <view class="calendars">
+            <navigator url="/pages/myRanking/myRanking" class="ranking" hover-class="none">看排名</navigator>
+            <navigator url="/pages/myCardCalendar/myCardCalendar" hover-class="none">
+                <text class="iconfont icon_rili iconss"></text>
+                <text class="calendarss">日历</text>
+            </navigator>
+        </view>
+    </view>
+
+    <!-- 滑动查看更多 -->
+    <view class='RecentStudy'>
+        <view class="swiperLIst" wx:if="{{isCourse}}">
+            <scroll-view class="scroll-view_H" scroll-x="{{true}}" bindscroll="scroll" style="width: 100%">
+                <block wx:for='{{listscircle}}'  wx:key="{{index}}">
+                    <view class="listscircles" >  
+                        <navigator url="/pages/circleInfoCard/circleInfoCard?id={{listscircle[index].id}}" hover-class="none" class="imgsBox">
+                            <image class='imgs' src='{{listscircle[index].imgindex}}' ></image>
+                            <view class="imgsText">
+                                <text class="imgText" decode="{{true}}">{{listscircle[index].title}}</text>
+                                <view class="imgTexts">
+                                    <van-icon name="arrow" size="30rpx" color="#fff" custom-class="iconss"/>
+                                </view>
+                            </view>
+                            <view class="studyBox">
+                                <text decode="{{true}}">进度&nbsp;</text>
+                                <text class="studyInfos" decode="{{true}}">{{listscircle[index].progress_remark}}</text>
+                            </view>
+                        </navigator>
+                    </view>
+                </block>
+                <view class="listscircles listscirclesMore"> 
+                    <navigator hover-class='none' class="imgsBox" bind:tap="gotoCireText">
+                        <view class="moreCircle">
+                            <text class="moress">...</text>
+                            <text class="moreText">更多圈子</text>
+                        </view>
+                    </navigator>
+                </view>
+            </scroll-view>
+        </view>
+        <view wx:else>
+            <view class="WeSwiperLIst CourseRecommend">
+                <view class="weTips">
+                    <text class="weTipsTitle">大家都在</text>
+                    <view class="gotoMores" bind:tap="gotoCireText">更多
+                        <van-icon name="arrow" size="30rpx" color="#D8D8D8" custom-class="iconss"/>
+                    </view>
+                </view>
+
+                <view class="CourseListBox">
+                    <view class="CourseList" wx:for='{{listscircle}}'  wx:key="{{index}}" >
+                        <navigator url="/pages/circleInfo/circleInfo?id={{listscircle[index].id}}" >
+                            <image class='CourseImgs' src='{{listscircle[index].imgindex}}'></image>
+                            <view class="coureTitle">
+                                <text class="courseTitle_1">{{listscircle[index].title}}</text>
+                                <view class="courseTitle_2">
+                                    <text class="courseTitle_3" decode="{{true}}">{{listscircle[index].join_num}}人已加入&nbsp;|&nbsp;</text>
+                                    <text class="courseTitle_4" >{{listscircle[index].daka_num}}篇内容</text>
+                                </view>
+                            </view>
+                        </navigator>
+                    </view>
+                </view>
+                
+            </view>
+        </view>
+    </view>
+
+    <van-popup show="{{ videoShow }}" bind:close="onCloseVideo" custom-class='videoBox'>
+        <video
+            id='myVideo'
+            show-center-play-btn="{{false}}" 
+            show-fullscreen-btn="{{false}}"
+            controls="true" 
+            objectFit="cover" 
+            autoplay='{{true}}' 
+            auto-pause-if-navigate 
+            auto-pause-if-open-native 
+            src="{{videoUrl}}" 
+            binderror="videoErrorCallback" 
+            class="videos" 
+            bindended='videoEnds' 
+            bindfullscreenchange='fullscreenchange'
+            enable-play-gesture='true'
+        ></video> 
+    </van-popup>
+
+    <!-- 精选/最新 -->
+    <van-tabs active="{{active}}" color="#999999" bind:change="selectShow" line-width="0" custom-class="selectShowBox" bind:disabled="ModeSwitch" >
+
+        <!-- 单双模式切换菜单 -->
+        <view class="modeSwBox" slot="nav-right">
+            <view class="modeSwBoxbj">
+                <text class="iconfont icon_menu-s {{currentTab==1?'active':''}}" data-current="1" bind:tap="clickTab"></text>
+                <text class="iconfont icon_caidan {{currentTab==0?'active':''}}" data-current="0" bind:tap="clickTab"></text>
+            </view>
+        </view>
+
+        <!-- 精选 -->
+        <van-tab title="精选" class="Tabgood">
+            <block wx:if="{{Modes}}">
+                <!-- 双 -->
+                <view class='listHeights' >
+                    <!-- <component-scroll pulldownDistance="100" refreshPulldownText="你再往下拉试试" refreshUndoText="你松开试试" refreshLoadingText="我在努力刷新中~" loadmoreLoadingText="正在拼命的捞数据" loadmoreAllloadedText="我是有底线的" isNeedLoadmore bind:_loadmore="loadmore" bind:_refresh="refresh" bind:_scroll="scroll" allloaded="{{allloaded}}" isEmpty="{{!loading &&listRecommend.length<=0}}"> -->
+                        <view class='list'>
+                            <view class='goodList'>
+                                <view class="good_left">
+                                    <block wx:for="{{listRecommend}}" wx:key="{{index}}"  wx:for-item="vo">
+                                        <view class="goodListInfos" wx:if="{{index%2 == 0}}" >
+                                        
+                                            <block wx:if="{{listRecommend[index].intype == 2 && listRecommend[index].videodata.isvideo==1}}">
+                                                <image src='{{listRecommend[index].imageindex}}' mode='widthFix'  data-id="{{listRecommend[index].id}}" data-isjoin="{{listRecommend[index].isjoin}}" data-list="{{listRecommend[index].imageindex}}" class="courseimgBj" bindtap="playsVideo" data-url='{{listRecommend[index].videodata.videourl}}' ></image>
+                                                <image wx:if="{{ listRecommend[index].videodata.isvideo==1}}" class="playsVideo" src="../../image/iocn-play-52.png" bindtap="playsVideo" data-url='{{listRecommend[index].videodata.videourl}}' />
+                                            </block>
+                                            <block wx:else>
+                                                <image src='{{listRecommend[index].imageindex}}' mode='widthFix'   data-id="{{listRecommend[index].id}}" bindtap="imgViewByid{{listRecommend[index].intype}}"  data-isjoin="{{listRecommend[index].isjoin}}" data-list="{{listRecommend[index].imageindex}}" class="courseimgBj"></image>
+                                            </block>
+
+                                            <view class="likes"  wx:if="{{listRecommend[index].is_collection == 1}}">
+                                                <text class="iconfont icon_wodeshoucang" bind:tap="collectionButton"  data-id="{{listRecommend[index].id}}" data-iscollection="1" data-xiabiao="{{index}}" data-index="{{listRecommend[index].id}}" style="color:#D02F2F"></text>
+                                            </view> 
+                                            <view class="likes" wx:if="{{listRecommend[index].is_collection == 0}}">
+                                                <text class="iconfont icon_wodeshoucang" bind:tap="collectionButton"  data-id="{{listRecommend[index].id}}" data-iscollection="0"  data-xiabiao="{{index}}" data-index="{{listRecommend[index].id}}" ></text>
+                                            </view> 
+                                            <!-- 右下角图片张数 -->
+                                                     
+                                            <block wx:if="{{listRecommend[index].intype == 1}}">
+                                             <text class="PictureNum" wx:if="{{listRecommend[index].img_remark!=''}}">{{listRecommend[index].img_remark}}</text>  
+                                            <view class="userInfos">
+                                                <view class="userInfos_l">
+                                                    <navigator url="/pages/homePersonal/homePersonal?uid={{listRecommend[index].uid}}">
+                                                    <view class="userHeads">
+                                                        <image src="{{listRecommend[index].img_avatar}}" class="userHead" alt="头像"></image>
+                                                        <image src="/image/icon18sex{{vo.sex}}.png" class="userSex" alt="性别"></image>
+                                                    </view>
+                                                    <text class="userName">{{listRecommend[index].uname}}</text>
+                                                    <!-- <text class="userTime">{{listRecommend[index].time_remark}}</text> -->
+                                                    </navigator>
+                                                </view>
+                                                <view  wx:if="{{listRecommend[index].is_zan == 1}}"  data-id='{{listRecommend[index].id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZan" data-values="{{listRecommend[index].zan_count}}" data-iszan="1"><view class=""  style="color:red">
+                                                        <text class="iconfont icon_zan"></text>
+                                                        <text class="clickZan">{{listRecommend[index].zan_count}}</text>
+                                                    </view>
+                                                </view>
+                                                <view  wx:if="{{listRecommend[index].is_zan ==0}}" data-id='{{listRecommend[index].id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZan" data-values="{{listRecommend[index].zan_count}}" 
+                                                    data-iszan="0" >
+                                                    <view class=""  >
+                                                        <text class="iconfont icon_zan"></text>
+                                                        <text class="clickZan">{{listRecommend[index].zan_count}}</text>
+                                                    </view>
+                                                </view>
+                                            </view>
+                                            </block>
+                                            <block wx:if="{{listRecommend[index].intype  == 2}}">
+                                                <view class="userInfos" data-id="{{listRecommend[index].id}}" bindtap="imgViewByid{{listRecommend[index].intype}}" data-isjoin="{{listRecommend[index].isjoin}}">
+                                                    <view class="userInfos_ls">
+                                                        <text class="userNames">{{listRecommend[index].title}} </text>
+                                                        <text class="userNums" decode="{{true}}">{{listRecommend[index].join_num}}人已加入 &nbsp;|&nbsp;{{listRecommend[index].daka_num}}篇内容</text>
+                                                    </view>
+                                                </view>
+                                            </block>
+                                        </view>
+                                        
+                                    </block>
+                                </view>
+                                <view class="good_right">
+                                    <block wx:for="{{listRecommend}}" wx:key="{{index}}">
+                                        <view class="goodListInfos" wx:if="{{index%2 == 1}}">
+                                    
+                                            <block wx:if="{{listRecommend[index].intype == 2 && listRecommend[index].videodata.isvideo==1}}">
+                                                <image src='{{listRecommend[index].imageindex}}' mode='widthFix' bindtap="playsVideo"  data-id="{{listRecommend[index].id}}" data-isjoin="{{listRecommend[index].isjoin}}" data-url='{{listRecommend[index].videodata.videourl}}' class="courseimgBj"></image>
+                                                <image  class="playsVideo" src="../../image/iocn-play-52.png" bindtap="playsVideo" data-url='{{listRecommend[index].videodata.videourl}}' />
+                                            </block>
+                                            <block wx:else>
+                                                <image src='{{listRecommend[index].imageindex}}' mode='widthFix'   data-id="{{listRecommend[index].id}}" bindtap="imgViewByid{{listRecommend[index].intype}}"  data-isjoin="{{listRecommend[index].isjoin}}" data-list="{{listRecommend[index].imageindex}}" class="courseimgBj"></image>
+                                            </block>
+
+
+                                            <!-- <image src='{{listRecommend[index].imageindex}}' mode='widthFix' bindtap="imgViewByid{{listRecommend[index].intype}}"  data-id="{{listRecommend[index].id}}" data-isjoin="{{listRecommend[index].isjoin}}" class="courseimgBj"></image>
+                                            
+                                            <image wx:if="{{listRecommend[index].intype == 2 && listRecommend[index].videodata.isvideo==1}}" class="playsVideo" src="../../image/iocn-play-52.png" bindtap="playsVideo" data-url='{{listRecommend[index].videodata.videourl}}' /> -->
+
+                                            <view class="likes"  wx:if="{{listRecommend[index].is_collection == 1}}">
+                                            <text class="iconfont icon_wodeshoucang"  bind:tap="collectionButton"  data-id="{{listRecommend[index].id}}" data-iscollection="1" data-xiabiao="{{index}}" data-index="{{listRecommend[index].id}}" style="color:#D02F2F" ></text>
+                                            </view> 
+                                            <view class="likes"  wx:if="{{listRecommend[index].is_collection == 0}}">
+                                            <text class="iconfont icon_wodeshoucang" bind:tap="collectionButton"  data-id="{{listRecommend[index].id}}" data-iscollection="0"  data-xiabiao="{{index}}" data-index="{{listRecommend[index].id}}" ></text>
+                                            </view>   
+                                            <!-- 右下角图片张数 -->
+                                          
+
+                                            <block wx:if="{{listRecommend[index].intype == 1}}">
+                                               <text class="PictureNum" wx:if="{{listRecommend[index].img_remark!=''}}">{{listRecommend[index].img_remark}}</text>  
+                                            <view class="userInfos">
+                                                <view class="userInfos_l">
+                                                    <navigator url="/pages/homePersonal/homePersonal?uid={{listRecommend[index].uid}}">
+                                                    <view class="userHeads">
+                                                        <image src="{{listRecommend[index].img_avatar}}" class="userHead" alt="头像"></image>
+                                                        <image src="/image/icon18sex{{listRecommend[index].sex}}.png" class="userSex" alt="性别"></image>
+                                                    </view>
+                                                    <text class="userName">{{listRecommend[index].uname
+                                                }} </text>
+                                                    <!-- <text class="userTime">{{listRecommend[index].time_remark}} </text> -->
+                                                    </navigator>
+                                                </view>
+                                                <view  wx:if="{{listRecommend[index].is_zan == 1}}"  data-id='{{listRecommend[index].id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZan" data-values="{{listRecommend[index].zan_count}}" data-iszan="1"><view class=""  style="color:red">
+                                                        <text class="iconfont icon_zan"></text>
+                                                        <text class="clickZan">{{listRecommend[index].zan_count}}</text>
+                                                    </view>
+                                                </view>
+                                                <view  wx:if="{{listRecommend[index].is_zan ==0}}" data-id='{{listRecommend[index].id}}' data-xiabiao="{{index}}" class="zan" bindtap="handleZan" data-values="{{listRecommend[index].zan_count}}" 
+                                                    data-iszan="0" >
+                                                    <view class=""  >
+                                                        <text class="iconfont icon_zan"></text>
+                                                        <text class="clickZan">{{listRecommend[index].zan_count}}</text>
+                                                    </view>
+                                                </view>
+                                            </view>
+                                            </block>
+
+                                            <block wx:if="{{listRecommend[index].intype == 2}}">
+                                            <view class="userInfos" data-id="{{listRecommend[index].id}}" bindtap="imgViewByid{{listRecommend[index].intype}}" data-isjoin="{{listRecommend[index].isjoin}}">
+                                                <view class="userInfos_ls">
+                                                    <text class="userNames">{{listRecommend[index].title}} </text>
+                                                    <text class="userNums" decode="{{true}}">{{listRecommend[index].join_num}}人已加入 &nbsp;|&nbsp;{{listRecommend[index].daka_num}}篇内容</text>
+                                                </view>
+                                            </view>
+                                            </block>
+
+
+                                            </view>
+
+                                                <!-- <view class="userInfos">
+                                                <view class="userInfos_ls">
+                                                    <text class="userNames">aaa </text>
+                                                    <text class="userNums" decode="{{true}}">1.28w人已加入 &nbsp;|&nbsp;345篇内容</text>
+                                                </view>
+                                            </view> -->
+                                    </block>
+                                </view>
+
+                            </view> 
+                        </view>
+                    <!-- </component-scroll> -->
+                </view>
+            </block>
+            <block wx:else>
+                <!-- 单 -->
+                <view class='listHeights CardDiary'>
+     
+                    
+                    <block wx:for="{{listRecommend}}"  wx:key wx:for-index="index2" wx:for-item="voindex">
+                    <view class="CardDiaryInfos"  wx:if="{{voindex.intype==1}}">
+                        <image class='imgs' mode="aspectFill" src='{{voindex.imageindex2}}'  bindtap="imgViewByid1" data-id="{{voindex.id}}" data-isjoin="{{voindex.isjoin}}" ></image>
+                        <view class="likes"  wx:if="{{voindex.is_collection == 1}}">
+                            <text class="iconfont icon_wodeshoucang" bind:tap="collectionButton"  data-id="{{voindex.id}}" data-iscollection="1"  data-xiabiao="{{index2}}"  data-index="{{voindex.id}}" style="color:#D02F2F"></text>
+                        </view> 
+                        <view class="likes"  wx:if="{{voindex.is_collection == 0}}">
+                            <text class="iconfont icon_wodeshoucang" bind:tap="collectionButton"  data-id="{{voindex.id}}" data-iscollection="0"  data-xiabiao="{{index2}}" data-index="{{voindex.id}}" ></text>
+                        </view>   
+ 
+                        <view class="CardDiaryUser goodListInfos">
+                            <!-- 右下角图片张数 -->
+                            <!-- <text class="PictureNum">1/9</text>   -->
+                            <text class="PictureNum" wx:if="{{voindex.img_remark!=''}}">{{voindex.img_remark}}</text> 
+                            <view class="userInfos_l">
+                                <navigator hover-class="none" url="/pages/homePersonal/homePersonal?uid={{voindex.uid}}">
+                                <view class="userHeads">
+                                    <image src="{{voindex.img_avatar}}" class="userHead" alt="头像"></image>
+                                    <image alt="性别" class='userSex' src='/image/icon18sex{{voindex.sex}}.png'></image>
+                                </view>
+                                <text class="userName">{{voindex.uname}} </text>
+                                <!-- <text class="userTime" decode="{{true}}">{{voindex.time_remark}}&nbsp;&nbsp;已打卡{{voindex.tol_days}} 天</text> -->
+                                <text class="userTime" decode="{{true}}">已打卡{{voindex.tol_days}} 天</text>
+                                </navigator>
+                            </view>
+
+                            <view class="userHandle">
+                                <!-- 赞 -->
+                                <view  wx:if="{{voindex.is_zan ==0}}" data-id='{{voindex.id}}' data-xiabiao="{{index2}}" class="zan" bindtap="handleZan" data-values="{{voindex.zan_count}}" data-iszan="0" >
+                                    <view class="">
+                                        <text class="iconfont icon_zan"></text>
+                                        <text class="nums">{{voindex.zan_count}}</text>
+                                    </view>
+                                </view>
+                                <view  wx:if="{{voindex.is_zan ==1}}" data-id='{{voindex.id}}' data-xiabiao="{{index2}}" class="zan" bindtap="handleZan" data-values="{{voindex.zan_count}}" data-iszan="1" style="color:red" >
+                                    <view class="">
+                                        <text class="iconfont icon_zan"></text>
+                                        <text class="nums">{{voindex.zan_count}}</text>
+                                    </view>
+                                </view>
+        
+                            </view>
+
+                            <view class="userInfos_bottom" wx:if="{{voindex.cid>0}}">
+                                <navigator hover-class="none" url="/pages/circleInfo{{voindex.circleinfo.isjoin_Card}}/circleInfo{{voindex.circleinfo.isjoin_Card}}?id={{voindex.cid}}">
+                                    <image src="{{voindex.circleinfo.imgindex}}" class="courseImg" alt="推荐图"></image>
+                                    <text class="userName userNamess">{{voindex.circleinfo.title}}</text>
+                                    <text class="userTime userTimes" >{{voindex.circleinfo.join_num}}人已加入</text>
+                                    <!-- <text class="imgTexts">></text> -->
+                                    <van-icon name="arrow" custom-style="position:relative;top:-18rpx;right:0;float:right;color:#D8D8D8;"/>
+                                </navigator>
+                            </view>
+                        </view>
+                    </view>
+                    <!-- 圈子推荐 -->
+                    <view class="WeSwiperLIst CourseRecommend circleReco circleReco2{{index2%2}}"  wx:if="{{voindex.intype==2}}">
+                        <block wx:if="{{index2%2 == 0}}">
+                            <view class="weTips">
+                                <text class="weTipsTitle">精选圈子</text>
+                                <view class="gotoMores" bind:tap="gotoCireText">更多
+                                    <van-icon name="arrow" size="30rpx" color="#D8D8D8" custom-class="iconss"/>
+                                </view>
+                            </view>
+                        </block>
+                        <view class="CourseListBox">
+                            <view class="CourseList">
+                                
+                                <block wx:if="{{voindex.intype == 2 && voindex.videodata.isvideo==1}}">
+                                    <image class="playsVideo" src="../../image/iocn-play-52.png" bindtap="playsVideo" data-url='{{voindex.videodata.videourl}}' />
+                                    <image class='CourseImgs' src='{{voindex.imageindex}}' bindtap="playsVideo" data-url='{{voindex.videodata.videourl}}'></image>
+                                    <navigator hover-class='none' url="/pages/circleInfo{{CardJoin.isJoin(voindex.isjoin)}}/circleInfo{{CardJoin.isJoin(voindex.isjoin)}}?id={{voindex.id}}" >
+                                        <view class="coureTitle">
+                                            <text class="courseTitle_1">{{voindex.title}}</text>
+                                            <view class="courseTitle_2">
+                                                <text class="courseTitle_3" decode="{{true}}">{{voindex.join_num}}人已加入&nbsp;|&nbsp;</text>
+                                                <text class="courseTitle_4" >{{voindex.daka_num}}篇内容</text>
+                                            </view>
+                                        </view>
+                                    </navigator>
+                                </block>
+                                <block wx:else>
+                                    <navigator hover-class='none' url="/pages/circleInfo{{CardJoin.isJoin(voindex.isjoin)}}/circleInfo{{CardJoin.isJoin(voindex.isjoin)}}?id={{voindex.id}}" >
+                                        <image class='CourseImgs' src='{{voindex.imageindex}}'></image>
+                                        <view class="coureTitle">
+                                            <text class="courseTitle_1">{{voindex.title}}</text>
+                                            <view class="courseTitle_2">
+                                                <text class="courseTitle_3" decode="{{true}}">{{voindex.join_num}}人已加入&nbsp;|&nbsp;</text>
+                                                <text class="courseTitle_4" >{{voindex.daka_num}}篇内容</text>
+                                            </view>
+                                        </view>
+                                    </navigator>
+                                </block>
+                
+                            </view>
+                        </view>
+                    </view>
+                    </block>
+
+                </view>
+            </block>
+
+            <block wx:if="{{isShows}}">
+                <view class='my-scroll-msgModule my-scroll-loadmoreModule'>
+                    <image wx:if="{{isloading}}" class='my-scroll-msgModule-icon my-scroll-msgModule-icon-loading' src='../../components/component-scroll/image/loading.png'></image>
+                    <text class='my-scroll-msgModule-text'>{{isShowsText}}</text>
+                </view>
+            </block>
+        </van-tab>
+
+                                            
+
+
+
+
+                    
+
+
+
+                  
+
+
+
+    </van-tabs>
+
+    <!-- 返回顶部 -->
+    <block wx:if="{{gotopsFlag}}">
+        <view class="goTops" bind:tap="gotops">
+            <text class="iconfont icon_return-top"></text>
+        </view>
+    </block>
+
+</view>
+

@@ -1,0 +1,139 @@
+/* pages/friendChat/friendChat.wxss */
+
+ page{
+  background:rgba(246,246,246,1);
+}
+.container{
+  display: flex;
+  margin: 20rpx 80rpx 50rpx 30rpx;
+  position: relative;
+}
+.content{
+  /* width: 70%; */
+  margin-left: 30rpx;
+}
+.avatar{
+  min-width: 80rpx;
+  height: 80rpx;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+.bubble{
+  /* width: 70%; */
+  background: rgba(255,255,255,1);
+  border-radius: 6rpx;
+  padding: 5rpx;
+  padding-left: 25rpx;
+  margin-top: 10rpx;
+  /*  */
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  line-height: 40rpx;
+  position: relative;
+}
+.arrow{
+   position: absolute;
+	 width: 0px;
+	 height: 0px;
+	 line-height: 0px;/*为了防止ie下出现题型*/
+	 border-bottom: 7px solid rgba(255,255,255,1);
+	 border-left: 7px solid rgba(246,246,246,1);
+	 border-right: 7px solid rgba(246,246,246,1);
+   transform: rotate(-90deg);
+   left: -10px;
+   top: 11px;
+   display: inline;
+}
+.time{
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  margin-top: 13rpx;
+}
+/* 自发消息样式 */
+.myAvatar{
+  min-width: 80rpx;
+  height: 80rpx;
+  border: 1px solid black;
+  border-radius: 50%;
+  position: absolute;
+  right:-30rpx;
+}
+.myContent{
+  /* width: 70%; */
+  margin-left: 30rpx;
+}
+.myBubble{
+  /* width: 70%; */
+  background: rgba(208,47,47,1);
+  border-radius: 6rpx;
+  padding: 5px;
+  padding-left: 25rpx;
+  margin-top: 10rpx;
+  /*  */
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:#ffffff;
+  line-height: 40rpx;
+  position: absolute;
+  right: 80rpx;
+}
+.myArrow{
+   position: absolute;
+	 width: 0px;
+	 height: 0px;
+	 line-height: 0px;/*为了防止ie下出现题型*/
+	 border-bottom: 7px solid rgba(208,47,47,1);
+	 border-left: 7px solid rgba(246,246,246,1);
+	 border-right: 7px solid rgba(246,246,246,1);
+   transform: rotate(90deg);
+   right: -10px;
+   top: 11px;
+   display: inline;
+}
+.myTime{
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  margin-top: 13rpx;
+  position: absolute;
+  right: 150rpx;
+  top:110rpx;
+}
+/* 输入框样式 */
+.inputBox{
+  width: 100%;
+  /* height: 96rpx; */
+  padding: 15rpx 0;
+  background: #ffffff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.input{
+  width:70%;
+  border-radius:36rpx;
+  border:1px solid rgba(216,216,216,1);
+  padding:35rpx 10rpx;
+  margin-left: 20rpx;
+}
+.sendBtn{
+  width: 20%;
+  height: 72rpx;
+  text-align: center;
+  line-height: 72rpx;
+  background:rgba(216,216,216,1);
+  border-radius:36rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}

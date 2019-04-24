@@ -1,0 +1,192 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="打卡详情" bg-color='{{bgColor}}'>
+</navigation>
+<view class="content">
+
+    <van-dialog id="van-dialog" />
+
+    <!-- <view class="noDataBox" wx:if="{{daka.length==0}}">
+        <text>{{test}}</text>
+    </view> -->
+    <view class="container" id="b_page">
+
+        <!-- 圈子 -->
+        <block wx:if="{{oneSubmitdata.cid>0}}">
+            <view class="circleBox" >
+                <navigator hover-class="none" url="/pages/circleInfo{{oneSubmitdata.circleinfo.card}}/circleInfo{{oneSubmitdata.circleinfo.card}}?id={{oneSubmitdata.circleinfo.id}}">
+                    <image src="{{oneSubmitdata.circleinfo.imgindex}}" class="courseImg"></image>
+                    <text class="userName">{{oneSubmitdata.circleinfo.title}}</text>
+                    <text class="userTime" decode='{{true}}'>{{oneSubmitdata.circleinfo.join_num}}人加入&nbsp;</text>
+
+                    <block wx:if="{{oneSubmitdata.circleinfo.isjoin==0}}">
+                       <view class="gotoCircle" data-circle="{{oneSubmitdata.cid}}" data-id="{{oneSubmitdata.id}}" bind:tap="gotoCireBtns">{{circleText}}</view>
+                    </block>
+                    <!-- 加入圈子 -->
+                    <block wx:else >
+                        
+                         <van-icon name="arrow" custom-style="position:relative;top:-5rpx;right:0;float:right;color:#D8D8D8;"/>
+                    </block>
+
+                </navigator>
+            </view>
+        </block>
+
+        <!-- 打卡详情信息 -->
+        <view class="CardDiaryInfos">
+            <navigator url="/pages/homePersonal/homePersonal?uid={{oneSubmitdata.uid}}" hover-class="none">
+            <view class="userHead">
+                <image src="{{oneSubmitdata.img_avatar}}" class="userHeadImg"></image>
+                <image src="../../image/icon18sex{{oneSubmitdata.sex}}.png" class="userSex"></image>
+                <text class="userName">{{oneSubmitdata.uname}}</text>
+                <text class="userTime">{{oneSubmitdata.time_remark}}</text>
+            </view>
+            </navigator>
+            <view class="userContent">
+                {{oneSubmitdata.content}}
+            </view>
+            <view class="CardDiaryUserTop">
+                <image class='imgs' src='{{oneSubmitdata.imageindex}}'  bindtap="imgViewByidX"   data-id="{{oneSubmitdata.id}}" mode="aspectFill"></image>
+                <!-- 收藏 -->
+                <view class="likes"  wx:if="{{oneSubmitdata.iscollection == 1}}">
+                    <text class="iconfont icon_wodeshoucang" bind:tap="collectionButton"  data-id="{{oneSubmitdata.id}}" data-iscollection="1"  data-index="{{oneSubmitdata[index].id}}" style="color:#D02F2F"></text>
+                </view> 
+                <view class="likes"  wx:else>
+                    <text class="iconfont icon_wodeshoucang" bind:tap="collectionButton"  data-id="{{oneSubmitdata.id}}" data-iscollection="0"  data-xiabiao="{{index}}" data-index="{{oneSubmitdata.id}}" ></text>
+                </view> 
+                <!-- 右下角图片张数 -->
+                <block wx:if="{{oneSubmitdata.img_remark!=''}}"><text class="PictureNum">{{oneSubmitdata.img_remark}}</text></block>
+            </view>
+            <view class="CardDiaryUser goodListInfos">
+                <view class="userInfos_l">
+                    <text class="userTimes">已坚持{{oneSubmitdata.tol_days}}天</text>
+                    <view class="userHandle">
+
+                        <!-- 点赞 -->
+                        <block wx:if='{{oneSubmitdata.ispraise==1}}'>
+                            <view class="setZan" bindtap="handleZanX" data-iszan="1" data-id="{{oneSubmitdata.id}}}" data-values="{{oneSubmitdata.zan_count}}">
+                                <form bindsubmit="getUsersFormid_2sk" report-submit='true' >
+                                    <button form-type="submit" class='getUsersFormid_2sk_er3'>
+                                        <view style="color:red" >
+                                            <text class="iconfont icon_zan"></text>
+                                            <text class="clickZan">{{oneSubmitdata.zan_count}}</text>
+                                        </view>
+                                    </button>
+                                </form>
+                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class="setZan" bindtap="handleZanX" data-iszan="0" data-id="{{oneSubmitdata.id}}}"  data-values="{{oneSubmitdata.zan_count}}">
+                                <form bindsubmit="getUsersFormid_2sk" report-submit='true' >
+                                    <button form-type="submit" class='getUsersFormid_2sk_er3'>
+                                        <view style="color:#999999">
+                                            <text class="iconfont icon_zan"></text>
+                                            <text class="clickZan">{{oneSubmitdata.zan_count}}</text>
+                                        </view>
+                                    </button>
+                                </form>
+                            </view>
+                        </block>
+
+                        <!-- 回复 -->
+                        <view bind:tap="userSQf" class="reply" >
+                            <form bindsubmit="getUsersFormid_2sk" report-submit='true' >
+                                <button form-type="submit" class='getUsersFormid_2sk_er3'>
+                                    <text class="iconfont icon_huifu"></text>
+                                    <text class="nums">{{oneSubmitdata.commentcount}}</text>
+                               </button>
+                            </form>
+                        </view>
+
+                    </view>
+                </view>
+                <!-- <block wx:if="{{oneSubmitdata.cid>0}}">
+                <view class="userInfos_center">
+                    <navigator url="/pages/circleInfoCardAllInfo/circleInfoCardAllInfo?id={{oneSubmitdata.practiseinfo.id}}">
+                        <image src="{{oneSubmitdata.practiseinfo.imgindex}}" class="courseImg"></image>
+                        <text class="userName userNamess">{{oneSubmitdata.practiseinfo.practise_name}}</text>
+                        <text class="userTime userTimes" >{{oneSubmitdata.practiseinfo.daka_num}}人已打卡</text>
+                        <van-icon name="arrow" custom-style="position:relative;top:-6px;right:0;float:right;color:#D8D8D8;"/>
+                    </navigator>
+                </view>
+                </block> -->
+                <!-- <view class="userTeacher">
+                    <view class="userTeacherT">
+                        <image src="https://test.liupinshuyuan.com/data/upload/2018/0828/13/5b84deee91857.png" class="imgs"></image>
+                        <text class="teacher">曾老师</text>
+                        <text class="grade">82</text>
+                    </view>
+                    <view class="userTeacherB">
+                        今天这两幅作品还是不错的啊，感觉到了瓶颈那应该 是要有突破了啊！只要坚持，就会有一个质的飞跃。
+                    </view>
+                </view> -->
+                <!-- 回复区 -->
+                <view  wx:if="{{oneSubmitdata.zan_avatar!=null||oneSubmitdata.comments!=null}}" class="Reply">
+                    <view wx:if="{{oneSubmitdata.zan_avatar!=null}}" class="replyImg">
+                        <block wx:for="{{oneSubmitdata.zan_avatar}}"  wx:key="index2g"  wx:for-item="vo">
+                            <navigator class="urls" url="/pages/homePersonal/homePersonal?uid={{vo.uid}}" >
+                                <image src="{{vo.avatar}}" class="headimgs"></image>
+                            </navigator>
+                        </block>
+                    </view>
+                    <view  wx:if="{{oneSubmitdata.comments!=null}}" class="replylist">
+                        <view class="replyToBox">
+                            <block wx:for="{{oneSubmitdata.comments}}" wx:key="index" wx:for-item="vo">
+                                <view class="userHeads">
+                                   <navigator class="urls"  url="/pages/homePersonal/homePersonal?uid={{vo.uid}}" > <view class="userHeadbox">
+                                    <image src="{{vo.avatar}}" class="userHeadImg"></image>
+                                    <image src="../../image/icon18sex{{vo.sex}}.png" class="userSex"></image>
+                                    </view></navigator>
+                                    <navigator url="/pages/homePersonal/homePersonal?uid={{vo.uid}}" > <text class="userName">{{vo.uname}}</text></navigator>
+                              
+                                 <view bind:tap="replyToUser"   data-type="1"   data-reviewsid="{{vo.reviewsid}}"  data-commentid="{{vo.commentid}}" data-postid="{{vo.id}}"   data-uname="{{vo.uname}}" data-uid="{{vo.uid}}" ><view class="userTime"><block wx:if="{{vo.to_com_uid>0}}">回复
+                                 <view class="replyTo">{{vo.replay_uname}}</view></block>
+                                  {{vo.content}}</view>
+                                    </view>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+
+            </view>
+        </view>
+
+        <!-- 评论回复 -->
+        <view class="replayBox" style="bottom:{{keyboardH}}px">  
+            <!-- <text class="replayP">{{placeholderText}}</text> -->
+            <textarea 
+                class="textHeight2"
+                placeholder-class='placeholders'
+                value="{{ contentA }}"
+                focus="{{isfocus}}"
+                name="content"
+                placeholder="{{placeTitle}}" 
+                bindfocus='bindFocus'
+                bindblur='bindBlur'
+                bindinput='bindinput'
+                bindlinechange='bindlinechange'
+                fixed='true'
+                maxlength='254'
+                adjust-position='{{false}}'
+                cursor-spacing='20'
+            />
+            <block wx:if="{{contentA==''}}">
+                <van-button data-postid="0" data-hid="{{oneSubmitdata.id}}" round size="small" type="primary" custom-class='noSendBtn'>发送</van-button>
+            </block>
+            <block wx:else>
+                <van-button  bindtap="commentSending"  data-postid="0" data-hid="{{oneSubmitdata.id}}"  round size="small" type="primary" custom-class='sendBtn'>发送</van-button>    
+            </block>
+
+        </view>
+    </view>
+
+</view>
+
+
+
+
+
+
+
+
+
+

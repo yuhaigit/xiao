@@ -1,0 +1,43 @@
+<!--个人主页.wxml-->
+
+<navigation id='Navigation' show-icon='{{showIcon}}' title="我的圈子" bg-color='{{bgColor}}'></navigation>
+<view class="content">
+
+    <view class="container">
+        <view class="CircleListBox">
+            <view wx:if="{{circle.length==0}}" class="noDataBox">
+                <text>{{test}}</text>
+            </view>
+            <!--<component-scroll pulldownDistance="100" refreshPulldownText="你再往下拉试试" refreshUndoText="你松开试试" refreshLoadingText="我在努力刷新中~" loadmoreLoadingText="正在拼命的捞数据" loadmoreAllloadedText="我是有底线的" isNeedLoadmore bind:_loadmore="loadmore" bind:_refresh="refresh"
+                allloaded="{{allloaded}}" isEmpty="{{!loading &&list.length<=0}}">-->
+
+                <van-cell-group custom-class="CircleList" wx:else>
+            
+                    <van-cell wx:for='{{circle}}' wx:key="{{index}}"   center="true" url="/pages/circleInfoCard/circleInfoCard?id={{circle[index].id}}">
+                     <view slot="title"  >
+                            <view class="van-cell-text CircleListImg">
+                                <image src="{{circle[index].cover}}" class="imgs" alt="推荐图"></image>
+                                <text class="userName">{{circle[index].title}}</text>
+                                <text class="userTime" decode="{{true}}">今日{{circle[index].count}}人已完成练习&nbsp;</text>
+                            </view>
+                     </view>
+                        <view slot="right-icon" wx:if="{{circle[index].lianxi == 0}}">
+                            <text class="textRed">去练习</text>
+                        </view>
+                        <view slot="right-icon" wx:if="{{circle[index].lianxi == 1}}">
+                            <text>已打卡</text>
+                        </view>
+
+                    </van-cell>
+        
+                </van-cell-group>
+
+            <!--</component-scroll>-->
+
+
+            
+        </view>
+
+    </view>
+
+</view>

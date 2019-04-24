@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "navigation": "/components/navigationNoReturn/navigation"
+    }
+    
+}

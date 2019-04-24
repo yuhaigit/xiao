@@ -1,0 +1,708 @@
+/* 顶部导航栏 */
+.content{
+    width: 100%;
+}
+
+.container{
+    width: 100%;
+    height:100%;
+    background-color:#F6F6F6;
+}
+
+/* 弹窗 */
+/* .van-dialog__message text{
+    font-size:36rpx;
+    color: #999999;
+    font-weight:500;
+}
+.van-dialog__cancel {
+    color:#999999!important;   
+}
+.van-dialog__confirm {
+    color:#333333!important;
+} */
+
+
+/* .UpText{
+    width:100%;
+    display:inline-block;
+    margin:0 auto;
+    padding:0 20%;
+    box-sizing:border-box;
+    height:400rpx;
+}
+.UpText .title{
+    font-size:36rpx;
+    font-weight:bold;
+    text-align: center;
+    color: #999999;
+    padding-bottom:50rpx;
+    padding-top:40rpx;    
+}
+.UpText text{
+    width: 100%;
+    font-size:30rpx;
+    color: #333333;
+    font-weight:400;
+    display:block;
+    margin-bottom: 15rpx;
+    line-height: 70rpx;
+} */
+
+
+
+
+
+
+.page-bodys{
+    width: 100%;
+    background-color: #fff;
+}
+
+.chapter{
+    width: 100%;
+    height: 500rpx;
+    background-color: #ffffff;
+    padding:20rpx 30rpx;
+    box-sizing: border-box;
+}
+.chapter .title{
+    width: 100%;
+    height:56rpx;
+    line-height:56rpx;    
+}
+.chapter .title .titles{
+    font-size:36rpx;
+    color: #333333;
+    float: left;
+}
+.chapter .title .titles_r{
+    float: right;
+}   
+.chapter .title .titlesAll{
+    color:#D02F2F;
+    font-size:28rpx;
+    position:relative;
+    top:-5rpx;
+    font-weight:500;    
+}
+.chapter .title .CircleInfos_r{
+    font-size: 28rpx;
+    position:relative; 
+}
+.chapter .content{
+    width: 100%;
+    height: 404rpx;
+    text-align: center;
+    position: relative;
+    border-radius:12rpx;
+    overflow: hidden;
+}
+.chapter .content .courseImgs{
+    width: 100%;
+    height: 100%;
+}
+.chapter .content .courseNames{
+    width: 100%;height: 60rpx;
+    line-height:60rpx;
+    position:  absolute;
+    left: 0;
+    bottom: 58rpx;
+    font-size:30rpx;
+    color: #ffffff;
+    background:rgba(0,0,0,0.6);
+    text-align: center;
+}
+.chapter .content .courseNames .courseTexts{
+    width: 100%;height: 60rpx;
+    font-size:30rpx;
+    color: #ffffff;
+    text-align: left;
+    padding: 0 23rpx;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.chapter .content navigator{
+    font-size:30rpx;
+    color: #333333;
+}
+
+/* 我的练习 */
+.chapters{
+    background-color: #ffffff;
+    padding:20rpx 30rpx;
+    box-sizing: border-box;
+}
+.chapters .content{
+    width: 100%;
+    height: 400rpx;
+    background-color: #F6F6F6;
+    box-sizing: border-box;
+    overflow: unset;
+    margin-top: 5rpx;
+}
+.chapters .title .tips{
+    font-size:28rpx;
+    color: #999999;
+    font-weight:500;
+}
+
+
+
+.gallery {    
+    width:100%;
+    margin: 0 auto;
+    display: flex;    
+    justify-content: flex-start;    
+    flex-wrap: wrap;
+    background: #fffaf0;
+}
+  /*每张图片所占容器*/
+.item-ot{
+    margin:0 auto;
+    width: 100%;
+    height: 401rpx;
+    background-color: #F6F6F6;
+}
+.item {    
+    position:relative;
+    margin:0 auto;
+    width: 100%;
+    height: 100%;
+    background-color: #F6F6F6;
+}
+.itemImg{
+    position: absolute;
+    left: 0;
+    top:0; 
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* z-index:3; */
+}
+.itemImg image{
+    width: 100%;
+    height: 100%;
+}
+/*add按钮*/
+.addIcon{
+    position:absolute;
+    left: 0;
+    top: 0; 
+    width: 100%;
+    height: 401rpx;
+    text-align:center;
+    /* line-height:401rpx; */
+    font-size:80rpx;
+    background: #F6F6F6;
+    color: #999;
+    z-index:2;
+}
+.addIcon .upImgs{
+    width: 96rpx;
+    height: 96rpx;
+    position:relative; 
+    top:123rpx;
+}
+.addIcon .upImgText{
+    width:100%;
+    font-size:26rpx;
+    color: #999999;
+    font-weight:400;
+    position:relative;
+    display:inline-block;
+    top:60rpx;
+}
+
+
+/*删除按钮*/
+.delete {    
+    position:absolute;
+    right:0;
+    top:0;
+    opacity:1;
+    height: 36rpx;
+    font-size:22rpx;
+    font-weight:700;
+    padding:0 8rpx 0 10rpx;
+    color: #999;
+}
+.delete .iconss{
+    position: relative;
+    top: 10rpx;
+}
+.itemTxt{
+    width: 100%;
+    text-align: center;
+    font-size: 24rpx;
+    color: #999999;
+    margin-bottom:20rpx;
+    font-weight: 500;
+}
+.uploadFinish{
+    width: 100%;
+    float:left;
+    margin-top:47rpx;
+}
+.upBtns{
+    width: 100%;
+    display:flex;
+    justify-content:space-between;  
+    align-items:center;  
+}
+.upBtns button{
+    padding: 0 !important;  
+    margin:0 !important; 
+    height:96rpx;
+    line-height:96rpx;
+}  
+.upBtns button::after{
+    border: unset;
+}  
+.upBtns .uploadFinishBtn{
+    background:linear-gradient(141deg,rgba(234,92,92,1) 0%,rgba(208,47,47,1) 100%);
+    color: #fff;
+    display: block;
+    width: 70%;
+    text-align: center;
+    font-size: 32rpx;
+    border-radius: 48rpx;
+}
+.upBtns .uploadFinishBtns{
+    color: #D8D8D8;
+    background: #F6F6F6;
+}
+.upBtns .delBtn{
+    width: 27%;
+    border-radius:48rpx;
+    font-size:32rpx;
+    color: #BCA47C;
+    font-weight:400;
+    border:2rpx solid rgba(188,164,124,1);
+    background-color: #ffffff;
+}
+.upBtns .delBtns{
+    color: #F6F6F6;
+    border:2rpx solid rgba(246,246,246,1);
+    background-color: #ffffff;
+}
+
+.upBtns .gradesBox{
+    width:50%;
+    text-align:left;
+    overflow: hidden;
+}
+.upBtns .t{
+    font-size:28rpx;
+    color: #D0021B;
+    font-weight:500;
+    position:relative;
+    top:-9rpx;    
+    margin-right:15rpx;
+}
+.upBtns .grades{
+    width: 50%;
+    font-size:60rpx;
+    color: #D0021B;
+    font-weight:bold;
+}
+.upBtns .againUploadFinishBtn{
+    width: 50%;
+    border-radius: 48rpx;
+    color: #BCA47C;
+    border:2rpx solid rgba(188,164,124,1);
+    background-color: #ffffff;
+    font-size:32rpx;
+    font-weight:400;
+}
+
+/* 弹窗 */
+.TipsShowBox{
+    width: 100%;
+    height: 100%;
+}
+.TipsShow{
+    width: 100%;
+    height: 100%;
+}
+.TipsShow .tipsImg{
+    width:90%;
+    height:6747rpx;
+    display:flex;
+    margin:0 auto;
+}
+
+
+
+
+
+
+
+.tipTitle{
+    text-align: center;
+    font-size: 30rpx;
+    color: #f6a29d;
+    font-weight: 700;
+    width: 100%;
+    margin: 50rpx 0;
+}
+.boxStyle{
+    width:300rpx;
+    height:100rpx;
+    position:absolute;
+    bottom:-1rpx;
+    border-radius:50%;
+    box-shadow:0rpx 10rpx 100rpx #fddbd9;
+    margin-left:35rpx;
+}
+
+
+/* ======================================= */
+.wx-content-info{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    align-items: center;
+    flex-direction: column;
+    background:#000;
+    z-index:9;
+}
+  
+.cropper-config{
+    position:absolute;
+    z-index:100;
+    bottom:0;
+    height:50px;
+    background:black;
+    border-top: 1rpx solid #333333;
+    width:100%;
+    line-height:50px;
+    font-size:30rpx;
+    text-align:center;
+    color:white;  
+    display: flex;
+    justify-content: space-around;  
+}
+.cropper-config .CancelImg{
+    width: 50%;height: 100%;
+}
+.cropper-config .getImageInfo{
+    width: 50%;height: 100%;
+}
+
+
+
+
+
+
+
+  
+.cropper-content{
+    min-height: 750rpx;
+    width: 100%;
+}
+
+    .wx-corpper{
+        position: relative;
+        overflow: hidden;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        box-sizing: border-box;
+
+
+        position:absolute;
+        top:0;
+        left:0;
+        margin:auto;
+        bottom:0;
+    
+
+    }
+  
+  .wx-corpper-content{
+    position: relative;
+  }
+  
+  .wx-corpper-content image {
+    display: block;
+    width: 100%;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 100%;
+    min-height: 0 !important;
+    max-height: none !important;
+    image-orientation: 0deg !important;
+    margin: 0 auto;
+  }
+  
+  /* 移动图片效果 */
+  .wx-cropper-drag-box{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: move;
+    background: rgba(0,0,0,0.6);
+    z-index: 1;
+  }
+  
+  /* 内部的信息 */
+  .wx-corpper-crop-box{
+    position: absolute;
+    background: rgba(255,255,255,0.3); 
+    z-index: 2;
+  }
+  
+  .wx-corpper-crop-box .wx-cropper-view-box {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    outline: 1px solid #69f;
+    outline-color: rgba(102, 153, 255, .75)
+  }
+  
+  /* 横向虚线 */
+  .wx-cropper-dashed-h{
+    position: absolute;
+    top: 33.33333333%;
+    left: 0;
+    width: 100%;
+    height: 33.33333333%;
+    border-top: 1px dashed rgba(255,255,255,0.5);
+    border-bottom: 1px dashed rgba(255,255,255,0.5);
+  }
+  
+  /* 纵向虚线 */
+  .wx-cropper-dashed-v{
+    position: absolute;
+    left: 33.33333333%;
+    top: 0;
+    width: 33.33333333%;
+    height: 100%;
+    border-left: 1px dashed rgba(255,255,255,0.5);
+    border-right: 1px dashed rgba(255,255,255,0.5);
+  }
+  
+  /* 四个方向的线  为了之后的拖动事件*/
+  .wx-cropper-line-t{
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #69f;
+    top: 0;
+    left: 0;
+    height: 1px;
+    opacity: 0.1;
+    cursor: n-resize;
+  }
+  
+  .wx-cropper-line-t::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0rpx;
+    width: 100%;
+    -webkit-transform: translate3d(0,-50%,0);
+    transform: translate3d(0,-50%,0);
+    bottom: 0;
+    height: 41rpx;
+    background: transparent;
+    z-index: 11;
+  }
+  
+  .wx-cropper-line-r{
+    position: absolute;
+    display: block;
+    background-color: #69f;
+    top: 0;
+    right: 0px;
+    width: 1px;
+    opacity: 0.1;
+    height: 100%;
+    cursor: e-resize;
+  }
+  .wx-cropper-line-r::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 41rpx;
+    -webkit-transform: translate3d(-50%,0,0);
+    transform: translate3d(-50%,0,0);
+    bottom: 0;
+    height: 100%;
+    background: transparent;
+    z-index: 11;
+  }
+  
+  .wx-cropper-line-b{
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #69f;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    opacity: 0.1;
+    cursor: s-resize;
+  }
+  
+  .wx-cropper-line-b::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0rpx;
+    width: 100%;
+    -webkit-transform: translate3d(0,-50%,0);
+    transform: translate3d(0,-50%,0);
+    bottom: 0;
+    height: 41rpx;
+    background: transparent;
+    z-index: 11;
+  }
+  
+  .wx-cropper-line-l{
+    position: absolute;
+    display: block;
+    background-color: #69f;
+    top: 0;
+    left: 0;
+    width: 1px;
+    opacity: 0.1;
+    height: 100%;
+    cursor: w-resize;
+  }
+  .wx-cropper-line-l::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 41rpx;
+    -webkit-transform: translate3d(-50%,0,0);
+    transform: translate3d(-50%,0,0);
+    bottom: 0;
+    height: 100%;
+    background: transparent;
+    z-index: 11;
+  }
+  
+  .wx-cropper-point{
+    width: 5px;
+    height: 5px;
+    background-color: #69f;
+    opacity: .75;
+    position: absolute;
+    z-index: 3;
+  }
+  
+  .point-t{
+    top: -3px;
+    left: 50%;
+    margin-left: -3px;
+    cursor: n-resize;
+  }
+  
+  .point-tr{
+    top: -3px;
+    left: 100%;
+    margin-left: -3px;
+    cursor: n-resize;
+  }
+  
+  .point-r{
+    top: 50%;
+    left:100%;
+    margin-left: -3px;
+    margin-top: -3px;
+    cursor: n-resize;
+  }
+  
+  .point-rb{
+    left: 100%;
+    top: 100%;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+    cursor: n-resize;
+    width: 16rpx;
+    height: 16rpx;
+    background-color: #69f;
+    position: absolute;
+    z-index: 1112;
+    opacity: 1;
+  }
+  
+  .point-rb::before{
+    content: '';
+    position: absolute;
+    top: -12rpx;
+    left: -12rpx;
+    right: -12rpx;
+    bottom: -12rpx;
+  }
+  
+  .point-b{
+    left:50%;
+    top: 100%;
+    margin-left: -3px;
+    margin-top: -3px;
+    cursor: n-resize;
+  }
+  
+  .point-bl{
+    left:0%;
+    top: 100%;
+    margin-left: -3px;
+    margin-top: -3px;
+    cursor: n-resize;
+  }
+  
+  .point-l{
+    left:0%;
+    top: 50%;
+    margin-left: -3px;
+    margin-top: -3px;
+    cursor: n-resize;
+  }
+  
+  .point-lt{
+    left:0%;
+    top: 0%;
+    margin-left: -3px;
+    margin-top: -3px;
+    cursor: n-resize;
+  }
+  
+  /* 裁剪框预览内容 */
+  .wx-cropper-viewer{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .wx-cropper-viewer image{
+    position: absolute;
+    z-index: 2;
+  }
+
+
+
+
+
+
+

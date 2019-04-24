@@ -1,0 +1,203 @@
+/**index.wxss**/
+.container {
+  background:rgba(246,246,246,1);
+  position: relative;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.msgs-wrapper {
+  position: absolute;
+  left: 30rpx;
+  right: 30rpx;
+}
+
+.msgs {
+  display: block;
+  color: #ffffff;
+  word-wrap: break-word;
+  height: auto;
+  overflow: hidden;
+  margin-top: 31rpx;
+  margin-bottom: 20rpx;
+}
+
+.msg-item {
+  padding: 8rpx 5rpx;
+  border-radius: 4rpx;
+  font-size: 14px;
+}
+
+.nickname {
+  height:33rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height:33rpx;
+}
+.name_right{
+  margin-right: 15rpx;
+  margin-bottom: 13rpx;
+  float: right;
+}
+.name_left{
+  margin-left: 15rpx;
+  margin-bottom: 13rpx;
+}
+.input-section {
+  width: 100%;
+  position: fixed;
+  /* bottom: 90rpx; */
+  bottom: 0;
+  height: 80rpx;
+  background-color: #fff;
+}
+.onself{
+  float: right;
+}
+.head_left,.head_right{
+  float: left;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.head_right{
+  float: right;
+}
+.content_left ,.content_right{
+  background-color: white;
+  padding: 23rpx 18rpx 25rpx 17rpx;
+  border-radius: 8rpx; 
+  color: #666;
+  font-size: 30rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+}
+
+.content_right{
+  clear: both;
+  background:rgba(255,233,233,1);
+  margin-right: 15rpx;
+}
+.content_left{
+  float: left;
+  background:rgba(255,255,255,1);
+  margin-left: 15rpx;
+}
+.box_left{
+  float: left;
+  max-width: 500rpx;
+}
+.box_right{
+  float: left;
+  max-width: 500rpx;
+}
+.groupTip{
+  font-size: 24rpx;
+  color: rgba(153,153,153,1);
+  font-family:PingFangSC-Regular;
+  height: 33rpx;
+  line-height:33rpx;
+  text-align: center;
+}
+.sendMsg{
+  width:151rpx;
+  height:70rpx;
+  background:linear-gradient(121deg,rgba(234,92,92,1) 0%,rgba(208,47,47,1) 100%);
+  border-radius:15rpx;
+  float: right;
+  color:rgba(255,255,255,1);
+}
+.cantSend{
+  background:rgba(216,216,216,1);
+  color:rgba(153,153,153,1);
+}
+button{
+  width:151rpx;
+  height:70rpx;
+  border-radius:15rpx;
+  float:right;
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  margin-top: 5rpx;
+  margin-right: 5rpx;
+  border: none;
+}
+.btn_click{
+  background-color: #d02f2f;
+}
+.content_box{
+  float: left;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  background: #fff;
+  height: 80rpx;
+  width: 530rpx;
+  text-indent: 30rpx;
+  color: #ccc;
+  font-size: 28rpx;
+}
+.time{
+  height:28rpx;
+  font-size:20rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:28rpx;
+  text-align: center;
+}
+.outRoom{
+  width: 143rpx;
+  height: 48rpx;
+  position: fixed;
+  right: 0;
+  z-index: 999;
+}
+.replayBox{
+  width: 100%;
+  height:80rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff;
+  box-sizing:border-box;
+  display: flex;
+  justify-content:space-between;
+}
+.replayBox .textHeight2{
+    width:570rpx;
+    height: 80rpx;
+    font-size:30rpx;
+    color: #666;
+    background:rgba(255,255,255,1);
+    padding:0 15rpx;
+    box-sizing:border-box;
+    overflow:hidden;
+    vertical-align:top;
+}
+.replayBox .placeholders{
+    line-height: 96rpx;
+}
+.sendBtn{
+    width:151rpx !important;
+    height:70rpx !important;
+    font-size:26rpx !important;
+    line-height:70rpx !important;
+    font-weight:400;
+    background:linear-gradient(141deg,rgba(234,92,92,1) 0%,rgba(208,47,47,1) 100%) ;
+    border: unset !important;
+    right: 5rpx;
+}
+.noSendBtn{
+    width:151rpx !important;
+    height:70rpx !important;
+    font-size:26rpx !important;
+    line-height:70rpx !important;
+    font-weight:400;
+    background:#D8D8D8 !important;
+    color: #999999 !important;
+    border: unset !important;
+    right: 5rpx;
+}

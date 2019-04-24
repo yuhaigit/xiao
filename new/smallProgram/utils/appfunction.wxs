@@ -1,0 +1,9 @@
+var isCard = {
+    isJoin: function (value) {
+    if(value==1)return "Card";
+    return '';
+  }
+}
+module.exports = {
+  isJoin: isCard.isJoin
+}

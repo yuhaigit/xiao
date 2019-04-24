@@ -1,0 +1,33 @@
+<navigation id='Navigation' show-icon='{{showIcon}}' title="评论" bg-color='{{bgColor}}'>
+</navigation>
+<view class="content">
+    <!-- 输入框 -->
+    <van-dialog id="van-dialog" />
+    <view class="textBox">
+        <van-cell-group>
+            <van-field
+                input-class="textHeight"
+                value="{{ contentA }}"
+                type="textarea"
+                placeholder="{{pText}}"
+                bind:change='bindTextAreaBlur'
+                autosize
+                border="{{ false }}"
+                maxlength='200'
+            />
+        </van-cell-group>
+    </view>
+
+    <view class="Menu">
+        <view class="cancels" bind:tap="gocancels">取消</view>
+
+        <block wx:if="{{contentA==''}}">
+            <view class="confirms" bind:tap="postComment">{{confirmtext}}</view>
+        </block>
+        <block wx:else>
+            <view class="confirms reds" bind:tap="postComment">{{confirmtext}}</view>
+        </block>
+    </view>
+
+
+</view>

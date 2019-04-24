@@ -1,0 +1,67 @@
+<!--index.wxml-->
+<navigation class="header" id='Navigation' show-icon='{{showIcon}}' title="{{groupTitle}}" bg-color='{{bgColor}}'></navigation>
+<image catchtap='outRoom' style='top:{{topHeight}}' class='outRoom' src='./image/Group.png'></image>
+<view class="container" style="height:{{tbodyHeight}}px;">
+  <!-- <scroll-view
+    scroll-y='true'
+    style="height:{{tbodyHeight}}px;"
+    bindscrolltoupper="topend"
+    scroll-with-animation='true'
+  > -->
+    <view class="msgs-wrapper" id="msgs-wrapper">
+      <!-- <view class='lodeIcon'>哈哈</view> -->
+      <view class="msgs" wx:for="{{msgs}}" wx:key="index">
+        <view wx:if="{{item.isTime && item.subType!=2}}" class='time'>{{item.sendTime}}</view>
+        <!-- <text class="msg-item"><text class="nickname">{{item.fromAccountNick}}</text> : {{item.content}}</text> -->
+        <view wx:if="{{item.onself == true}}" class="msg-item onself">
+          <image data-uid='{{item.uid}}' catchtap='clickHead' class='head_right' src="{{item.head}}"></image>
+          <view class='box_right'>
+            <view class="nickname name_right">{{item.fromAccountNick}}</view>
+            <view class='content_right'>{{item.content}}</view>
+          </view>
+        </view>
+        <view wx:if="{{item.onself == false && item.subType!=2}}" class="msg-item">
+          <!-- <view wx:if="{{item.sendTime!=''}}" class='time'>{{item.sendTime}}</view> -->
+          <image data-uid='{{item.uid}}' catchtap='clickHead' class='head_left' src="{{item.head}}"></image>
+          <view class='box_left'>
+            <view class="nickname name_left">{{item.fromAccountNick}}</view>
+            <view class='content_left'>{{item.content}}</view>
+          </view>
+        </view>
+        <view wx:if="{{item.subType==2}}" class="msg-item groupTip">
+          <text>欢迎 {{item.fromAccountNick}} 进入群聊</text>        
+        </view>
+      </view>
+    </view>
+  <!-- </scroll-view> -->
+  <!-- <view class="input-section">
+    <textarea fixed='true' cursor-spacing="{{22}}" show-confirm-bar="{{false}}" confirm-type="send" adjust-position='false' class='content_box' value="{{msgContent}}" placeholder="" bindconfirm="bindConfirm" auto-focus="" bindinput='getInputVal' />
+    <button hidden="{{!msgContentLength}}" hover-class='none' bindtap='confirmClick' class='sendMsg'>发送</button>
+    <button hidden='{{msgContentLength}}' hover-class='none' class='cantSend' bindtap='log'>发送</button>
+  </view> -->
+  <!-- <view class="input-section">
+    <textarea fixed='true' cursor-spacing="{{22}}" show-confirm-bar="{{false}}" confirm-type="send" adjust-position='false' class='content_box' value="{{msgContent}}" placeholder="" bindconfirm="bindConfirm" auto-focus="" bindinput='getInputVal' />
+    <button hidden="{{!msgContentLength}}" hover-class='none' bindtap='confirmClick' class='sendMsg'>发送</button>
+    <button hidden='{{msgContentLength}}' hover-class='none' class='cantSend' bindtap='log'>发送</button>
+  </view> -->
+  <view class="replayBox">  
+            <textarea 
+                class="textHeight2"
+                placeholder-class='placeholders'
+                bindfocus='bindFocus'
+                bindblur='bindBlur'
+                bindinput='getInputVal'
+                adjust-position='{{true}}'
+                cursor-spacing='20'
+                show-confirm-bar = "{{false}}"
+                value='{{msgContent}}'
+            />
+            <block wx:if="{{!msgContentLength}}">
+                <van-button  round size="small" type="primary" custom-class='noSendBtn'>发送</van-button>
+            </block>
+            <block wx:else>
+                <van-button  bindtap="confirmClick"   round size="small" type="primary" custom-class='sendBtn'>发送</van-button>    
+            </block>
+
+        </view>
+</view>

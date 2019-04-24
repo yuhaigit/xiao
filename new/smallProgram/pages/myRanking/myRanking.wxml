@@ -1,0 +1,178 @@
+<!--个人主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="我的排名" bg-color='{{bgColor}}'>
+</navigation>
+<view class="content">
+ 
+    <view class="container">
+        <!-- 顶部信息 -->
+        <view class="TopuserBox">
+              <view class="topUser">
+                    <image class='imgs' src='{{myranksinfo.img_avatar}}'></image>
+                    <image class='imgSex' src='../../image/icon18sex{{myranksinfo.sex}}.png'></image>
+                    
+                    <view class="UserInfos">
+                        <text class="userUame">{{myranksinfo.uname}}</text>
+                        <text class="userTime" decode="{{true}}">已坚持{{myranksinfo.count_day}}天&nbsp;|&nbsp;连续打卡{{myranksinfo.continue_day}}天</text>
+                    </view>
+              </view>
+              <view class="topMenu">
+                    <navigator url="/pages/myCardCalendar/myCardCalendar" hover-class="none">
+                        <text class="iconfont icon_rili"></text>查看日历
+                    </navigator>
+
+                    <navigator url="" hover-class="none">
+                        <van-icon name="underway-o"  size="36rpx"  custom-class="icons"/>{{myranksinfo.no_daka_minute}}小时未打卡</navigator>
+                    <text class="clear" bind:tap="gotoCard" >我要清零</text>
+              </view>
+        </view>
+
+        <!-- 菜单 -->
+        <view class="Menu">
+            <view class="MenuTop">
+                <text class="">第{{myranksinfo.weeksRanknum}}名</text>
+                <text class="">第{{myranksinfo.monthsRanknum}}名</text>
+                <text class="">第{{myranksinfo.totalRanknum}}名</text>
+            </view>
+            <!-- <van-tabs active="{{ active }}" sticky scroll-top="{{ scrollTop }}" offset-top='{{offsetTop}}' custom-class="MenuBox" border="{{false}}" line-width="35"> -->
+            <van-tabs active="{{ active }}" sticky scroll-top="{{ scrollTop }}" offset-top='{{offsetTop}}' custom-class="MenuBox" border="{{false}}" line-width="25">
+
+                <van-tab title="周榜">
+                    <view class="weekList">
+                        <block wx:for="{{weekRank}}" wx:for-item="vo" wx:key="{{index}}">
+                        <view class="wlist meRank{{vo.me}}">
+                            <view class="wlistTop">
+                                <block wx:if="{{index<3}}">
+                                    <image class='imgs' src='../../image/icon-number{{index}}.png'></image>
+                                </block>
+                                <block wx:else>
+                                    <text class='textNum'>{{index+1}}</text>
+                                </block>            
+                                <text class="wContinuity">
+                                <block wx:if="{{vo.me==1}}">我</block>
+                                <block wx:else>他</block>们本周坚持了{{vo.week_days}}天</text>
+                                <text class="wAllNum">共{{vo.userinfocount}}人</text>
+                            </view>
+                            <view class="wImgs">
+                                <block wx:if="{{vo.userinfo!=null}}" wx:for="{{vo.userinfo}}" wx:key="{{indexs}}"  wx:for-item="ks">                        <navigator url="/pages/homePersonal/homePersonal?uid={{ks.uid}}">    <image class='imgs' src='{{ks.avatar}}'></image> </navigator>
+                                </block>
+                            </view>
+                        </view>
+                        </block>
+
+                    </view>
+                </van-tab>
+
+                <van-tab title="月榜">
+                    <view class="weekList">
+                         <block wx:for="{{monthRank}}" wx:for-item="vo" wx:key="{{index}}">
+                        <view class="wlist meRank{{vo.me}}">
+                            <view class="wlistTop current">
+                               <block wx:if="{{index<3}}">
+                                <image  class='imgs' src='../../image/icon-number{{index}}.png'></image>
+                                </block>
+                                <block wx:else>
+                                    <text class='textNum'>{{index+1}}</text>
+                                </block>            
+                                <text class="wContinuity"><block wx:if="{{vo.me==1}}">我</block>
+                                <block wx:else>他</block>们本月坚持了{{vo.month_days}}天</text>
+                                <text class="wAllNum">共{{vo.userinfocount}}人</text>
+                            </view>
+                            <view class="wImgs">
+                                <block wx:if="{{vo.userinfo!=null}}" wx:for="{{vo.userinfo}}" wx:key="{{indexs}}"  wx:for-item="ks">
+                                    <navigator url="/pages/homePersonal/homePersonal?uid={{ks.uid}}">  <image class='imgs' src='{{ks.avatar}}'></image></navigator>
+                                </block>
+                                <!-- <image class='imgs' src='https://test.liupinshuyuan.com/data/upload/2018/0829/09/5b85fbbbaeb73_720_300_720_300.png'></image> -->
+                            </view>
+                        </view>
+                        </block>
+                    </view>
+                </van-tab>
+
+                <van-tab title="总榜">
+
+                    <view class="totalList" wx:if="{{totalRank.B.count>0}}">
+                        <!-- 上 -->
+                        <view class="spot"> ... </view>
+                        
+                       
+                        <block wx:if="{{totalRank.A.count > 0}}"  >
+                        <view class="tlist">
+                            <view class="tlist_l">
+                                <text class="wNum">并列第{{totalRank.A.ranking}}名</text>
+                                <text class="wContinuity">小伙伴们已坚持{{totalRank.A.tol_days}}天</text>
+                            </view>
+                            <view class="tlist_r">
+                                <text class="wAllNum">共{{totalRank.A.count}}人</text>
+                            </view>
+                        </view>
+                       </block>
+                       <block wx:if="{{totalRank.B.count > 0}}"  >
+                        <view class="tlist current">
+                            <view class="tlist_l">
+                                <text class="wNum">并列第{{totalRank.B.ranking}}名</text>
+                                <text class="wContinuity">我已坚持{{totalRank.B.tol_days}}天</text>
+                            </view>
+                            <view class="tlist_r">
+                                <text class="wAllNum">共{{totalRank.B.count}}人</text>
+                            </view>
+                        </view>
+                       </block>
+                       <block wx:if="{{totalRank.C.count > 0}}"  >
+                        <view class="tlist">
+                            <view class="tlist_l">
+                                <text class="wNum">并列第{{totalRank.C.ranking}}名</text>
+                                <text class="wContinuity">小伙伴们已坚持{{totalRank.C.tol_days}}天</text>
+                            </view>
+                            <view class="tlist_r">
+                                <text class="wAllNum">共{{totalRank.C.count}}人</text>
+                            </view>
+                        </view>
+                        </block>
+                     
+                        <!-- 下 -->
+                        <view class="spot"> ... </view>
+
+                    </view>
+                     
+                    <!-- 无数据 -->
+                    <view class="UNTotaList" bind:tap="gotoCard" wx:else>
+                        <image class='imgs' src='https://test.liupinshuyuan.com/data/upload/dakaprogram/nopic.png'></image>
+                        <text class="infos" >我要上榜</text>
+                    </view>
+                
+
+                    <!-- 底部广告推荐 -->
+                    <!-- <view class="ads" style="display:{{ads}};background-image: url(https://test.liupinshuyuan.com/data/upload/dakaprogram/bannerbg.png)">
+                        <view class="close" >
+                            <van-icon name="close"  color="#fff" bindtap="tapClose"/>
+                        </view>
+                        <view class="adImg">
+                            <image class='imgs' src='https://test.liupinshuyuan.com/data/upload/2018/0829/09/5b85fbbbaeb73_720_300_720_300.png'></image>
+                            <text class="username">曾老师为你打气：</text>
+                        </view>
+                        <view class="textsBox">
+                            <text class="texts">
+                                逆水行舟，不进则退，继续加油！
+                            </text>
+                        </view>
+                    </view> -->
+
+                </van-tab>
+
+            </van-tabs>
+
+        </view>
+
+    </view>
+
+</view>
+
+
+
+
+
+
+
+
+
+

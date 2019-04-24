@@ -1,0 +1,8 @@
+{
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "navigation": "/components/navigation/navigation",
+        "component-scroll": "/components/component-scroll/index"
+    }
+    
+}

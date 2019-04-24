@@ -1,0 +1,209 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.5",
+	"appid": "wxec9580fe517dceda",
+	"projectname": "%E5%B0%8F%E7%A8%8B%E5%BA%8F",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "个人主页",
+					"pathName": "pages/homePersonal/homePersonal",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "圈子主页列表",
+					"pathName": "pages/circle/circle",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "圈子详情页",
+					"pathName": "pages/circleInfo/circleInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "粉丝列表",
+					"pathName": "pages/homePersonalFans/homePersonalFans",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "关注页",
+					"pathName": "pages/homePersonalFollow/homePersonalFollow",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "圈子详情打卡列",
+					"pathName": "pages/circleInfoCard/circleInfoCard",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "圈子--全部练习",
+					"pathName": "pages/circleInfoCardAll/circleInfoCardAll",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "圈子--查看详情",
+					"pathName": "pages/circleInfoCardAllInfo/circleInfoCardAllInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "圈子--打卡",
+					"pathName": "pages/circleSign/circleSign",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "分享",
+					"pathName": "pages/circleShare/circleShare",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的--圈子",
+					"pathName": "pages/myCircle/myCircle",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "我的--排名",
+					"pathName": "pages/myRanking/myRanking",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的--手机号",
+					"pathName": "pages/myPhone/myPhone",
+					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "我的--打卡日历",
+					"pathName": "pages/myCardCalendar/myCardCalendar",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的--打卡记录",
+					"pathName": "pages/myCardRecord/myCardRecord",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的--排名打卡",
+					"pathName": "pages/myRankingCard/myRankingCard",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的--排名分享",
+					"pathName": "pages/myRankingShare/myRankingShare",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的--手机",
+					"pathName": "pages/myPhone/myPhone",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的--个人中心",
+					"pathName": "pages/myHome/myHome",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的--资料",
+					"pathName": "pages/myInformation/myInformation",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的--收藏",
+					"pathName": "pages/myCollection/myCollection",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评分",
+					"pathName": "pages/myGrade/myGrade",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评分结果",
+					"pathName": "pages/myGradeResult/myGradeResult",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评分结果详情",
+					"pathName": "pages/myGradeResultInfo/myGradeResultInfo",
+					"query": ""
+				},
+				{
+					"id": 25,
+					"name": "授权页",
+					"pathName": "pages/loginUser/loginUser",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "打卡详情",
+					"pathName": "pages/circleSignInfo/circleSignInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "打卡详情评论回复",
+					"pathName": "pages/circleSignInfoReply/circleSignInfoReply",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

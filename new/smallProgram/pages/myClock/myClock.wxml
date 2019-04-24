@@ -1,0 +1,67 @@
+<!--个人主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="定闹钟" bg-color='{{bgColor}}'>
+</navigation>
+<view class="content">
+
+    <view class="Clock">
+        <van-cell title="微信服务提醒" custom-class ="switchBox">
+            <van-switch checked="{{ checked }}" 
+            bind:change="selectBtn" 
+            size="36rpx" 
+            active-color="#D02F2F" 
+            custom-class="switch"
+            />
+        </van-cell>
+        <!-- 暂不用 -->
+        <!-- <picker mode="time" value="{{times}}" start="00:00" end="24:00" bindchange="bindTimeChange">
+            <van-cell title="微信提醒时间" value="{{times}}" is-link custom-class ="times" />
+        </picker> -->
+        <block wx:if="{{remind == 1}}">
+        <van-cell title="微信提醒时间"
+            value="{{times}}"
+            is-link
+            custom-class ="times"
+            bind:click='bindTimeChange'
+        >
+        </van-cell>
+        </block>
+    </view>
+    <!--<text class="tips">温馨提示：选定时间后，次日生效</text>-->
+
+
+    <view class="Btns">
+        <!-- <van-button round size="large" type="default" custom-class="saveBtnsS" bindtap="saveClock">确认并返回</van-button> -->
+
+        <form bindsubmit="getUsersFormid_2sk" report-submit='true' >
+            <button form-type="submit" class='getUsersFormid_2sk_er3' bindtap="saveClock">
+                <van-button round size="large" type="default" custom-class="saveBtnsS" >确认并返回</van-button>
+            </button>
+        </form>
+
+    </view>
+
+    <block wx:if="{{isShow}}">
+        <view class="pickerBox">
+            <van-picker
+                show-toolbar
+                title=""
+                columns="{{ columns }}"
+                bind:cancel="onCancel"
+                bind:confirm="onConfirm"
+                toolbar-class='pickerTitle'
+                bind:change="onChange"
+            />
+        </view>
+    </block>
+
+    <!-- 测试formid -->
+    <!-- <form bindsubmit="getUsersFormid_2sk" report-submit='true' >
+        <button form-type="submit" class='getUsersFormid_2sk_er3' >
+        </button>
+    </form> -->
+
+
+
+
+
+</view>

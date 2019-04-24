@@ -1,0 +1,383 @@
+@import "../../utils/iconfont.wxss";
+
+page{
+    background-color:#f6f6f6;
+}
+
+.icon_rili{
+    position:relative;
+    top:6rpx;
+    right:5rpx;
+    font-size:36rpx;
+}
+
+
+.content{
+    width: 100%;
+    height:100%; 
+    background-color:#F6F6F6;
+}
+.container{
+    width: 100%;
+}
+
+/* 顶部信息 */
+.container .TopuserBox{
+    width: 100%;
+    height:220rpx ;
+    background-color: #FFFFFF;
+    display: inline-block;
+    padding: 0 30rpx;
+    padding-top: 30rpx;
+    box-sizing: border-box;
+    border-bottom:2rpx solid #F6F6F6;
+}
+.content .TopuserBox view{
+    display: inline-block;
+}
+.container .TopuserBox .topUser{
+    width: 100%;
+    float: left;
+    position:relative;
+}
+.container .TopuserBox .topUser .imgs{
+    width: 84rpx;
+    height: 84rpx;
+    border-radius: 50%;
+    float: left;
+    margin-right: 10rpx;
+}
+.container .TopuserBox .topUser .imgSex{
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 50%;
+    position: absolute;
+    left: 70rpx;
+    top: 60rpx;
+}
+.container .TopuserBox .topUser .UserInfos{
+    float: left;
+    width: 70%;
+}
+.container .TopuserBox .topUser .UserInfos .userUame{
+    font-size:30rpx;
+    color: #333333;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-weight:bold;
+}
+.container .TopuserBox .topUser .UserInfos .userTime{
+    font-size:24rpx;
+    color: #999999;
+    display:block;
+    margin-top:10rpx;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.container .TopuserBox .topMenu{
+    width: 100%;
+    height:80rpx;
+    float: left;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.TopuserBox .topMenu navigator{
+    font-size:24rpx;
+    color: #999999;
+}
+.TopuserBox .topMenu .icons{
+    position: relative;
+    top:10rpx;
+    right:5rpx;    
+}
+.TopuserBox .topMenu .clear{
+    font-size:24rpx;
+    font-weight:400;
+    color: #999999;
+    text-decoration: underline;
+    position:relative;
+    top:5rpx;
+}
+
+/* 菜单 */
+.Menu {
+    width: 100%;
+    display:inline-block;
+    position: relative;
+    top:-8rpx;
+}
+.Menu .van-tab{
+    color: #333333 ;
+    font-size:30rpx !important;
+}
+.van-tab--active {
+    font-weight:500;
+    color:#D02F2F !important;
+}
+
+    
+.Menu  .MenuTop{
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align:center;
+    padding-top: 5rpx ;
+    box-sizing: border-box;
+    text-align:center;
+}
+.Menu  .MenuTop text{
+    width:32%;
+    font-size:22rpx;
+    color: #999999;
+    position:relative;
+    top:12rpx;
+    z-index:2;
+}
+/* 周 */
+.MenuBox{
+    width: 100%;
+
+}
+.MenuBox  .weekList{
+    width: 100%;
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+.MenuBox  .weekList .wlist{
+    width: 100%;
+    height: 240rpx;
+    background-color: #fff;
+    border-radius:12rpx;
+    overflow: hidden;
+    padding: 10rpx;
+    box-sizing: border-box;
+    margin-bottom:20rpx;
+}
+.MenuBox  .weekList .meRank1{
+    background-color:#FFF8F8;
+    border:1px solid #EEC2C2;
+}
+.MenuBox  .weekList .meRank1 .wContinuity{
+    color: #D02F2F;
+    font-weight:400;
+}
+.MenuBox  .weekList .wlist .wlistTop{
+    width: 100%;
+    font-size:24rpx;
+    color: #999999;
+    height: 48rpx;
+    line-height: 48rpx;
+}
+.weekList .wlist .wlistTop .textNum{
+    width: 48rpx;
+    height: 48rpx;
+    float: left;
+    background:rgba(246,246,246,1);
+    border-radius:24rpx;
+    margin-right: 18rpx;
+    font-size: 24rpx;
+    color: #999999;
+    text-align: center;
+    line-height: 48rpx;
+}
+.weekList .wlist .wlistTop .imgs{
+    width: 48rpx;
+    height: 48rpx;
+    float: left;
+    margin-right: 18rpx;
+}
+.weekList .wlist .wlistTop .wContinuity{
+    float: left;
+}
+.weekList .wlist .wlistTop .wAllNum{
+    float: right;
+}
+.weekList .wlist .wImgs{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 70rpx;
+    height:180rpx;
+    overflow:hidden;
+}
+
+.weekList .wlist .wImgs image{
+    width:72rpx;
+    height:72rpx;
+    border-radius: 50%;
+    margin:2rpx 5rpx;
+}
+
+/* 总 */
+.totalList{
+    width: 100%;
+    padding:0 30rpx;
+    box-sizing: border-box;
+}
+.totalList .spot{
+    width:100%;
+    height:96rpx;
+    line-height:30rpx;
+    text-align:center;
+    font-size:100rpx;
+    color:#D8D8D8;    
+}
+.totalList .tlist{
+    width: 100%;
+    height: 120rpx;
+    background-color: #fff;
+    border-radius:12rpx;
+    overflow: hidden;
+    padding: 10rpx;
+    box-sizing: border-box;
+    border:1rpx solid rgba(216,216,216,1);
+    margin-bottom:20rpx;
+}
+
+.totalList .tlist .tlist_l {
+    width: 80%;
+    float: left;
+}
+.totalList .tlist .tlist_l .wNum{
+    color: #333333;
+    font-size: 36rpx;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.totalList .tlist .tlist_l .wContinuity{
+    color: #9B9B9B;
+    font-size: 24rpx;
+    display:block;
+    margin-top:10rpx;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.totalList .tlist .tlist_r .wAllNum{
+    color: #999999;
+    font-size: 24rpx;
+}
+.totalList .tlist .tlist_r{
+    height: 100%;
+    width: 20%;
+    float: right;
+    line-height: 120rpx;
+    display:flex;
+    align-items:center;
+    justify-content: flex-end;
+}
+
+/* 当前 */
+.totalList .current{
+    border:1rpx solid #EEC2C2;
+    background-color: #FFF8F8;
+}
+.totalList .current .tlist_l .wNum{
+    color: #D02F2F;
+}
+.totalList .current .tlist_l .wContinuity{
+    color: #D02F2F;
+}
+.totalList .current .tlist_r .wAllNum{
+    color: #F69999;
+}
+
+
+/* 底部广告推荐 */
+.ads{
+    width: 100%;
+    height:200rpx;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 20rpx 30rpx;
+    box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.ads .close{
+    position: absolute;
+    right:20rpx;
+    top:10rpx;    
+}
+.ads .adImg{
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+.ads .adImg .imgs{
+    width:60rpx;
+    height:60rpx;
+    float: left;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+.ads .adImg .username{
+    color:#333;
+    font-size:28rpx;
+    float: left;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.ads .textsBox{
+    padding-left: 80rpx;
+    display: inline-block;
+    float: left;
+}
+.ads .texts{
+    width:100%;
+    color:#333;
+    font-size: 30rpx;
+    margin-top:-30rpx;
+    float:left;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* 无数据 */
+.UNTotaList{
+    width: 100%;
+    padding:100rpx;
+    box-sizing:border-box; 
+    text-align: center ;  
+}
+.UNTotaList .imgs{
+    width: 350rpx;
+    height: 380rpx;
+}
+.UNTotaList .infos{
+    display: block;
+    width: 100%;
+    font-size:28rpx;
+    color: #999999;
+    margin-top:100rpx;
+}
+
+
+

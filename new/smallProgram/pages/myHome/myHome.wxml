@@ -1,0 +1,99 @@
+<!--个人主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="个人中心" bg-color='{{bgColor}}'>
+</navigation>
+<view class="content" style="height:{{tbodyHeight}}px;">
+ 
+    <view class="container">
+        <!-- 顶部信息 -->
+        <view class="TopuserBox">
+            <view class="topUser">
+                <block wx:if="{{utype=='1' && uedit=='0'}}">
+                    <image class='imgs' src=''></image>
+                </block>
+                <block wx:else>
+                    <image class='imgs' src='{{avator}}'></image>
+                </block>
+                    <view class="UserInfos">
+                        <block wx:if="{{utype=='1' && uedit=='0'}}">
+                            <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击获取信息</button>
+                        </block>
+                        <text class="userUame" wx:else>{{uname}}</text>
+                        <image wx:if="{{sex==2}}" class='sexs' src='../../image/icon18sex2.png'></image>
+                        <image wx:else class='sexs' src='../../image/icon18sex1.png'></image>
+                        <navigator hover-class="none" url="/pages/homePersonal/homePersonal?uid={{uid}}">
+                            <text class="userTime" decode="{{true}}">查看我的主页</text>
+                        </navigator>
+                    </view>
+                    <view class="goUserInfos">
+                        <navigator hover-class="none" url="/pages/myInformation/myInformation?uid={{uid}}">
+                            编辑资料
+                            <van-icon name="arrow" color="#D8D8D8" custom-class="iconss" />
+                        </navigator>
+                    </view>
+            </view>
+            <view class="topMenu">
+                <view class="menu">
+                    <navigator hover-class="none" hover-class="none" url="/pages/myCircle/myCircle?uid={{uid}}">
+                        <text class="">{{circle}}</text>
+                        <text class="">我的圈子</text>
+                    </navigator>
+                </view>
+                <view class="menu">
+                    <navigator hover-class="none" url="/pages/homePersonalFollow/homePersonalFollow?uid={{uid}}">
+                        <text class="">{{guanzhu}}</text>
+                        <text class="">我的关注</text>
+                    </navigator>
+                </view>
+                <view class="menu">
+                    <navigator hover-class="none" url="/pages/homePersonalFans/homePersonalFans?uid={{uid}}">
+                        <text class="">{{fensi}}</text>
+                        <text class="">我的粉丝</text>
+                    </navigator>
+                </view>
+                <view class="menu">
+                    <navigator hover-class="none" url="/pages/myRanking/myRanking"> 
+                        <text class="">{{leaderboard}}</text>
+                        <text class="">排行榜</text>
+                    </navigator> 
+                </view>
+            </view>
+        </view>
+
+        <!-- 列表 -->
+        <view class="ListBox">
+            <van-cell-group>
+                <van-cell
+                title="打卡记录"
+                is-link
+                custom-class="lists"
+                url="/pages/myCardRecord/myCardRecord?uid={{uid}}"
+                />
+                <van-cell
+                title="我的收藏"
+                is-link
+                custom-class="lists"
+                url="/pages/myCollection/myCollection?uid={{uid}}"
+                />
+            </van-cell-group>
+        </view>
+
+        <!-- 打卡 -->
+        <view wx:if="{{daka == 0}}" class="goCard" >
+            <!--<navigator hover-class="none" url="/pages/myRankingCard/myRankingCard">-->
+                <text class="" bindtap="gotoCard">今日尚未打卡</text>
+            <!--</navigator>-->
+        </view>
+
+    </view>
+
+</view>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,98 @@
+
+
+
+/* pages/guanFangMsg/guanFangMsg.wxss */
+
+/* page{
+  background:rgba(246,246,246,1);
+}
+.header{
+  background:rgba(255,255,255,1) !important;
+} */
+ page{
+  background:rgba(246,246,246,1);
+}
+.container{
+  display: flex;
+  margin: 20rpx 80rpx 50rpx 30rpx;
+  position: relative;
+}
+.content{
+  margin-left: 30rpx;
+}
+.avatar{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+.avatar image{
+  width: 70rpx;
+  height: 70rpx;
+}
+.bubble{
+  background: rgba(255,255,255,1);
+  border-radius: 6rpx;
+  padding: 20rpx 30rpx;
+  margin-top: 10rpx;
+  /*  */
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  line-height: 40rpx;
+  position: relative;
+  max-width: 472rpx;
+}
+.arrow{
+   position: absolute;
+	 width: 0px;
+	 height: 0px;
+	 line-height: 0px;/*为了防止ie下出现题型*/
+	 border-bottom: 7px solid rgba(255,255,255,1);
+	 border-left: 7px solid rgba(246,246,246,1);
+	 border-right: 7px solid rgba(246,246,246,1);
+   transform: rotate(-90deg);
+   left: -10px;
+   top: 11px;
+}
+.time{
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  margin-top: 13rpx;
+}
+.clickToGo{
+   color:#4A90E2;
+   display: inline;
+}
+.imgMsg{
+  width: 429rpx;
+  height: 431rpx;
+}
+.bubble image{
+  width:429rpx;
+  height: 431rpx;
+}
+.clickToGo{
+   color:#4A90E2;
+   display: inline;
+}
+.whereName{
+  color:  #D02F2F;
+  display: inline;
+}
+.imgMsg{
+  width: 300rpx;
+  height: 300rpx;
+}
+.formName{
+  color: #ccc;
+  display: inline;
+}
+.type{
+  display: inline;
+}
+#page{
+  background:rgba(246,246,246,1);
+}

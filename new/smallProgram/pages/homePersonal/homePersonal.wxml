@@ -1,0 +1,219 @@
+<!--个人主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="{{personalinfo['user']['titlename']}}" bg-color='{{bgColor}}'>
+</navigation>
+<!-- <view class="content" style="top:{{ -NavHeight}}px;"> -->
+<view class="content" style="top:{{}}px;">
+    <view class="container" style="top:{{ -NavHeight}}px;">
+        <!-- 顶部背景图 -->
+        <view class="Topimg" style="background: url({{personalinfo['user']['background']}});background-size: cover;"></view>
+        <!-- 用户信息 -->
+        <view class="userInfo">
+            <view class="userImgs">
+                <view class="userL">
+                    <text class="userName">{{personalinfo['user']['uname']}}</text>
+                    <image class='imgSex' wx:if="{{personalinfo['user']['sex'] == 2}}" src='../../image/icon18sex2.png'></image>
+                    <image class='imgSex' wx:else src='../../image/icon18sex1.png'></image>
+                    <image class='imgsHead' src='{{personalinfo.user.avator}}'></image>
+                </view>
+            </view>
+            <view class="userFans">
+                <!-- <view class="signature">
+                    这里显示我的个性签名，我最多只能显示30个字符！这里显示我的个性签名，我最多只能显示30个字符
+                </view> -->
+                <view class="userFansNum">
+                    <navigator hover-class="none" url="/pages/homePersonalFans/homePersonalFans?uid={{uid}}">
+                    <text wx:if="{{personalinfo['user']['is_me'] == 1}}" class="userFansNum1" decode="{{true}}">我的粉丝</text>
+                    <text wx:elif="{{personalinfo['user']['is_me'] == 2 && personalinfo['user']['sex'] == 2}}" class="userFansNum1" decode="{{true}}">她的粉丝</text>
+                    <text wx:else class="userFansNum1" decode="{{true}}">他的粉丝</text>
+                    <text class="userFansNum2" decode="{{true}}">{{personalinfo['user']['fensi']}}</text>
+                    </navigator>
+                </view>
+                <view class="userFansFool">
+                    <navigator hover-class="none" url="/pages/homePersonalFollow/homePersonalFollow?uid={{uid}}">
+                    <text wx:if="{{personalinfo['user']['is_me'] == 1}}" class="userFansFool1" decode="{{true}}">我的关注</text>
+                    <text wx:elif="{{personalinfo['user']['is_me'] == 2 && personalinfo['user']['sex'] == 2}}" class="userFansFool1" decode="{{true}}">她的关注</text>
+                    <text wx:else class="userFansFool1" decode="{{true}}">他的关注</text>
+                    <text class="userFansFool2" decode="{{true}}">{{personalinfo['user']['guanzhu']}}</text>
+                    </navigator>
+                </view>
+            </view>
+            <block wx:if="{{personalinfo['user']['is_me'] == 2}}">
+                <button hover-class="none" wx:if="{{personalinfo['user']['is_guanzhu'] == 2}}" bindtap='attention' class="follows" type="warn" size="default"  >关注</button>
+                <button hover-class="none" wx:else bindtap='unsubscribe' class="followsTo" type="warn" size="default"  >已关注</button>
+            </block>
+
+        </view>
+
+        <view class="page-body">
+            <!-- 来访者 -->
+            <!-- <view class="Visit">
+                <view class="VisitImg">
+                    <block wx:for="{{3}}">
+                        <image class='imgsHead' src='https://test.liupinshuyuan.com/data/upload/2019/0307/10/5c808490297c8_270_150_270_150.png'></image>
+                    </block>
+                </view>
+                <view class="VisitNum">
+                    <navigator url="">
+                        <text>34人来看过她</text>
+                        <van-icon name="arrow" custom-class='arrowIcon'/>
+                    </navigator>
+                </view>
+            </view> -->
+
+            <!-- 滑动查看更多 加入的圈子  -->
+            <view class='Circle  RecentStudy'>
+                <text wx:if="{{personalinfo['user']['is_me'] == 1}}" class="Circletext">我加入的圈子</text>
+                <text wx:elif="{{personalinfo['user']['is_me'] == 2 && personalinfo['user']['sex'] == 2}}" class="Circletext">她加入的圈子</text>
+                <text wx:else class="Circletext">他加入的圈子</text>
+                <view class="swiperLIst">
+                    <view wx:if="{{personalinfo.circle == ''}}" class="noDataBox">
+                        <text>{{test_circle}}</text>
+                    </view>
+                    <swiper class='swipers' next-margin='450rpx' wx:else>
+                        <swiper-item class='swiperItem back center' wx:for='{{personalinfo.circle}}' for-item="item">
+                        <!--<swiper-item class='swiperItem back center' wx:for='{{imgUrls_2}}' for-item="item">-->
+                            <!--<image class='imgs' src='{{item}}'  width="355" height="150"></image>-->
+                            <navigator wx:if="{{item.in_circle == 1}}" url="/pages/circleInfoCard/circleInfoCard?id={{item.id}}" hover-class="navigator-hover" class="imgsBox">
+                                <image class='imgs' src='{{item.cover}}'></image>
+                                <view class="imgsText">
+                                    <text class="imgText" decode="{{true}}">{{item.title}}</text>
+                                    <!-- <text class="imgTexts">></text> -->
+                                </view>
+                            </navigator>
+                            <navigator url="/pages/circleInfo/circleInfo?id={{item.id}}" hover-class="navigator-hover" class="imgsBox" wx:else>
+                                <image class='imgs' src='{{item.cover}}'></image>
+                                <view class="imgsText">
+                                    <text class="imgText" decode="{{true}}">{{item.title}}</text>
+                                    <!-- <text class="imgTexts">></text> -->
+                                </view>
+                            </navigator>
+                        </swiper-item>
+                    </swiper>
+                </view>
+            </view>
+
+            <!-- 打卡日记 -->
+            <view class="CardDiary">
+                
+                <view class="CardDiaryTop">
+                    <text wx:if="{{personalinfo['user']['is_me'] == 1}}" class="Circletext">我的打卡日记</text>
+                    <text wx:elif="{{personalinfo['user']['is_me'] == 2 && personalinfo['user']['sex'] == 2}}" class="Circletext">她的打卡日记</text>
+                    <text wx:else class="Circletext">他的打卡日记</text>
+                </view>
+
+                <view class='listHeights'>
+                    <view wx:if="{{list == ''}}" class="noDataBox">
+                        <text>{{test_daka}}</text>
+                    </view>
+                    <!-- <component-scroll pulldownDistance="100" refreshPulldownText="你再往下拉试试" refreshUndoText="你松开试试" refreshLoadingText="我在努力刷新中~" loadmoreLoadingText="正在拼命的捞数据" loadmoreAllloadedText="我是有底线的" isNeedLoadmore bind:_loadmore="loadmore" bind:_refresh="refresh" allloaded="{{allloaded}}" isEmpty="{{!loading &&list.length<=0}}" wx:else > -->
+
+                        <block  wx:for="{{list}}" wx:key="{{index}}">
+                        <view class="CardDiaryInfos" >
+                            <image class='imgs' src='{{list[index].img_url}}' data-id="{{list[index].id}}" bindtap="imgView"  mode='aspectFill'></image>
+                            <view class="likes"  wx:if="{{list[index].collection == 1}}">
+                                <text class="iconfont icon_wodeshoucang" bind:tap="likes"  data-id="{{list[index].id}}"  style="color:#D02F2F"></text>
+                            </view> 
+                            <view class="likes"  wx:else>
+                                <text class="iconfont icon_wodeshoucang" bind:tap="likes"  data-id="{{list[index].id}}"  ></text>
+                            </view>
+
+                            <view class="CardDiaryUser goodListInfos">
+                                <!-- 右下角图片张数 -->
+                                <block wx:if="{{list[index].img_count!=1}}">
+                                    <text class="PictureNum">1/{{list[index].img_count}}</text>
+                                </block>
+
+                                <view class="userInfos_l">
+                                    <!-- <navigator url="/pages/homePersonal/homePersonal?uid={{list[index].uid}}">
+                                    <view class="userHeads">
+                                        <image src="{{list[index].avator}}" class="userHead" alt="头像"></image>
+                                        <image alt="性别" class='userSex' wx:if="{{list[index].sex == 2}}" src='../../image/icon18sex2.png'></image>
+                                        <image alt="性别" class='userSex' wx:else src='../../image/icon18sex1.png'></image>
+                                    </view>
+                                    <text class="userName">{{list[index].uname}} </text>
+                                    <text class="userTime" decode="{{true}}">{{list[index].atime}}&nbsp;&nbsp;已打卡{{list[index].ydk}}天</text>
+                                    </navigator> -->
+                                    <text class="userTime userTimeOne" decode="{{true}}">{{list[index].atime}}&nbsp;&nbsp;已打卡{{list[index].ydk}}天</text>
+                                </view>
+
+                                <view class="userHandle">
+                                    <!-- 赞 -->
+                                    <view wx:if="{{list[index].praise['is_zan'] == 1}}" data-id='{{list[index].id}}'  class="zan" bindtap="handleLike" style="color:red;">
+                                        <view class="">
+                                            <text class="iconfont icon_zan"></text>
+                                            <text class="nums">{{list[index].praise['count']}}</text>
+                                        </view>
+                                    </view>
+                                    <view wx:if="{{list[index].praise['is_zan'] == 2}}" data-id='{{list[index].id}}' class="zan" bindtap="handleLike">
+                                        <view class="">
+                                            <text class="iconfont icon_zan"></text>
+                                            <text class="nums">{{list[index].praise['count']}}</text>
+                                        </view>
+                                    </view>
+                                    <!-- 回复 -->
+                                    <navigator url="/pages/circleSignInfo/circleSignInfo?id={{list[index].id}}" >  <view  class="reply" bindtap="replys">
+                                        <text class="iconfont icon_huifu"></text>
+                                        <text class="nums">{{list[index].commentcount}}</text>
+                                    </view></navigator>
+
+                                </view>
+
+                                <!-- <view class="userInfos_bottom" wx:if="{{list[index].circle!=0}}"> -->
+                                <view class="userInfos_bottom" wx:if="{{list[index].circle!=0}}">
+                                    <!-- <navigator wx:if="{{list[index].circle['in_circle'] == 1}}" url="/pages/circleInfoCard/circleInfoCard?id={{list[index].cid}}">
+                                        <image src="{{list[index].circle['coverimg']}}" class="courseImg" alt="推荐图"></image>
+                                        <text class="userName userNamess">{{list[index].circle['title']}}</text>
+                                        <text class="userTime userTimes" >{{list[index].circle['zongshu']}}人已加入</text>
+                                        <van-icon name="arrow" custom-style="position:relative;top:-6px;right:0;float:right;color:#D8D8D8;"/>
+                                    </navigator>
+                                    <navigator wx:else url="/pages/circleInfo/circleInfo?id={{list[index].cid}}">
+                                        <image src="{{list[index].circle['coverimg']}}" class="courseImg" alt="推荐图"></image>
+                                        <text class="userName userNamess">{{list[index].circle['title']}}</text>
+                                        <text class="userTime userTimes" >{{list[index].circle['zongshu']}}人已加入</text>
+                                        <van-icon name="arrow" custom-style="position:relative;top:-6px;right:0;float:right;color:#D8D8D8;"/>
+                                    </navigator> -->
+
+                                    <navigator wx:if="{{list[index].circle['in_circle'] == 1}}" url="/pages/circleInfoCard/circleInfoCard?id={{list[index].cid}}">
+                                        <image src="{{list[index].circle['coverimg']}}" class="courseImg" alt="推荐图"></image>
+                                        <text class="userName userNamess">{{list[index].circle['title']}}</text>
+                                        <text class="userTime userTimes" >{{list[index].circle['zongshu']}}人已加入</text>
+                                        <van-icon name="arrow" custom-style="position:relative;top:-6px;right:0;float:right;color:#D8D8D8;"/>
+                                    </navigator>
+                                    <navigator wx:else url="/pages/circleInfo/circleInfo?id={{list[index].cid}}">
+                                        <image src="{{list[index].circle['coverimg']}}" class="courseImg" alt="推荐图"></image>
+                                        <text class="userName userNamess">{{list[index].circle['title']}}</text>
+                                        <text class="userTime userTimes" >{{list[index].circle['zongshu']}}人已加入</text>
+                                        <van-icon name="arrow" custom-style="position:relative;top:-6px;right:0;float:right;color:#D8D8D8;"/>
+                                    </navigator>
+
+                                </view>
+                            </view>
+                        </view>
+                        </block>
+
+                        <block wx:if="{{isShows}}">
+                            <view class='my-scroll-msgModule my-scroll-loadmoreModule'>
+                                <image wx:if="{{isloading}}" class='my-scroll-msgModule-icon my-scroll-msgModule-icon-loading' src='../../components/component-scroll/image/loading.png'></image>
+                                <text class='my-scroll-msgModule-text'>{{isShowsText}}</text>
+                            </view>
+                        </block>
+                    <!-- </component-scroll> -->
+                </view>
+
+            </view>
+
+
+        </view>
+    </view>
+
+</view>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,211 @@
+<!--主页.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="我的收藏" bg-color='{{bgColor}}'></navigation>
+
+
+<view class="container">
+
+    <!-- 单双模式切换菜单 -->
+    <view class="modeSwBox">
+        <view class="modeSwBoxbj">
+            <text class="iconfont icon_menu-s {{currentTab==1?'active':''}}" data-current="1" bind:tap="clickTab"></text>
+            <text class="iconfont icon_caidan {{currentTab==0?'active':''}}" data-current="0" bind:tap="clickTab"></text>
+        </view>
+    </view>
+
+
+    <block wx:if="{{Modes}}">
+        <!-- 双 -->
+        <view class='listHeights' wx:if="{{list.length>0}}">
+            <view class='list'>
+                <view class='goodList'>
+                    <view class="good_left">
+                        <block wx:for="{{list}}" wx:key="{{index}}">
+                            <view class="goodListInfos" wx:if="{{index%2 == 0}}" >
+                                <image src='{{list[index].img_url[0]}}' mode='widthFix' bindtap="imgView" data-list="{{list[index].img_url}}" class="courseimgBj"></image>
+                                <view class="likes" bindtap="likes" wx:if="{{list[index].collection == 1}}" data-id="{{list[index].id}}" style="color:#D02F2F">
+                                    <text class="iconfont icon_wodeshoucang" style="color:#D02F2F"></text>
+                                </view>
+                                <view class="likes" bindtap="likes" wx:else data-id="{{list[index].id}}">
+                                    <text class="iconfont icon_wodeshoucang"></text>
+                                </view>
+                                <!-- 右下角图片张数 -->
+                                <block wx:if="{{list[index].img_count != 1}}">
+                                    <text class="PictureNum">1/{{list[index].img_count}}</text>
+                                </block>
+                                <view class="userInfos">
+                                    <view class="userInfos_l">
+                                        <navigator hover-class='none' url="/pages/homePersonal/homePersonal?uid={{list[index].uid}}">
+                                        <view class="userHeads">
+                                            <image src="{{list[index].avator}}" class="userHead" alt="头像"></image>
+                                            <image class='userSex' wx:if="{{list[index].sex == 2}}" src='../../image/icon18sex2.png'></image>
+                                            <image class='userSex' wx:else src='../../image/icon18sex1.png'></image>
+                                        </view>
+                                        <text class="userName">{{list[index].uname}}</text>
+                                        <!-- <text class="userTime">{{list[index].atime}}</text> -->
+                                        </navigator>
+                                    </view>
+                                    <view class="zan" bindtap="handleLike" data-id='{{list[index].id}}'>
+                                        <view wx:if="{{list[index].praise['is_zan'] == 1}}" class="" style="color:red;">
+                                            <!-- <van-icon name="thumb-circle-o" size="36rpx"/> -->
+                                            <text class="iconfont icon_zan"></text>
+                                            <text class="clickZan">{{list[index].praise['count']}}</text>
+                                        </view>
+                                        <view wx:if="{{list[index].praise['is_zan'] == 2}}" class="">
+                                            <!-- <van-icon name="thumb-circle-o" size="36rpx"/> -->
+                                            <text class="iconfont icon_zan"></text>
+                                            <text class="clickZan">{{list[index].praise['count']}}</text>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                    <view class="good_right">
+                        <block wx:for="{{list}}" wx:key="{{index}}">
+                            <view class="goodListInfos" wx:if="{{index%2 == 1}}">
+                                <image src='{{list[index].img_url[0]}}' data-list="{{list[index].img_url}}" mode='widthFix' bindtap="imgView" class="courseimgBj"></image>
+                                <view class="likes" bindtap="likes" wx:if="{{list[index].collection == 1}}" data-id="{{list[index].id}}" style="color:rgb(246,140,110)">
+                                    <text class="iconfont icon_wodeshoucang" style="color:#D02F2F"></text>
+                                </view>
+                                <view class="likes" bindtap="likes" wx:else data-id="{{list[index].id}}">
+                                    <text class="iconfont icon_wodeshoucang"></text>
+                                </view>
+                                <!-- 右下角图片张数 -->
+                                <block wx:if="{{list[index].img_count != 1}}">
+                                    <text class="PictureNum">1/{{list[index].img_count}}</text>
+                                </block>
+
+                                <view class="userInfos">
+                                    <view class="userInfos_l">
+                                        <navigator hover-class='none' url="/pages/homePersonal/homePersonal?uid={{list[index].uid}}">
+                                        <view class="userHeads">
+                                            <image src="{{list[index].avator}}" class="userHead" alt="头像"></image>
+                                            <image class='userSex' wx:if="{{list[index].sex == 2}}" src='../../image/icon18sex2.png'></image>
+                                            <image class='userSex' wx:else src='../../image/icon18sex1.png'></image>
+                                        </view>
+                                        <text class="userName">{{list[index].uname}} </text>
+                                        <!-- <text class="userTime">{{list[index].atime}} </text> -->
+                                        </navigator>
+                                    </view>
+                                    <view class="zan" wx:if="{{list[index].praise['is_zan'] == 1}}" bindtap="handleLike" data-id='{{list[index].id}}' style="color:red">
+                                        <view class="">
+                                            <!-- <van-icon name="thumb-circle-o" size="36rpx"/> -->
+                                            <text class="iconfont icon_zan"></text>
+                                        </view>
+                                        {{list[index].praise['count']}}
+                                    </view>
+                                    <view class="zan" wx:if="{{list[index].praise['is_zan'] == 2}}" bindtap="handleLike" data-id='{{list[index].id}}'>
+                                        <view class="">
+                                            <!-- <van-icon name="thumb-circle-o" size="36rpx"/> -->
+                                            <text class="iconfont icon_zan"></text>
+                                        </view>
+                                        {{list[index].praise['count']}}
+                                    </view>
+                                </view>
+
+                                <!-- <view class="userInfos">
+                                    <view class="userInfos_ls">
+                                        <text class="userNames">aaa </text>
+                                        <text class="userNums" decode="{{true}}">1.28w人已加入 &nbsp;|&nbsp;345篇内容</text>
+                                    </view>
+                                </view> -->
+
+                            </view>
+                        </block>
+                    </view>
+                </view> 
+            </view>
+        </view>
+        <view class="noDataBox" wx:else>
+            <text>{{test}}</text>
+        </view>
+    </block>
+    <block wx:else>
+        <!-- 单 -->
+        <view class='listHeights CardDiary'  wx:if="{{list.length>0}}">
+
+            <block wx:for="{{list}}" wx:key="{{index}}" wx:for-item="vo">
+            <view class="CardDiaryInfos" >
+
+                <image class='imgs' mode="aspectFill" src='{{list[index].img_url[0]}}' data-list="{{list[index].img_url}}" bindtap="imgView" data-id="{{list[index].id}}" data-isjoin="{{list[index].isjoin}}" ></image>
+                <view class="likes"  bindtap="likes" wx:if="{{list[index].collection == 1}}" data-id="{{list[index].id}}" style="color:rgb(246,140,110)">
+                    <text class="iconfont icon_wodeshoucang" style="color:#D02F2F"></text>
+                </view> 
+
+                <view class="likes"  bindtap="likes" wx:else data-id="{{list[index].id}}">
+                    <text class="iconfont icon_wodeshoucang" ></text>
+                </view>
+                <view class="CardDiaryUser goodListInfos">
+                    <view class="userInfos_l">
+                        <navigator hover-class='none' url="/pages/homePersonal/homePersonal?uid={{list[index].uid}}">
+                        <view class="userHeads">
+                            <image src="{{list[index].avator}}" class="userHead" alt="头像"></image>
+                            <image alt="性别" class='userSex' wx:if="{{list[index].sex == 2}}" src='../../image/icon18sex2.png'></image>
+                            <image alt="性别" class='userSex' wx:else src='../../image/icon18sex1.png'></image>
+                        </view>
+                        <text class="userName">{{list[index].uname}}</text>
+                        <!-- <text class="userTime" decode="{{true}}">{{list[index].atime}}&nbsp;&nbsp;已打卡{{list[index].tol_days}}天</text> -->
+                        <text class="userTime" decode="{{true}}">已打卡{{list[index].tol_days}}天</text>
+                        </navigator>
+                    </view>
+
+                    <view class="userHandle">
+                        <!-- 赞 -->
+                        <view class="zan" wx:if="{{list[index].praise['is_zan'] == 1}}" bindtap="handleLike" data-id='{{list[index].id}}' style="color:red;">
+                            <view class="">
+                                <text class="iconfont icon_zan"></text>
+                                <text class="nums">{{list[index].praise['count']}}</text>
+                            </view>
+                        </view>
+                        <view class="zan" wx:if="{{list[index].praise['is_zan'] == 2}}" bindtap="handleLike" data-id='{{list[index].id}}'>
+                            <view class="">
+                                <text class="iconfont icon_zan"></text>
+                                <text class="nums">{{list[index].praise['count']}}</text>
+                            </view>
+                        </view>
+                        <!-- 回复 -->
+                        <navigator hover-class='none' url="/pages/circleSignInfo/circleSignInfo?id={{list[index].id}}" >
+                        <view  class="reply" bindtap="replys">
+                            <text class="iconfont icon_huifu"></text>
+                            <text class="nums">{{list[index].commentcount}}</text>
+                        </view>
+                        </navigator>
+                    </view>
+
+                    <view class="userInfos_bottom" wx:if="{{list[index].circle!=0}}">
+                        <navigator hover-class='none' wx:if="{{list[index].circle['in_circle'] == 1}}" url="/pages/circleInfoCard/circleInfoCard?id={{list[index].cid}}">
+                            <image src="{{list[index].circle['coverimg']}}" class="courseImg" alt="推荐图"></image>
+                            <text class="userName userNamess">{{list[index].circle['title']}}</text>
+                            <text class="userTime userTimes" >{{list[index].circle['zongshu']}}人已加入</text>
+                            <!-- <text class="imgTexts">></text> -->
+                            <van-icon name="arrow" custom-style="position:relative;top:-20rpx;right:0;float:right;color:#D8D8D8;"/>
+                        </navigator>
+                        <navigator hover-class='none' wx:else url="/pages/circleInfo/circleInfo?id={{list[index].cid}}">
+                            <image src="{{list[index].circle['coverimg']}}" class="courseImg" alt="推荐图"></image>
+                            <text class="userName userNamess">{{list[index].circle['title']}}</text>
+                            <text class="userTime userTimes" >{{list[index].circle['zongshu']}}人已加入</text>
+                            <!-- <text class="imgTexts">></text> -->
+                            <van-icon name="arrow" custom-style="position:relative;top:-20rpx;right:0;float:right;color:#D8D8D8;"/>
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+            </block>
+
+        </view>
+        <view class="noDataBox" wx:else>
+            <text>{{test}}</text>
+        </view>
+    </block>
+
+    <block wx:if="{{isShows}}">
+        <view class='my-scroll-msgModule my-scroll-loadmoreModule'>
+            <image wx:if="{{isloading}}" class='my-scroll-msgModule-icon my-scroll-msgModule-icon-loading' src='../../components/component-scroll/image/loading.png'></image>
+            <text class='my-scroll-msgModule-text'>{{isShowsText}}</text>
+        </view>
+    </block>
+
+</view>
+
+
+
